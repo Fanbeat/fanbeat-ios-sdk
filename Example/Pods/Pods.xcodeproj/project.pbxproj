@@ -13,10 +13,11 @@
 		64B8EB8C927CC61AAA9BDC6DEDE96E2A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		690B9DD714359493764AC3D9A206EB81 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		8B2855E0DF91DB1F0F6FE5B2EE4AC242 /* Pods-fanbeat-ios-sdk_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F1DEAC0149DFE1F9EDDF1B1A1EEA32FE /* Pods-fanbeat-ios-sdk_Example-dummy.m */; };
-		A20DE51923BBB39B0108BA705E6C289A /* ReplaceMe.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8F9DD35D26F7D8438FF0E402E932D /* ReplaceMe.m */; };
 		B0F1D5B18FBEDCD133F595E1D33006B8 /* fanbeat-ios-sdk-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 87D961C74F100F3AE96C04A0DE2C44BF /* fanbeat-ios-sdk-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB976C3509B903557403D523F641D525 /* fanbeat-ios-sdk-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D72915F3E90B80D1167BC846B4E2D66 /* fanbeat-ios-sdk-dummy.m */; };
 		D5AB6EE0B24191CF9C633AFBC558627D /* Pods-fanbeat-ios-sdk_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F69129CEC6826DED9C0FDE4FE6F7C5 /* Pods-fanbeat-ios-sdk_Tests-dummy.m */; };
+		EA300F231D04DBD40006244E /* FanBeat.h in Headers */ = {isa = PBXBuildFile; fileRef = EA300F211D04DBD40006244E /* FanBeat.h */; };
+		EA300F241D04DBD40006244E /* FanBeat.m in Sources */ = {isa = PBXBuildFile; fileRef = EA300F221D04DBD40006244E /* FanBeat.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,13 +54,14 @@
 		87D961C74F100F3AE96C04A0DE2C44BF /* fanbeat-ios-sdk-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "fanbeat-ios-sdk-umbrella.h"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DB9FD280CBDB0AEFB8B10319274ACB9 /* Pods-fanbeat-ios-sdk_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-fanbeat-ios-sdk_Tests-umbrella.h"; sourceTree = "<group>"; };
-		9FF8F9DD35D26F7D8438FF0E402E932D /* ReplaceMe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ReplaceMe.m; sourceTree = "<group>"; };
 		A0F69129CEC6826DED9C0FDE4FE6F7C5 /* Pods-fanbeat-ios-sdk_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-fanbeat-ios-sdk_Tests-dummy.m"; sourceTree = "<group>"; };
 		A37222EFDBD5E812173DE103917F9C54 /* Pods-fanbeat-ios-sdk_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-fanbeat-ios-sdk_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		A5ECE3208AB07D0EB873AA52CC450BA7 /* Pods-fanbeat-ios-sdk_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-fanbeat-ios-sdk_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B048164EE9534545BE3A5468520E82B4 /* Pods-fanbeat-ios-sdk_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-fanbeat-ios-sdk_Tests.modulemap"; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		E5D6368C2485267DD90AF3968EA36A98 /* Pods-fanbeat-ios-sdk_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-fanbeat-ios-sdk_Tests-resources.sh"; sourceTree = "<group>"; };
+		EA300F211D04DBD40006244E /* FanBeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FanBeat.h; sourceTree = "<group>"; };
+		EA300F221D04DBD40006244E /* FanBeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FanBeat.m; sourceTree = "<group>"; };
 		F1DEAC0149DFE1F9EDDF1B1A1EEA32FE /* Pods-fanbeat-ios-sdk_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-fanbeat-ios-sdk_Example-dummy.m"; sourceTree = "<group>"; };
 		FE22AB1F61477D3CBBAD20546955DD8B /* Pods-fanbeat-ios-sdk_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-fanbeat-ios-sdk_Example-frameworks.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,7 +203,8 @@
 		A2F0460FAE7E4C557A9F8DE43503F244 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				9FF8F9DD35D26F7D8438FF0E402E932D /* ReplaceMe.m */,
+				EA300F211D04DBD40006244E /* FanBeat.h */,
+				EA300F221D04DBD40006244E /* FanBeat.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA300F231D04DBD40006244E /* FanBeat.h in Headers */,
 				B0F1D5B18FBEDCD133F595E1D33006B8 /* fanbeat-ios-sdk-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,7 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB976C3509B903557403D523F641D525 /* fanbeat-ios-sdk-dummy.m in Sources */,
-				A20DE51923BBB39B0108BA705E6C289A /* ReplaceMe.m in Sources */,
+				EA300F241D04DBD40006244E /* FanBeat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
