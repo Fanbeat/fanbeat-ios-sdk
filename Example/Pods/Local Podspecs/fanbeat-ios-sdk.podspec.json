@@ -1,0 +1,22 @@
+{
+  "name": "fanbeat-ios-sdk",
+  "version": "0.1.0",
+  "summary": "A short description of fanbeat-ios-sdk.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/fanbeat-ios-sdk",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Tony Sullivan": "tony.sullivan@fanbeat.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/fanbeat-ios-sdk.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "fanbeat-ios-sdk/Classes/**/*"
+}

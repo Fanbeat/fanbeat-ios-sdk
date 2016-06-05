@@ -9,25 +9,16 @@
 Pod::Spec.new do |s|
   s.name             = 'fanbeat-ios-sdk'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of fanbeat-ios-sdk.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.summary          = 'Link to your partner content in the FanBeat app.'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+The FanBeat SDK enables partner apps to link straight to their content in FanBeat without having to worry about whether the user has already installed the FanBeat app.
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/fanbeat-ios-sdk'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'http://www.fanbeat.com'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Tony Sullivan' => 'tony.sullivan@fanbeat.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/fanbeat-ios-sdk.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
+  s.source           = { :git => 'https://bitbucket.org/ingameapp/fanbeat-ios-sdk', :tag => s.version.to_s }
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'fanbeat-ios-sdk/Classes/**/*'

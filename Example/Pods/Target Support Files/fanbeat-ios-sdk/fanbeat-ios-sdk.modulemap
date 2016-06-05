@@ -1,0 +1,6 @@
+framework module fanbeat_ios_sdk {
+  umbrella header "fanbeat-ios-sdk-umbrella.h"
+
+  export *
+  module * { export * }
+}

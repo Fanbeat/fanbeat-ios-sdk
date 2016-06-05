@@ -1,0 +1,16 @@
+PODS:
+  - fanbeat-ios-sdk (0.1.0)
+
+DEPENDENCIES:
+  - fanbeat-ios-sdk (from `../`)
+
+EXTERNAL SOURCES:
+  fanbeat-ios-sdk:
+    :path: ../
+
+SPEC CHECKSUMS:
+  fanbeat-ios-sdk: 13e901929c025457619790c369aa75ef88fe4e91
+
+PODFILE CHECKSUM: d73dea0ec50a433435b21a71033fdc4bc0ddf1a9
+
+COCOAPODS: 1.0.1
