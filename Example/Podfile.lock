@@ -1,5 +1,11 @@
 PODS:
-  - fanbeat-ios-sdk (0.1.0)
+  - Branch (0.12.2):
+    - Branch/Core (= 0.12.2)
+    - Branch/without-IDFA (= 0.12.2)
+  - Branch/Core (0.12.2)
+  - Branch/without-IDFA (0.12.2)
+  - fanbeat-ios-sdk (0.1.0):
+    - Branch (~> 0.12)
 
 DEPENDENCIES:
   - fanbeat-ios-sdk (from `../`)
@@ -9,7 +15,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  fanbeat-ios-sdk: 13e901929c025457619790c369aa75ef88fe4e91
+  Branch: 8dc4c9b6c3bcdc6ad590938a0b333ddbfe60efe4
+  fanbeat-ios-sdk: fa1a91ba195d4f7ea7eb0c2193fc29585c84bd95
 
 PODFILE CHECKSUM: d73dea0ec50a433435b21a71033fdc4bc0ddf1a9
 

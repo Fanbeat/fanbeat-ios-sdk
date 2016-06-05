@@ -2,10 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../Podfile">
-   </FileRef>
-   <FileRef
-      location = "group:fanbeat-ios-sdk.xcodeproj">
+      location = "group:_Pods.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

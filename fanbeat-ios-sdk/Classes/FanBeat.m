@@ -7,10 +7,13 @@
 //
 
 #import "FanBeat.h"
+#import "BranchUniversalObject.h"
 
 static const NSString *FANBEAT_PLIST_KEY = @"fanbeat_id";
 static const NSString *FANBEAT_BASE_URI = @"ingame://";
-static const NSNumber *FANBEAT_STORE_ID = [NSNumber numberWithInteger:966632826];
+static const int FANBEAT_STORE_ID = 966632826;
+
+typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
 @interface FanBeat() {
     NSString *identity;
@@ -52,42 +55,81 @@ static const NSNumber *FANBEAT_STORE_ID = [NSNumber numberWithInteger:966632826]
 
 -(void)openWithResult:(void(^)(BOOL, NSError * _Nullable))onResult
 {
-    // create Branch link
-    if ([self canOpenFanbeat]) {
-        // open Branch link
-        
-        if (onResult) {
-            onResult(YES, nil);
+    [self getBranchUrlWithCallback:^(NSString *url, NSError *error) {
+        if (error) {
+            if (onResult) {
+                onResult(NO, error);
+            }
             return;
         }
-    } else {
-        SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
         
-        storeViewController.delegate = self;
-        
-        NSDictionary *parameters = @{SKStoreProductParameterITunesItemIdentifier: FANBEAT_STORE_ID};
-        
-        [storeViewController loadProductWithParameters:parameters completionBlock:^(BOOL result, NSError * _Nullable error) {
-            if (result) {
-                UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
-                [controller presentViewController: storeViewController
-                                         animated:YES
-                                       completion:nil];
+        if ([self canOpenFanbeat]) {
+            [self openUrl: url];
+            if (onResult) {
+                onResult(YES, nil);
+                return;
             }
-        }];
-        
-        // TODO: Handle onResult when store returns
-    }
-    
-    if (onResult)
-        onResult(NO, nil);
+        } else {
+            // TODO: show marketing view controller
+        }
+    }];
 }
 
 -(BOOL)canOpenFanbeat
 {
     NSURL *fanbeatUrl = [NSURL URLWithString:FANBEAT_BASE_URI];
     return [[UIApplication sharedApplication]canOpenURL:fanbeatUrl];
+}
+
+-(void)getBranchUrlWithCallback:(callbackWithUrl)callback
+{
+    BranchUniversalObject *branchUniversalObject = [[BranchUniversalObject alloc] initWithTitle:@"FanBeat"];
     
+    BranchLinkProperties *linkProperties = [[BranchLinkProperties alloc]init];
+    linkProperties.stage = @"production";
+    linkProperties.feature = @"SDK";
+    linkProperties.channel = partnerId;
+    [linkProperties addControlParam:@"partner_id" withValue:partnerId];
+    
+    if (identity) {
+        [linkProperties addControlParam:@"partner_user_id" withValue:identity];
+    }
+    
+    [branchUniversalObject getShortUrlWithLinkProperties:linkProperties andCallback:callback];
+}
+
+-(void)openUrl:(NSURL *)url
+{
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:url]];
+}
+
+-(void)openStore:(NSNumber *)storeId withCallback:(void(^)(BOOL, NSError * _Nullable))callback
+{
+    SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
+    
+    storeViewController.delegate = self;
+    
+    NSDictionary *parameters = @{SKStoreProductParameterITunesItemIdentifier: [NSNumber numberWithInteger:FANBEAT_STORE_ID]};
+    
+    [storeViewController loadProductWithParameters:parameters completionBlock:^(BOOL result, NSError * _Nullable error) {
+        if (error) {
+            if (callback) {
+                callback(result, error);
+            }
+            return;
+        }
+        
+        if (result) {
+            UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
+            [controller presentViewController: storeViewController
+                                     animated:YES
+                                   completion:nil];
+        } else {
+            if (callback) {
+                callback(result, error);
+            }
+        }
+    }];
 }
 
 @end

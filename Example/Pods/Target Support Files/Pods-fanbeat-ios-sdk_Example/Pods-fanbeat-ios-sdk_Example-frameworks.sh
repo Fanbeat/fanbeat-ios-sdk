@@ -84,8 +84,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/Branch/Branch.framework"
   install_framework "$BUILT_PRODUCTS_DIR/fanbeat-ios-sdk/fanbeat_ios_sdk.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/Branch/Branch.framework"
   install_framework "$BUILT_PRODUCTS_DIR/fanbeat-ios-sdk/fanbeat_ios_sdk.framework"
 fi
