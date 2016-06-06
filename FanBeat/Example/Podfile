@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'FanBeat_Example' do
+  pod 'FanBeat', :path => '../'
+
+  target 'FanBeat_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
