@@ -9,6 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <StoreKit/StoreKit.h>
 
-@interface FBPromoViewController : UIViewController
+@protocol FBPromoViewControllerDelegate;
+
+@interface FBPromoViewController : UIViewController <SKStoreProductViewControllerDelegate>
+
+@property (nonatomic, weak) id<FBPromoViewControllerDelegate> delegate;
+
+@end
+
+@protocol FBPromoViewControllerDelegate <NSObject>
+
+-(void)promoViewControllerDidFinish:(FBPromoViewController *)viewController;
 
 @end

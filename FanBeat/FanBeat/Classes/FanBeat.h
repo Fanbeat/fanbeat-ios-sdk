@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FBPromoViewController.h"
 
-@interface FanBeat : NSObject
+@interface FanBeat : NSObject <FBPromoViewControllerDelegate>
 
-+(instancetype _Nonnull)getInstance;
++(instancetype)getInstance;
 -(void)open;
 -(void)openForUser:(NSString *)userId;
 

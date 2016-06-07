@@ -7,6 +7,7 @@
 //
 
 #import "FBPromoViewController.h"
+#import "FBDeepLinker.h"
 
 static const int FANBEAT_STORE_ID = 966632826;
 
@@ -49,6 +50,15 @@ static const int FANBEAT_STORE_ID = 966632826;
                                    completion:nil];
         }
     }];
+}
+
+-(void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController
+{
+    [self dismissViewControllerAnimated:NO completion:nil];
+    
+    if(self.delegate && [self.delegate respondsToSelector:@selector(promoViewControllerDidFinish:)]) {
+        [self.delegate promoViewControllerDidFinish:self];
+    }
 }
 
 @end

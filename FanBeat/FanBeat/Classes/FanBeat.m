@@ -16,6 +16,7 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
 @interface FanBeat() {
     NSString *partnerId;
+    FBPromoViewController *promoViewController;
 }
 @end
 
@@ -69,12 +70,21 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
         [deepLinker open:partnerId forUser:userId];
     } else {
         NSBundle *bundle = [NSBundle bundleForClass:[FBPromoViewController class]];
+        
+        promoViewController = [[FBPromoViewController alloc] initWithNibName:@"FBPromoViewController" bundle:bundle];
+        promoViewController.delegate = self;
+        
         UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
-        FBPromoViewController *promoViewController = [[FBPromoViewController alloc] initWithNibName:@"FBPromoViewController" bundle:bundle];
         [controller presentViewController:promoViewController
                                  animated:YES
                                completion:nil];
     }
+}
+
+-(void)promoViewControllerDidFinish:(FBPromoViewController *)viewController
+{
+    [promoViewController dismissViewControllerAnimated:NO
+                                            completion:nil];
 }
 
 @end
