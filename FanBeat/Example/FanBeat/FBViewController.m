@@ -7,9 +7,11 @@
 //
 
 #import "FBViewController.h"
+#import "FanBeat/FanBeat.h"
 
-@interface FBViewController ()
-
+@interface FBViewController () {
+    FanBeat *fanbeat;
+}
 @end
 
 @implementation FBViewController
@@ -17,13 +19,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    fanbeat = [FanBeat getInstance];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)goToFanBeat:(id)sender {
+    [fanbeat open];
 }
 
 @end

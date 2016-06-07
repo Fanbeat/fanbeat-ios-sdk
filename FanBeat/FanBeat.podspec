@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
 The FanBeat SDK enables partner apps to link straight to their content in FanBeat without having to worry about whether the user has already installed the FanBeat app.
                        DESC
 
-s.homepage         = 'http://www.fanbeat.com'
+  s.homepage         = 'http://www.fanbeat.com'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Tony Sullivan' => 'tony.sullivan@fanbeat.com' }
@@ -19,4 +19,9 @@ s.homepage         = 'http://www.fanbeat.com'
 
   s.frameworks = 'UIKit', 'StoreKit'
   s.dependency 'Branch', '~> 0.12'
+  s.resource_bundles = {
+    'FanBeatPod' => [
+      'Pod/**/*.xib'
+    ]
+  }
 end

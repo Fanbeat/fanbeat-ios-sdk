@@ -14,10 +14,24 @@
                         <viewControllerLayoutGuide type="bottom" id="Mvr-aV-6Um"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TpU-gO-2f1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gdo-Kk-tT7">
+                                <rect key="frame" x="162" y="353" width="91" height="30"/>
+                                <state key="normal" title="FanBeat"/>
+                                <connections>
+                                    <action selector="goToFanBeat:" destination="whP-gf-Uak" eventType="touchUpInside" id="3FY-f6-gup"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gdo-Kk-tT7" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="9Vt-Wx-zxi"/>
+                            <constraint firstItem="Gdo-Kk-tT7" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" id="yCl-mc-CDn"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

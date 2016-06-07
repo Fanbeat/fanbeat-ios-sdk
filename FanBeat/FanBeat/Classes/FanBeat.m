@@ -7,17 +7,19 @@
 //
 
 #import "FanBeat.h"
-#import "BranchUniversalObject.h"
-#import "FBMarketingViewController.h"
+#import "Branch.h"
+#import "FBPromoViewController.h"
 
 static const NSString *FANBEAT_PLIST_KEY = @"fanbeat_id";
 static const NSString *FANBEAT_BASE_URI = @"ingame://";
-static const int FANBEAT_STORE_ID = 966632826;
+static const NSString *FANBEAT_LIVE_KEY = @"key_live_oam5GSs8U81sJ8TvPo8v6bbpDudyMBQN";
+static const NSString *FANBEAT_TEST_KEY = @"key_test_mbo9SGq4LZXBQ9HvTj89lgcgzvnwJDN0";
 
 typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
 @interface FanBeat() {
     NSString *partnerId;
+    BOOL isLive;
 }
 @end
 
@@ -33,19 +35,29 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
     return fanbeat;
 }
 
--(void)setup
+-(id)init
 {
-    NSDictionary *plist = [NSBundle mainBundle].infoDictionary;
+    if (self == [super init]) {
+        isLive = NO;
+        
+        NSDictionary *plist = [NSBundle mainBundle].infoDictionary;
     
-    if (!plist) {
-        NSLog(@"Main bundle plist not found!");
-        return;
+        if (!plist) {
+            NSLog(@"Main bundle plist not found!");
+        } else {
+            partnerId = plist[FANBEAT_PLIST_KEY];
+            if (!partnerId) {
+                NSLog(@"%@ not found in the plist!", FANBEAT_PLIST_KEY);
+            }
+        }
     }
     
-    partnerId = plist[FANBEAT_PLIST_KEY];
-    if (!partnerId) {
-        NSLog(@"%@ not found in the plist!", FANBEAT_PLIST_KEY);
-    }
+    return self;
+}
+
+-(void)open
+{
+    [self openWithResult:nil];
 }
 
 -(void)openWithResult:(void(^)(BOOL, NSError * _Nullable))onResult
@@ -55,6 +67,11 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
 -(void)openForUser:(NSString *)userId withResult:(void(^)(BOOL, NSError * _Nullable))onResult
 {
+    if (!partnerId) {
+        NSLog(@"%@ not found in the plist!", FANBEAT_PLIST_KEY);
+        return;
+    }
+    
     [self getBranchUrlForUser:userId WithCallback:^(NSString *url, NSError *error) {
         if (error) {
             if (onResult) {
@@ -70,9 +87,10 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
                 return;
             }
         } else {
-            FBMarketingViewController *marketingViewController = [[FBMarketingViewController alloc]init];
+            NSBundle *bundle = [NSBundle bundleForClass:[FBPromoViewController class]];
+            FBPromoViewController *viewController = [[FBPromoViewController alloc] initWithNibName:@"FBPromoViewController" bundle:bundle];
             UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
-            [controller presentViewController:marketingViewController animated:YES completion:nil];
+            [controller presentViewController:viewController animated:YES completion:nil];
         }
     }];
 }
@@ -85,53 +103,22 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
 -(void)getBranchUrlForUser:(NSString * _Nullable)userId WithCallback:(callbackWithUrl)callback
 {
-    BranchUniversalObject *branchUniversalObject = [[BranchUniversalObject alloc] initWithTitle:@"FanBeat"];
+    Branch *branch = [Branch getInstance: isLive ? FANBEAT_LIVE_KEY : FANBEAT_TEST_KEY];
     
-    BranchLinkProperties *linkProperties = [[BranchLinkProperties alloc]init];
-    linkProperties.stage = @"production";
-    linkProperties.feature = @"SDK";
-    linkProperties.channel = partnerId;
-    [linkProperties addControlParam:@"partner_id" withValue:partnerId];
+    NSDictionary *params = @{
+                             @"partner_id" : partnerId
+                             };
     
     if (userId) {
-        [linkProperties addControlParam:@"partner_user_id" withValue:userId];
+        [params setValue:userId forKey:@"partner_user_id"];
     }
     
-    [branchUniversalObject getShortUrlWithLinkProperties:linkProperties andCallback:callback];
+    [branch getShortURLWithParams:params andChannel:partnerId andFeature:@"SDK" andCallback:callback];
 }
 
 -(void)openUrl:(NSURL *)url
 {
     [[UIApplication sharedApplication]openURL:[NSURL URLWithString:url]];
-}
-
--(void)openStore:(NSNumber *)storeId withCallback:(void(^)(BOOL, NSError * _Nullable))callback
-{
-    SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
-    
-    storeViewController.delegate = self;
-    
-    NSDictionary *parameters = @{SKStoreProductParameterITunesItemIdentifier: [NSNumber numberWithInteger:FANBEAT_STORE_ID]};
-    
-    [storeViewController loadProductWithParameters:parameters completionBlock:^(BOOL result, NSError * _Nullable error) {
-        if (error) {
-            if (callback) {
-                callback(result, error);
-            }
-            return;
-        }
-        
-        if (result) {
-            UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
-            [controller presentViewController: storeViewController
-                                     animated:YES
-                                   completion:nil];
-        } else {
-            if (callback) {
-                callback(result, error);
-            }
-        }
-    }];
 }
 
 @end

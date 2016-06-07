@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <StoreKit/StoreKit.h>
 
 @interface FanBeat : NSObject
 
 +(instancetype)getInstance;
--(void)setup;
+-(void)open;
 -(void)openForUser:(NSString *)userId withResult:(void(^)(BOOL, NSError * _Nullable))onResult;
 -(void)openWithResult:(void(^)(BOOL, NSError * _Nullable))onResult;
 

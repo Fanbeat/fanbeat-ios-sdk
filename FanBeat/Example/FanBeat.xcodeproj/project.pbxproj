@@ -22,6 +22,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		C3A2B60F3D1D1F69C27C890D /* Pods_FanBeat_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1717B72AE31F2404B48187 /* Pods_FanBeat_Example.framework */; };
+		EA300F3B1D05EF0C0006244E /* FanBeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA300F3A1D05EF0C0006244E /* FanBeat.framework */; };
 		FC3DC3EB34B5AFBA50E217EC /* Pods_FanBeat_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9FA75C541B3A7C19399D66 /* Pods_FanBeat_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		AA1717B72AE31F2404B48187 /* Pods_FanBeat_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FanBeat_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C565A6B5CD9911152D13A1BF /* Pods-FanBeat_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanBeat_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FanBeat_Tests/Pods-FanBeat_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E0909978AF860A9153CD2A2E /* Pods-FanBeat_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanBeat_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FanBeat_Tests/Pods-FanBeat_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		EA300F3A1D05EF0C0006244E /* FanBeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FanBeat.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/FanBeat-cyynadguvfjzuoexnvkiijldrpkr/Build/Products/Debug-iphonesimulator/FanBeat/FanBeat.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA300F3B1D05EF0C0006244E /* FanBeat.framework in Frameworks */,
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
@@ -117,6 +120,7 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA300F3A1D05EF0C0006244E /* FanBeat.framework */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
