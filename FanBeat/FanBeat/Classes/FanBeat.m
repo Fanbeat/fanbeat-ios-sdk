@@ -15,7 +15,8 @@ static const NSString *FANBEAT_PLIST_KEY = @"fanbeat_id";
 typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
 @interface FanBeat() {
-    NSString *partnerId;
+    NSString *_partnerId;
+    NSString *_userId;
     FBPromoViewController *promoViewController;
 }
 @end
@@ -36,20 +37,26 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 {
     if (self == [super init]) {
         [FBDeepLinker getInstance].isLive = NO;
+        [FBDeepLinker getInstance].delegate = self;
         
         NSDictionary *plist = [NSBundle mainBundle].infoDictionary;
     
         if (!plist) {
             NSLog(@"Main bundle plist not found!");
         } else {
-            partnerId = plist[FANBEAT_PLIST_KEY];
-            if (!partnerId) {
+            _partnerId = plist[FANBEAT_PLIST_KEY];
+            if (!_partnerId) {
                 NSLog(@"%@ not found in the plist!", FANBEAT_PLIST_KEY);
             }
         }
     }
     
     return self;
+}
+
+-(void)initWithPartnerId:(NSString *)partnerId
+{
+    _partnerId = partnerId;
 }
 
 -(void)open
@@ -59,16 +66,19 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
 -(void)openForUser:(NSString *)userId
 {
-    if (!partnerId) {
+    if (!_partnerId) {
         NSLog(@"%@ not found in the plist!", FANBEAT_PLIST_KEY);
+        [self finalizeDelegate:NO];
         return;
     }
     
     FBDeepLinker *deepLinker = [FBDeepLinker getInstance];
     
     if ([deepLinker canOpenFanbeat]) {
-        [deepLinker open:partnerId forUser:userId];
+        [deepLinker open:_partnerId forUser:userId];
     } else {
+        _userId = userId;
+        
         NSBundle *bundle = [NSBundle bundleForClass:[FBPromoViewController class]];
         
         promoViewController = [[FBPromoViewController alloc] initWithNibName:@"FBPromoViewController" bundle:bundle];
@@ -83,8 +93,33 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
 -(void)promoViewControllerDidFinish:(FBPromoViewController *)viewController
 {
+    FBDeepLinker *deepLinker = [FBDeepLinker getInstance];
+    
+    if ([deepLinker canOpenFanbeat]) {
+        if (_userId) {
+            [deepLinker open:_partnerId forUser:_userId];
+        } else {
+            [deepLinker open:_partnerId];
+        }
+    } else {
+        [self finalizeDelegate:NO];
+    }
+    
+    
     [promoViewController dismissViewControllerAnimated:NO
                                             completion:nil];
+}
+
+-(void)deepLinkerDidFinish:(BOOL)success
+{
+    [self finalizeDelegate:success];
+}
+
+-(void)finalizeDelegate:(BOOL)didLaunch
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(fanbeatDidFinish:)]) {
+        [self.delegate fanbeatDidFinish:didLaunch];
+    }
 }
 
 @end

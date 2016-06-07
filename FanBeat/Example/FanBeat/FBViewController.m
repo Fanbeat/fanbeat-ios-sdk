@@ -20,6 +20,7 @@
 {
     [super viewDidLoad];
     fanbeat = [FanBeat getInstance];
+    fanbeat.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -30,6 +31,11 @@
 
 - (IBAction)goToFanBeat:(id)sender {
     [fanbeat open];
+}
+
+- (void)fanbeatDidFinish:(BOOL)didLaunch
+{
+    NSLog(@"FanBeat SDK returned, app %@ launch", didLaunch ? @"did" : @"did not");
 }
 
 @end

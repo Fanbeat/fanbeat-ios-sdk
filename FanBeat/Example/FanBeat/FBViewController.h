@@ -7,7 +7,8 @@
 //
 
 @import UIKit;
+#import "FanBeat/FanBeat.h"
 
-@interface FBViewController : UIViewController
+@interface FBViewController : UIViewController <FanBeatDelegate>
 
 @end

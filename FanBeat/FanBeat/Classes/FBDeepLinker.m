@@ -39,6 +39,7 @@ static const NSString *FANBEAT_TEST_KEY = @"key_test_mbo9SGq4LZXBQ9HvTj89lgcgzvn
 {
     [self getBranchUrl:partnerId forUser:userId WithCallback:^(NSString *url, NSError *error) {
         if (error) {
+            [self finalizeDelegate:NO];
             return;
         }
         
@@ -69,7 +70,15 @@ static const NSString *FANBEAT_TEST_KEY = @"key_test_mbo9SGq4LZXBQ9HvTj89lgcgzvn
 
 -(void)openUrl:(NSURL *)url
 {
+    [self finalizeDelegate:YES];
     [[UIApplication sharedApplication]openURL:[NSURL URLWithString:url]];
+}
+
+-(void)finalizeDelegate:(BOOL)success
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(deepLinkerDidFinish:)]) {
+        [self.delegate deepLinkerDidFinish:success];
+    }
 }
 
 @end

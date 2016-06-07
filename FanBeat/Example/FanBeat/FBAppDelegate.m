@@ -7,12 +7,15 @@
 //
 
 #import "FBAppDelegate.h"
+#import "FanBeat/FanBeat.h"
 
 @implementation FBAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [FanBeat getInstance];
+    
     return YES;
 }
 
