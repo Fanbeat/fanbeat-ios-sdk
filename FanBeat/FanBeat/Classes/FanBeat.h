@@ -10,9 +10,8 @@
 
 @interface FanBeat : NSObject
 
-+(instancetype)getInstance;
++(instancetype _Nonnull)getInstance;
 -(void)open;
--(void)openForUser:(NSString *)userId withResult:(void(^)(BOOL, NSError * _Nullable))onResult;
--(void)openWithResult:(void(^)(BOOL, NSError * _Nullable))onResult;
+-(void)openForUser:(NSString *)userId;
 
 @end

@@ -44,7 +44,7 @@ static const int FANBEAT_STORE_ID = 966632826;
         
         if (result) {
             UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
-            [controller presentViewController: storeViewController
+            [self presentViewController: storeViewController
                                      animated:YES
                                    completion:nil];
         }

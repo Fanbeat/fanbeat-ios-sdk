@@ -7,19 +7,15 @@
 //
 
 #import "FanBeat.h"
-#import "Branch.h"
+#import "FBDeepLinker.h"
 #import "FBPromoViewController.h"
 
 static const NSString *FANBEAT_PLIST_KEY = @"fanbeat_id";
-static const NSString *FANBEAT_BASE_URI = @"ingame://";
-static const NSString *FANBEAT_LIVE_KEY = @"key_live_oam5GSs8U81sJ8TvPo8v6bbpDudyMBQN";
-static const NSString *FANBEAT_TEST_KEY = @"key_test_mbo9SGq4LZXBQ9HvTj89lgcgzvnwJDN0";
 
 typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
 @interface FanBeat() {
     NSString *partnerId;
-    BOOL isLive;
 }
 @end
 
@@ -38,7 +34,7 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 -(id)init
 {
     if (self == [super init]) {
-        isLive = NO;
+        [FBDeepLinker getInstance].isLive = NO;
         
         NSDictionary *plist = [NSBundle mainBundle].infoDictionary;
     
@@ -57,68 +53,28 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
 -(void)open
 {
-    [self openWithResult:nil];
+    [self openForUser:nil];
 }
 
--(void)openWithResult:(void(^)(BOOL, NSError * _Nullable))onResult
-{
-    [self openForUser:nil withResult:onResult];
-}
-
--(void)openForUser:(NSString *)userId withResult:(void(^)(BOOL, NSError * _Nullable))onResult
+-(void)openForUser:(NSString *)userId
 {
     if (!partnerId) {
         NSLog(@"%@ not found in the plist!", FANBEAT_PLIST_KEY);
         return;
     }
     
-    [self getBranchUrlForUser:userId WithCallback:^(NSString *url, NSError *error) {
-        if (error) {
-            if (onResult) {
-                onResult(NO, error);
-            }
-            return;
-        }
-        
-        if ([self canOpenFanbeat]) {
-            [self openUrl: url];
-            if (onResult) {
-                onResult(YES, nil);
-                return;
-            }
-        } else {
-            NSBundle *bundle = [NSBundle bundleForClass:[FBPromoViewController class]];
-            FBPromoViewController *viewController = [[FBPromoViewController alloc] initWithNibName:@"FBPromoViewController" bundle:bundle];
-            UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
-            [controller presentViewController:viewController animated:YES completion:nil];
-        }
-    }];
-}
-
--(BOOL)canOpenFanbeat
-{
-    NSURL *fanbeatUrl = [NSURL URLWithString:FANBEAT_BASE_URI];
-    return [[UIApplication sharedApplication]canOpenURL:fanbeatUrl];
-}
-
--(void)getBranchUrlForUser:(NSString * _Nullable)userId WithCallback:(callbackWithUrl)callback
-{
-    Branch *branch = [Branch getInstance: isLive ? FANBEAT_LIVE_KEY : FANBEAT_TEST_KEY];
+    FBDeepLinker *deepLinker = [FBDeepLinker getInstance];
     
-    NSDictionary *params = @{
-                             @"partner_id" : partnerId
-                             };
-    
-    if (userId) {
-        [params setValue:userId forKey:@"partner_user_id"];
+    if ([deepLinker canOpenFanbeat]) {
+        [deepLinker open:partnerId forUser:userId];
+    } else {
+        NSBundle *bundle = [NSBundle bundleForClass:[FBPromoViewController class]];
+        UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
+        FBPromoViewController *promoViewController = [[FBPromoViewController alloc] initWithNibName:@"FBPromoViewController" bundle:bundle];
+        [controller presentViewController:promoViewController
+                                 animated:YES
+                               completion:nil];
     }
-    
-    [branch getShortURLWithParams:params andChannel:partnerId andFeature:@"SDK" andCallback:callback];
-}
-
--(void)openUrl:(NSURL *)url
-{
-    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:url]];
 }
 
 @end
