@@ -48,14 +48,17 @@
 
 -(BOOL)canOpenFanbeat
 {
+    // check to see if any installed apps can handle FanBeat's URI scheme
     NSURL *fanbeatUrl = [NSURL URLWithString: FANBEAT_APP_URI_SCHEME];
     return [[UIApplication sharedApplication]canOpenURL:fanbeatUrl];
 }
 
 -(void)getBranchUrl:(NSString *)partnerId forUser:(NSString * _Nullable)userId WithCallback:(callbackWithUrl)callback
 {
+    // get a Branch instance with FanBeat's key
     Branch *branch = [Branch getInstance: isLive ? FANBEAT_BRANCH_LIVE_KEY : FANBEAT_BRANCH_TEST_KEY];
     
+    // build a link and always include the partner ID
     BranchUniversalObject *branchUniversalObject = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:partnerId];
     branchUniversalObject.title = @"FanBeat";
     
@@ -64,10 +67,12 @@
     linkProperties.feature = @"SDK";
     [linkProperties addControlParam:@"partner_id" withValue:partnerId];
     
+    // if the user ID was provided, include that in the link
     if (userId) {
         [linkProperties addControlParam:@"partner_user_id" withValue:userId];
     }
     
+    // if we found partner config, parse it and get the deep link path
     if (self.config) {
         NSString *deepLinkPath = [self.config getDeepLinkPath];
         if (deepLinkPath != nil && [deepLinkPath length] > 0) {
@@ -80,6 +85,7 @@
 
 -(void)openUrl:(NSURL *)url
 {
+    // alert the delegate of success before launching the URL
     [self finalizeDelegate:YES];
     [[UIApplication sharedApplication]openURL:[NSURL URLWithString:url]];
 }

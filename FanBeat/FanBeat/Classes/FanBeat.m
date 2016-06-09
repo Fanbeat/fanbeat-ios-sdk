@@ -40,15 +40,18 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
         [FBDeepLinker getInstance].isLive = NO;
         [FBDeepLinker getInstance].delegate = self;
         
+        // attempt to get the partner ID from the app's plist
         NSDictionary *plist = [NSBundle mainBundle].infoDictionary;
     
         if (!plist) {
             NSLog(@"Main bundle plist not found!");
         } else {
             _partnerId = plist[FANBEAT_SDK_PLIST_KEY];
+            
             if (!_partnerId) {
                 NSLog(@"%@ not found in the plist!", FANBEAT_SDK_PLIST_KEY);
             } else {
+                // if the partner ID was provided, try to load partner config
                 [self loadConfig:_partnerId];
             }
         }
@@ -81,6 +84,7 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
     if ([deepLinker canOpenFanbeat]) {
         [deepLinker open:_partnerId forUser:userId];
     } else {
+        // if FanBeat isn't installed, cache the user ID and load the promo view
         _userId = userId;
         
         NSBundle *bundle = [NSBundle bundleForClass:[FBPromoViewController class]];
@@ -130,6 +134,7 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
     NSError *error = nil;
     NSDictionary *res = [NSJSONSerialization JSONObjectWithData:_configData options:NSJSONReadingMutableLeaves error:&error];
     
+    // parse the config and cache it in the deep linker
     FBPartnerConfig *config = [[FBPartnerConfig alloc] init];
     
     config.id = res[@"id"];
@@ -144,6 +149,8 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 {
     FBDeepLinker *deepLinker = [FBDeepLinker getInstance];
     
+    // once we get back from the promo view, check to see if the app was installed
+    // Don't finalize the delegate if we can open FanBeat now, wait for the deep linker to do it's job
     if ([deepLinker canOpenFanbeat]) {
         if (_userId) {
             [deepLinker open:_partnerId forUser:_userId];
