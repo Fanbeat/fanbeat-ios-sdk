@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FBPartnerConfig.h"
 
 @protocol FBDeepLinkerDelegate;
 
@@ -14,6 +15,7 @@
 
 @property (nonatomic, weak) id<FBDeepLinkerDelegate> delegate;
 @property (nonatomic, assign) BOOL isLive;
+@property (nonatomic, strong) FBPartnerConfig *config;
 
 +(instancetype)getInstance;
 -(void)open:(NSString *)partnerId;

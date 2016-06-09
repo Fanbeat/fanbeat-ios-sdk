@@ -7,10 +7,10 @@
 //
 
 #import "FanBeat.h"
+#import "FBConstants.h"
 #import "FBDeepLinker.h"
+#import "FBPartnerConfig.h"
 #import "FBPromoViewController.h"
-
-static const NSString *FANBEAT_PLIST_KEY = @"fanbeat_id";
 
 typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
@@ -18,6 +18,7 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
     NSString *_partnerId;
     NSString *_userId;
     FBPromoViewController *promoViewController;
+    NSMutableData *_configData;
 }
 @end
 
@@ -44,9 +45,11 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
         if (!plist) {
             NSLog(@"Main bundle plist not found!");
         } else {
-            _partnerId = plist[FANBEAT_PLIST_KEY];
+            _partnerId = plist[FANBEAT_SDK_PLIST_KEY];
             if (!_partnerId) {
-                NSLog(@"%@ not found in the plist!", FANBEAT_PLIST_KEY);
+                NSLog(@"%@ not found in the plist!", FANBEAT_SDK_PLIST_KEY);
+            } else {
+                [self loadConfig:_partnerId];
             }
         }
     }
@@ -57,6 +60,7 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 -(void)initWithPartnerId:(NSString *)partnerId
 {
     _partnerId = partnerId;
+    [self loadConfig:partnerId];
 }
 
 -(void)open
@@ -67,7 +71,7 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 -(void)openForUser:(NSString *)userId
 {
     if (!_partnerId) {
-        NSLog(@"%@ not found in the plist!", FANBEAT_PLIST_KEY);
+        NSLog(@"%@ not found in the plist!", FANBEAT_SDK_PLIST_KEY);
         [self finalizeDelegate:NO];
         return;
     }
@@ -89,6 +93,51 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
                                  animated:YES
                                completion:nil];
     }
+}
+
+-(void)loadConfig:(NSString *)partnerId
+{
+    [FBDeepLinker getInstance].config = nil;
+    
+    if (partnerId == nil || [partnerId length] == 0)
+        return;
+    
+    _configData = [NSMutableData data];
+    
+    NSString *urlPath = [NSString stringWithFormat:@"%@%@.json", FANBEAT_BASE_S3_URL, partnerId];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlPath]];
+    
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+-(void)connection:(NSURLConnection *)connect didReceiveResponse:(nonnull NSURLResponse *)response
+{
+    [_configData setLength:0];
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveData:(nonnull NSData *)data
+{
+    [_configData appendData:data];
+}
+
+-(void)connection:(NSURLConnection *)connection didFailWithError:(nonnull NSError *)error
+{
+    NSLog(@"Could not load FanBeat partner config");
+}
+
+-(void)connectionDidFinishLoading:(NSConnection *)connection
+{
+    NSError *error = nil;
+    NSDictionary *res = [NSJSONSerialization JSONObjectWithData:_configData options:NSJSONReadingMutableLeaves error:&error];
+    
+    FBPartnerConfig *config = [[FBPartnerConfig alloc] init];
+    
+    config.id = res[@"id"];
+    config.name = res[@"name"];
+    config.channel = res[@"channel"];
+    config.team = res[@"team"];
+    
+    [FBDeepLinker getInstance].config = config;
 }
 
 -(void)promoViewControllerDidFinish:(FBPromoViewController *)viewController

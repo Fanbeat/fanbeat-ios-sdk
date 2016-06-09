@@ -8,8 +8,7 @@
 
 #import "FBPromoViewController.h"
 #import "FBDeepLinker.h"
-
-static const int FANBEAT_STORE_ID = 966632826;
+#import "FBConstants.h"
 
 @interface FBPromoViewController ()
 

@@ -7,11 +7,10 @@
 //
 
 #import "FBDeepLinker.h"
+#import "FBConstants.h"
 #import "Branch.h"
-
-static const NSString *FANBEAT_BASE_URI = @"ingame://";
-static const NSString *FANBEAT_LIVE_KEY = @"key_live_oam5GSs8U81sJ8TvPo8v6bbpDudyMBQN";
-static const NSString *FANBEAT_TEST_KEY = @"key_test_mbo9SGq4LZXBQ9HvTj89lgcgzvnwJDN0";
+#import "BranchUniversalObject.h"
+#import "BranchLinkProperties.h"
 
 @interface FBDeepLinker() {
     BOOL isLive;
@@ -49,23 +48,34 @@ static const NSString *FANBEAT_TEST_KEY = @"key_test_mbo9SGq4LZXBQ9HvTj89lgcgzvn
 
 -(BOOL)canOpenFanbeat
 {
-    NSURL *fanbeatUrl = [NSURL URLWithString:FANBEAT_BASE_URI];
+    NSURL *fanbeatUrl = [NSURL URLWithString: FANBEAT_APP_URI_SCHEME];
     return [[UIApplication sharedApplication]canOpenURL:fanbeatUrl];
 }
 
 -(void)getBranchUrl:(NSString *)partnerId forUser:(NSString * _Nullable)userId WithCallback:(callbackWithUrl)callback
 {
-    Branch *branch = [Branch getInstance: isLive ? FANBEAT_LIVE_KEY : FANBEAT_TEST_KEY];
+    Branch *branch = [Branch getInstance: isLive ? FANBEAT_BRANCH_LIVE_KEY : FANBEAT_BRANCH_TEST_KEY];
     
-    NSDictionary *params = @{
-                             @"partner_id" : partnerId
-                             };
+    BranchUniversalObject *branchUniversalObject = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:partnerId];
+    branchUniversalObject.title = @"FanBeat";
+    
+    BranchLinkProperties *linkProperties = [[BranchLinkProperties alloc] init];
+    linkProperties.channel = partnerId;
+    linkProperties.feature = @"SDK";
+    [linkProperties addControlParam:@"partner_id" withValue:partnerId];
     
     if (userId) {
-        [params setValue:userId forKey:@"partner_user_id"];
+        [linkProperties addControlParam:@"partner_user_id" withValue:userId];
     }
     
-    [branch getShortURLWithParams:params andChannel:partnerId andFeature:@"SDK" andCallback:callback];
+    if (self.config) {
+        NSString *deepLinkPath = [self.config getDeepLinkPath];
+        if (deepLinkPath != nil && [deepLinkPath length] > 0) {
+            [linkProperties addControlParam:@"$deeplink_path" withValue:deepLinkPath];
+        }
+    }
+    
+    [branchUniversalObject getShortUrlWithLinkProperties:linkProperties andCallback:callback];
 }
 
 -(void)openUrl:(NSURL *)url
