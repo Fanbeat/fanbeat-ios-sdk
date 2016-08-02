@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *channel;
 @property (nonatomic, strong) NSString *team;
+@property (nonatomic, strong) NSString *promoBackground;
+@property (nonatomic, strong) NSArray *promoPrizes;
 
 -(NSString *)getDeepLinkPath;
 

@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'FanBeat_Example' do
-  pod 'FanBeat', :path => '../'
+  pod 'FanBeat', :git => 'https://github.com/Fanbeat/fanbeat-ios-sdk.git'
 
   target 'FanBeat_Tests' do
     inherit! :search_paths

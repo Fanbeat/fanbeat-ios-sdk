@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gdo-Kk-tT7">
-                                <rect key="frame" x="162" y="353" width="91" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gdo-Kk-tT7">
+                                <rect key="frame" x="179" y="353" width="56" height="30"/>
                                 <state key="normal" title="FanBeat"/>
                                 <connections>
                                     <action selector="goToFanBeat:" destination="whP-gf-Uak" eventType="touchUpInside" id="3FY-f6-gup"/>
