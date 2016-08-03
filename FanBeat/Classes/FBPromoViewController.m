@@ -34,8 +34,7 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
     [super viewDidLoad];
     
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FanBeatPod" ofType:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-    sdkBundle = [NSBundle bundleWithURL:url];
+    sdkBundle = [NSBundle bundleWithPath:bundlePath];
     
     partnerConfig = [FBDeepLinker getInstance].config;
     
