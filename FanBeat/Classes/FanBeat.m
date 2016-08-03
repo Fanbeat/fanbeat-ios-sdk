@@ -88,7 +88,8 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
         // if FanBeat isn't installed, cache the user ID and load the promo view
         _userId = userId;
         
-        NSBundle *bundle = [NSBundle bundleForClass:[FBPromoViewController class]];
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FanBeatPod" ofType:@"bundle"];
+        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
         
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FanBeat" bundle:bundle];
         promoViewController = [storyboard instantiateInitialViewController];
