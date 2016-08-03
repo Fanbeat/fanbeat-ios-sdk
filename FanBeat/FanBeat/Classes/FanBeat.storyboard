@@ -21,6 +21,24 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="promo-background" translatesAutoresizingMaskIntoConstraints="NO" id="2NN-2C-6OE" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <scrollView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tV-HQ-ozD">
+                                <rect key="frame" x="0.0" y="397" width="375" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="uWL-5c-5Km"/>
+                                    <constraint firstAttribute="height" constant="150" id="zUk-0a-Vzb"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="uWL-5c-5Km"/>
+                                    </mask>
+                                </variation>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="oF6-Qi-js7">
+                                <rect key="frame" x="168" y="538" width="39" height="37"/>
+                                <connections>
+                                    <action selector="onPageControlValueChanged:" destination="jgY-sk-UHN" eventType="valueChanged" id="rZG-gN-7AI"/>
+                                </connections>
+                            </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCl-YN-2Ih">
                                 <rect key="frame" x="20" y="617" width="335" height="30"/>
                                 <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -37,23 +55,12 @@
                                     <action selector="playNowTapped:" destination="jgY-sk-UHN" eventType="touchUpInside" id="bTm-DJ-N6A"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tV-HQ-ozD">
-                                <rect key="frame" x="0.0" y="339" width="375" height="214"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="92" id="uWL-5c-5Km"/>
-                                    <constraint firstAttribute="height" constant="214" id="zUk-0a-Vzb"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="uWL-5c-5Km"/>
-                                    </mask>
-                                </variation>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2NN-2C-6OE" firstAttribute="top" secondItem="0vR-8f-azV" secondAttribute="bottom" constant="-20" id="Bxy-t5-OXX"/>
                             <constraint firstItem="zTu-F5-JrJ" firstAttribute="top" secondItem="2tV-HQ-ozD" secondAttribute="bottom" constant="185" id="CaY-nd-qIL"/>
+                            <constraint firstItem="YCl-YN-2Ih" firstAttribute="top" secondItem="oF6-Qi-js7" secondAttribute="bottom" constant="42" id="Cvi-Nb-pQm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2tV-HQ-ozD" secondAttribute="trailing" constant="-20" id="Cy7-IJ-7l7"/>
                             <constraint firstItem="YCl-YN-2Ih" firstAttribute="top" secondItem="2tV-HQ-ozD" secondAttribute="bottom" constant="64" id="FDO-h4-qc9"/>
                             <constraint firstItem="2tV-HQ-ozD" firstAttribute="leading" secondItem="qba-Rq-p8Q" secondAttribute="leadingMargin" constant="-20" id="NAS-kH-b24"/>
@@ -62,8 +69,10 @@
                             <constraint firstItem="2tV-HQ-ozD" firstAttribute="width" secondItem="qba-Rq-p8Q" secondAttribute="width" id="iyI-Wy-YXn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YCl-YN-2Ih" secondAttribute="trailing" id="ksU-HO-bfN"/>
                             <constraint firstItem="zTu-F5-JrJ" firstAttribute="top" secondItem="YCl-YN-2Ih" secondAttribute="bottom" constant="20" id="o9I-5J-M9G"/>
+                            <constraint firstItem="oF6-Qi-js7" firstAttribute="top" secondItem="2tV-HQ-ozD" secondAttribute="bottom" constant="-9" id="qEd-ht-pCJ"/>
                             <constraint firstItem="zTu-F5-JrJ" firstAttribute="top" secondItem="2NN-2C-6OE" secondAttribute="bottom" id="s4h-5Q-YIl"/>
                             <constraint firstItem="2tV-HQ-ozD" firstAttribute="leading" secondItem="qba-Rq-p8Q" secondAttribute="leadingMargin" constant="-20" id="sAy-na-NbZ"/>
+                            <constraint firstItem="oF6-Qi-js7" firstAttribute="centerX" secondItem="qba-Rq-p8Q" secondAttribute="centerX" id="uqk-Sz-Elc"/>
                             <constraint firstAttribute="leadingMargin" secondItem="YCl-YN-2Ih" secondAttribute="leading" id="v55-N7-Kde"/>
                             <constraint firstItem="2tV-HQ-ozD" firstAttribute="top" secondItem="qba-Rq-p8Q" secondAttribute="topMargin" id="vx9-Nl-bTZ"/>
                             <constraint firstItem="2NN-2C-6OE" firstAttribute="leading" secondItem="qba-Rq-p8Q" secondAttribute="leadingMargin" constant="-20" id="wQX-WY-JS2"/>
@@ -75,6 +84,7 @@
                                 <exclude reference="SzU-Sa-xKI"/>
                                 <exclude reference="iyI-Wy-YXn"/>
                                 <exclude reference="vx9-Nl-bTZ"/>
+                                <exclude reference="FDO-h4-qc9"/>
                                 <exclude reference="CaY-nd-qIL"/>
                                 <exclude reference="VnF-xw-7cI"/>
                             </mask>
@@ -83,6 +93,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImage" destination="2NN-2C-6OE" id="Htq-Zi-mYa"/>
+                        <outlet property="pageControl" destination="oF6-Qi-js7" id="QhC-Mk-tN1"/>
                         <outlet property="scrollView" destination="2tV-HQ-ozD" id="Awd-eB-XHp"/>
                     </connections>
                 </viewController>

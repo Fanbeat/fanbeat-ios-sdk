@@ -18,6 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
 @end
 
@@ -44,6 +45,13 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
 {
     CGFloat pageWidth = CGRectGetWidth(scrollView.frame);
     CGFloat currentIndex = floor((scrollView.contentOffset.x - pageWidth/2)/pageWidth) + 1;
+    
+    [_pageControl setCurrentPage:currentIndex];
+}
+
+- (IBAction)onPageControlValueChanged:(id)sender {
+    CGFloat width = _scrollView.frame.size.width;
+    [_scrollView setContentOffset:CGPointMake(width * _pageControl.currentPage, 0) animated:YES];
 }
 
 - (void)loadImages
@@ -51,6 +59,7 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
     [_backgroundImage setImage:[self getBackgroundImage]];
     
     NSMutableArray *prizeImages = [[NSMutableArray alloc] init];
+    _pageControl.numberOfPages = 0;
     
     if (partnerConfig.promoPrizes) {
         
@@ -67,6 +76,7 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
                 [_scrollView addSubview:imageView];
                 
                 x = x + width;
+                _pageControl.numberOfPages += 1;
             }
         }
         
