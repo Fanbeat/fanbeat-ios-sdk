@@ -21,8 +21,7 @@ The FanBeat SDK enables partner apps to link straight to their content in FanBea
   s.dependency 'Branch', '~> 0.12'
   s.resource_bundles = {
     'FanBeatPod' => [
-      'FanBeat/**/*.storyboard',
-      'FanBeat/**/*.xcassets'
+      'FanBeat/Assets/**/*'
     ]
   }
 end
