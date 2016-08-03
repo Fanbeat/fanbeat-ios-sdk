@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5E3-4y-oiO">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Promo View Controller-->
+        <scene sceneID="z4F-1f-JFV">
+            <objects>
+                <viewController id="5E3-4y-oiO" customClass="FBPromoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BYV-EA-bnH"/>
+                        <viewControllerLayoutGuide type="bottom" id="HaK-wT-f72"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PGu-Vd-E2H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="promo-background" translatesAutoresizingMaskIntoConstraints="NO" id="LEv-0Z-HFG" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo-fanbeat" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-Nt-7zY" userLabel="FanBeat Logo">
+                                <rect key="frame" x="45" y="20" width="285" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="NUO-d9-QN5"/>
+                                </constraints>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrd-oN-q0S">
+                                <rect key="frame" x="0.0" y="286" width="375" height="268"/>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="N8W-b7-GnS">
+                                <rect key="frame" x="20" y="148" width="335" height="130"/>
+                                <string key="text">With FanBeat, you can compete to win awesome prizes by answering predict-the-action and trivia questions. It's fun and free to play!</string>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="QZQ-Nj-kxd">
+                                <rect key="frame" x="168" y="562" width="39" height="37"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWd-pI-j0o">
+                                <rect key="frame" x="20" y="607" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.10196078431372549" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="24g-FI-fwX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="GET GAME NOW!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="playNowTapped:" destination="5E3-4y-oiO" eventType="touchUpInside" id="qGC-2b-K6F"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="oWd-pI-j0o" secondAttribute="leading" id="2qB-kC-OrM"/>
+                            <constraint firstItem="Wrd-oN-q0S" firstAttribute="top" secondItem="N8W-b7-GnS" secondAttribute="bottom" constant="8" id="4d3-O6-fv5"/>
+                            <constraint firstItem="Wrd-oN-q0S" firstAttribute="leading" secondItem="PGu-Vd-E2H" secondAttribute="leadingMargin" constant="-20" id="6WE-eX-oq5"/>
+                            <constraint firstItem="HaK-wT-f72" firstAttribute="top" secondItem="oWd-pI-j0o" secondAttribute="bottom" constant="20" id="AFt-SL-CL7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wrd-oN-q0S" secondAttribute="trailing" constant="-20" id="JfB-0m-7fg"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="N8W-b7-GnS" secondAttribute="leading" id="KKB-U4-f30"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="N8W-b7-GnS" secondAttribute="trailing" id="O1H-P8-RIb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oWd-pI-j0o" secondAttribute="trailing" id="PlG-vt-HAe"/>
+                            <constraint firstItem="HaK-wT-f72" firstAttribute="top" secondItem="LEv-0Z-HFG" secondAttribute="bottom" id="TBW-mJ-1R4"/>
+                            <constraint firstItem="aS3-Nt-7zY" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" id="Yg1-lD-EU5"/>
+                            <constraint firstItem="LEv-0Z-HFG" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" constant="-20" id="axO-0n-j3s"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LEv-0Z-HFG" secondAttribute="trailing" constant="-20" id="dYv-G6-4LW"/>
+                            <constraint firstItem="oWd-pI-j0o" firstAttribute="top" secondItem="QZQ-Nj-kxd" secondAttribute="bottom" constant="8" id="jhs-kg-LBY"/>
+                            <constraint firstItem="LEv-0Z-HFG" firstAttribute="leading" secondItem="PGu-Vd-E2H" secondAttribute="leadingMargin" constant="-20" id="kEf-s2-t5s"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aS3-Nt-7zY" secondAttribute="trailing" constant="25" id="lk3-NN-xgH"/>
+                            <constraint firstItem="aS3-Nt-7zY" firstAttribute="leading" secondItem="PGu-Vd-E2H" secondAttribute="leadingMargin" constant="25" id="mWp-W5-DKE"/>
+                            <constraint firstItem="QZQ-Nj-kxd" firstAttribute="centerX" secondItem="PGu-Vd-E2H" secondAttribute="centerX" id="sQE-dD-fyM"/>
+                            <constraint firstItem="N8W-b7-GnS" firstAttribute="top" secondItem="aS3-Nt-7zY" secondAttribute="bottom" id="uV8-L2-HD8"/>
+                            <constraint firstItem="QZQ-Nj-kxd" firstAttribute="top" secondItem="Wrd-oN-q0S" secondAttribute="bottom" constant="8" id="xZi-EG-AZP"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="backgroundImage" destination="LEv-0Z-HFG" id="436-h3-v8c"/>
+                        <outlet property="logoImage" destination="aS3-Nt-7zY" id="jJI-8g-Uk9"/>
+                        <outlet property="pageControl" destination="QZQ-Nj-kxd" id="KUt-CR-mfj"/>
+                        <outlet property="promoTextLabel" destination="N8W-b7-GnS" id="lQA-ft-Tap"/>
+                        <outlet property="scrollView" destination="Wrd-oN-q0S" id="GTc-Qt-cFU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hzt-Pf-ZDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="233.5" y="445.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo-fanbeat" width="226" height="43"/>
+        <image name="promo-background" width="337" height="599"/>
+    </resources>
+</document>
