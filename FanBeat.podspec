@@ -15,7 +15,7 @@ The FanBeat SDK enables partner apps to link straight to their content in FanBea
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'FanBeat/Classes/**/*'
+  s.source_files = 'FanBeat/{Resources,Classes}/**/*'
 
   s.frameworks = 'UIKit', 'StoreKit'
   s.dependency 'Branch', '~> 0.12'
