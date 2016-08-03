@@ -17,6 +17,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -27,7 +28,6 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     NSBundle *podBundle = [NSBundle bundleForClass:FBPromoViewController.self];
     NSURL *url = [podBundle URLForResource:@"FanBeatPod" withExtension:@"bundle"];
@@ -36,6 +36,14 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
     partnerConfig = [FBDeepLinker getInstance].config;
     
     [self loadImages];
+    
+    _scrollView.delegate = self;
+}
+
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    CGFloat pageWidth = CGRectGetWidth(scrollView.frame);
+    CGFloat currentIndex = floor((scrollView.contentOffset.x - pageWidth/2)/pageWidth) + 1;
 }
 
 - (void)loadImages
@@ -45,11 +53,24 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
     NSMutableArray *prizeImages = [[NSMutableArray alloc] init];
     
     if (partnerConfig.promoPrizes) {
+        
+        CGFloat width = _scrollView.frame.size.width - 48.0f;
+        CGFloat height = _scrollView.frame.size.height;
+        CGFloat x = 0;
+        
         for(NSString *prize in partnerConfig.promoPrizes) {
             UIImage *prizeImage = [self getImageNamed:prize];
-            if (prizeImage)
-                [prizeImages addObject:prizeImage];
+            if (prizeImage) {
+                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, 0, width, height)];
+                imageView.image = [self getImageNamed:prize];
+                imageView.contentMode = UIViewContentModeCenter;
+                [_scrollView addSubview:imageView];
+                
+                x = x + width;
+            }
         }
+        
+        _scrollView.contentSize = CGSizeMake(x, height);
     }
 }
 

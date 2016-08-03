@@ -89,7 +89,8 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
         
         NSBundle *bundle = [NSBundle bundleForClass:[FBPromoViewController class]];
         
-        promoViewController = [[FBPromoViewController alloc] initWithNibName:@"FBPromoViewController" bundle:bundle];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FanBeat" bundle:bundle];
+        promoViewController = [storyboard instantiateInitialViewController];
         promoViewController.delegate = self;
         
         UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;

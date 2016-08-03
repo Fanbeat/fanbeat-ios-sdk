@@ -11,7 +11,7 @@
 
 @protocol FBPromoViewControllerDelegate;
 
-@interface FBPromoViewController : UIViewController <SKStoreProductViewControllerDelegate>
+@interface FBPromoViewController : UIViewController <SKStoreProductViewControllerDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, weak) id<FBPromoViewControllerDelegate> delegate;
 

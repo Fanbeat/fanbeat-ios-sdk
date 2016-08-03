@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jgY-sk-UHN">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Promo View Controller-->
+        <scene sceneID="are-qn-0pc">
+            <objects>
+                <viewController storyboardIdentifier="FBPromoViewController" id="jgY-sk-UHN" customClass="FBPromoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0vR-8f-azV"/>
+                        <viewControllerLayoutGuide type="bottom" id="zTu-F5-JrJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qba-Rq-p8Q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="promo-background" translatesAutoresizingMaskIntoConstraints="NO" id="2NN-2C-6OE" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCl-YN-2Ih">
+                                <rect key="frame" x="20" y="617" width="335" height="30"/>
+                                <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Play Now">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="playNowTapped:" destination="jgY-sk-UHN" eventType="touchUpInside" id="bTm-DJ-N6A"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tV-HQ-ozD">
+                                <rect key="frame" x="0.0" y="339" width="375" height="214"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="uWL-5c-5Km"/>
+                                    <constraint firstAttribute="height" constant="214" id="zUk-0a-Vzb"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="uWL-5c-5Km"/>
+                                    </mask>
+                                </variation>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2NN-2C-6OE" firstAttribute="top" secondItem="0vR-8f-azV" secondAttribute="bottom" constant="-20" id="Bxy-t5-OXX"/>
+                            <constraint firstItem="zTu-F5-JrJ" firstAttribute="top" secondItem="2tV-HQ-ozD" secondAttribute="bottom" constant="185" id="CaY-nd-qIL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2tV-HQ-ozD" secondAttribute="trailing" constant="-20" id="Cy7-IJ-7l7"/>
+                            <constraint firstItem="YCl-YN-2Ih" firstAttribute="top" secondItem="2tV-HQ-ozD" secondAttribute="bottom" constant="64" id="FDO-h4-qc9"/>
+                            <constraint firstItem="2tV-HQ-ozD" firstAttribute="leading" secondItem="qba-Rq-p8Q" secondAttribute="leadingMargin" constant="-20" id="NAS-kH-b24"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2tV-HQ-ozD" secondAttribute="trailing" constant="-20" id="SzU-Sa-xKI"/>
+                            <constraint firstItem="zTu-F5-JrJ" firstAttribute="top" secondItem="2tV-HQ-ozD" secondAttribute="bottom" id="VnF-xw-7cI"/>
+                            <constraint firstItem="2tV-HQ-ozD" firstAttribute="width" secondItem="qba-Rq-p8Q" secondAttribute="width" id="iyI-Wy-YXn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YCl-YN-2Ih" secondAttribute="trailing" id="ksU-HO-bfN"/>
+                            <constraint firstItem="zTu-F5-JrJ" firstAttribute="top" secondItem="YCl-YN-2Ih" secondAttribute="bottom" constant="20" id="o9I-5J-M9G"/>
+                            <constraint firstItem="zTu-F5-JrJ" firstAttribute="top" secondItem="2NN-2C-6OE" secondAttribute="bottom" id="s4h-5Q-YIl"/>
+                            <constraint firstItem="2tV-HQ-ozD" firstAttribute="leading" secondItem="qba-Rq-p8Q" secondAttribute="leadingMargin" constant="-20" id="sAy-na-NbZ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="YCl-YN-2Ih" secondAttribute="leading" id="v55-N7-Kde"/>
+                            <constraint firstItem="2tV-HQ-ozD" firstAttribute="top" secondItem="qba-Rq-p8Q" secondAttribute="topMargin" id="vx9-Nl-bTZ"/>
+                            <constraint firstItem="2NN-2C-6OE" firstAttribute="leading" secondItem="qba-Rq-p8Q" secondAttribute="leadingMargin" constant="-20" id="wQX-WY-JS2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2NN-2C-6OE" secondAttribute="trailing" constant="-20" id="zgK-f0-wnx"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="NAS-kH-b24"/>
+                                <exclude reference="SzU-Sa-xKI"/>
+                                <exclude reference="iyI-Wy-YXn"/>
+                                <exclude reference="vx9-Nl-bTZ"/>
+                                <exclude reference="CaY-nd-qIL"/>
+                                <exclude reference="VnF-xw-7cI"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="backgroundImage" destination="2NN-2C-6OE" id="Htq-Zi-mYa"/>
+                        <outlet property="scrollView" destination="2tV-HQ-ozD" id="Awd-eB-XHp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wTb-Vi-9sD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-491.5" y="486.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="promo-background" width="414" height="736"/>
+    </resources>
+</document>
