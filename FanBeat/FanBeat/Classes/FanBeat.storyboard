@@ -5,6 +5,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Promo View Controller-->
         <scene sceneID="are-qn-0pc">
@@ -22,10 +28,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tV-HQ-ozD">
-                                <rect key="frame" x="0.0" y="397" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="438" width="375" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="uWL-5c-5Km"/>
-                                    <constraint firstAttribute="height" constant="150" id="zUk-0a-Vzb"/>
+                                    <constraint firstAttribute="height" constant="100" id="zUk-0a-Vzb"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -42,7 +48,7 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCl-YN-2Ih">
                                 <rect key="frame" x="20" y="617" width="335" height="30"/>
                                 <color key="backgroundColor" red="0.74509803919999995" green="0.0" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                 <state key="normal" title="Play Now">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -55,21 +61,38 @@
                                     <action selector="playNowTapped:" destination="jgY-sk-UHN" eventType="touchUpInside" id="bTm-DJ-N6A"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="H2g-O4-xdq" userLabel="Promo Text">
+                                <rect key="frame" x="20" y="308" width="335" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="kMi-wM-fKQ"/>
+                                </constraints>
+                                <string key="text">With FanBeat, you can compete to win awesome prizes by answering \npredict-the-action and trivia questions during the tournament. It's fun and free to play!</string>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="oF6-Qi-js7" firstAttribute="top" secondItem="2tV-HQ-ozD" secondAttribute="bottom" id="8Rq-0O-ooe"/>
                             <constraint firstItem="2NN-2C-6OE" firstAttribute="top" secondItem="0vR-8f-azV" secondAttribute="bottom" constant="-20" id="Bxy-t5-OXX"/>
                             <constraint firstItem="zTu-F5-JrJ" firstAttribute="top" secondItem="2tV-HQ-ozD" secondAttribute="bottom" constant="185" id="CaY-nd-qIL"/>
                             <constraint firstItem="YCl-YN-2Ih" firstAttribute="top" secondItem="oF6-Qi-js7" secondAttribute="bottom" constant="42" id="Cvi-Nb-pQm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2tV-HQ-ozD" secondAttribute="trailing" constant="-20" id="Cy7-IJ-7l7"/>
                             <constraint firstItem="YCl-YN-2Ih" firstAttribute="top" secondItem="2tV-HQ-ozD" secondAttribute="bottom" constant="64" id="FDO-h4-qc9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H2g-O4-xdq" secondAttribute="trailing" id="Lim-IC-ljT"/>
                             <constraint firstItem="2tV-HQ-ozD" firstAttribute="leading" secondItem="qba-Rq-p8Q" secondAttribute="leadingMargin" constant="-20" id="NAS-kH-b24"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2tV-HQ-ozD" secondAttribute="trailing" constant="-20" id="SzU-Sa-xKI"/>
                             <constraint firstItem="zTu-F5-JrJ" firstAttribute="top" secondItem="2tV-HQ-ozD" secondAttribute="bottom" id="VnF-xw-7cI"/>
+                            <constraint firstItem="2tV-HQ-ozD" firstAttribute="top" secondItem="H2g-O4-xdq" secondAttribute="bottom" constant="20" id="Yfm-M6-mNr"/>
                             <constraint firstItem="2tV-HQ-ozD" firstAttribute="width" secondItem="qba-Rq-p8Q" secondAttribute="width" id="iyI-Wy-YXn"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="H2g-O4-xdq" secondAttribute="leading" id="kOH-wr-es5"/>
+                            <constraint firstItem="oF6-Qi-js7" firstAttribute="top" secondItem="2tV-HQ-ozD" secondAttribute="bottom" id="kTz-ba-sY4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YCl-YN-2Ih" secondAttribute="trailing" id="ksU-HO-bfN"/>
                             <constraint firstItem="zTu-F5-JrJ" firstAttribute="top" secondItem="YCl-YN-2Ih" secondAttribute="bottom" constant="20" id="o9I-5J-M9G"/>
-                            <constraint firstItem="oF6-Qi-js7" firstAttribute="top" secondItem="2tV-HQ-ozD" secondAttribute="bottom" constant="-9" id="qEd-ht-pCJ"/>
+                            <constraint firstItem="oF6-Qi-js7" firstAttribute="top" secondItem="2tV-HQ-ozD" secondAttribute="bottom" constant="-20" id="qEd-ht-pCJ"/>
                             <constraint firstItem="zTu-F5-JrJ" firstAttribute="top" secondItem="2NN-2C-6OE" secondAttribute="bottom" id="s4h-5Q-YIl"/>
                             <constraint firstItem="2tV-HQ-ozD" firstAttribute="leading" secondItem="qba-Rq-p8Q" secondAttribute="leadingMargin" constant="-20" id="sAy-na-NbZ"/>
                             <constraint firstItem="oF6-Qi-js7" firstAttribute="centerX" secondItem="qba-Rq-p8Q" secondAttribute="centerX" id="uqk-Sz-Elc"/>
@@ -84,6 +107,8 @@
                                 <exclude reference="SzU-Sa-xKI"/>
                                 <exclude reference="iyI-Wy-YXn"/>
                                 <exclude reference="vx9-Nl-bTZ"/>
+                                <exclude reference="kTz-ba-sY4"/>
+                                <exclude reference="qEd-ht-pCJ"/>
                                 <exclude reference="FDO-h4-qc9"/>
                                 <exclude reference="CaY-nd-qIL"/>
                                 <exclude reference="VnF-xw-7cI"/>
@@ -94,6 +119,7 @@
                     <connections>
                         <outlet property="backgroundImage" destination="2NN-2C-6OE" id="Htq-Zi-mYa"/>
                         <outlet property="pageControl" destination="oF6-Qi-js7" id="QhC-Mk-tN1"/>
+                        <outlet property="promoTextLabel" destination="H2g-O4-xdq" id="OjQ-xL-RyS"/>
                         <outlet property="scrollView" destination="2tV-HQ-ozD" id="Awd-eB-XHp"/>
                     </connections>
                 </viewController>

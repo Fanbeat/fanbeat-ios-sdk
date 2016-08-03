@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *team;
 @property (nonatomic, strong) NSString *promoBackground;
 @property (nonatomic, strong) NSArray *promoPrizes;
+@property (nonatomic, strong) NSString *promoText;
 
 -(NSString *)getDeepLinkPath;
 

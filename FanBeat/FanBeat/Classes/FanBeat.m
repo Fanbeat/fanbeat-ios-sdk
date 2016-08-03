@@ -144,6 +144,7 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
     config.team = res[@"team"];
     config.promoBackground = res[@"promoBackground"];
     config.promoPrizes = res[@"promoPrizes"];
+    config.promoText = res[@"promoText"];
     
     [FBDeepLinker getInstance].config = config;
 }

@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UILabel *promoTextLabel;
 
 @end
 
@@ -39,6 +40,8 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
     [self loadImages];
     
     _scrollView.delegate = self;
+    
+    _promoTextLabel.text = partnerConfig ? partnerConfig.promoText : @"";
 }
 
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -72,7 +75,7 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
             if (prizeImage) {
                 UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, 0, width, height)];
                 imageView.image = [self getImageNamed:prize];
-                imageView.contentMode = UIViewContentModeCenter;
+                imageView.contentMode = UIViewContentModeBottom;
                 [_scrollView addSubview:imageView];
                 
                 x = x + width;
