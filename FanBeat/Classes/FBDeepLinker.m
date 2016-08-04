@@ -114,6 +114,8 @@
 
 -(void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController
 {
+    [viewController dismissViewControllerAnimated:YES completion:nil];
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(storeDidFinish)]) {
         [self.delegate storeDidFinish];
     }
