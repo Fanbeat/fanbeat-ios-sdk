@@ -66,12 +66,18 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLT-Is-UGy" userLabel="Close Button">
-                                <rect key="frame" x="302" y="3" width="70" height="70"/>
+                                <rect key="frame" x="316" y="10" width="60" height="70"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="0DS-Ln-sVO"/>
                                     <constraint firstAttribute="width" constant="70" id="6G6-3A-Qjn"/>
                                     <constraint firstAttribute="height" constant="70" id="cvq-CS-Jge"/>
                                 </constraints>
                                 <state key="normal" image="icon_circle-x"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="6G6-3A-Qjn"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="cancelClicked:" destination="5E3-4y-oiO" eventType="touchUpInside" id="vkK-jC-FiX"/>
                                 </connections>
@@ -79,6 +85,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="LLT-Is-UGy" secondAttribute="trailing" constant="-21" id="0lh-bG-xo6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LLT-Is-UGy" secondAttribute="trailing" constant="-13" id="0uB-Nc-ofu"/>
                             <constraint firstAttribute="leadingMargin" secondItem="oWd-pI-j0o" secondAttribute="leading" id="2qB-kC-OrM"/>
                             <constraint firstItem="Wrd-oN-q0S" firstAttribute="top" secondItem="N8W-b7-GnS" secondAttribute="bottom" constant="8" id="4d3-O6-fv5"/>
@@ -89,6 +96,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Wrd-oN-q0S" secondAttribute="trailing" constant="-20" id="JfB-0m-7fg"/>
                             <constraint firstAttribute="leadingMargin" secondItem="N8W-b7-GnS" secondAttribute="leading" id="KKB-U4-f30"/>
                             <constraint firstAttribute="trailingMargin" secondItem="N8W-b7-GnS" secondAttribute="trailing" id="O1H-P8-RIb"/>
+                            <constraint firstItem="LLT-Is-UGy" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" constant="-10" id="OL2-zf-EJY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oWd-pI-j0o" secondAttribute="trailing" id="PlG-vt-HAe"/>
                             <constraint firstItem="HaK-wT-f72" firstAttribute="top" secondItem="LEv-0Z-HFG" secondAttribute="bottom" id="TBW-mJ-1R4"/>
                             <constraint firstItem="aS3-Nt-7zY" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" id="Yg1-lD-EU5"/>
@@ -107,7 +115,9 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="0uB-Nc-ofu"/>
+                                <exclude reference="8mZ-GN-blQ"/>
                                 <exclude reference="Ich-mr-PWT"/>
+                                <exclude reference="mgn-2j-M22"/>
                                 <exclude reference="ueV-Y0-0Sk"/>
                             </mask>
                         </variation>
