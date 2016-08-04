@@ -66,7 +66,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLT-Is-UGy" userLabel="Close Button">
-                                <rect key="frame" x="322" y="15" width="50" height="50"/>
+                                <rect key="frame" x="302" y="3" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="6G6-3A-Qjn"/>
+                                    <constraint firstAttribute="height" constant="70" id="cvq-CS-Jge"/>
+                                </constraints>
                                 <state key="normal" image="icon_circle-x"/>
                                 <connections>
                                     <action selector="cancelClicked:" destination="5E3-4y-oiO" eventType="touchUpInside" id="vkK-jC-FiX"/>
@@ -79,6 +83,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="oWd-pI-j0o" secondAttribute="leading" id="2qB-kC-OrM"/>
                             <constraint firstItem="Wrd-oN-q0S" firstAttribute="top" secondItem="N8W-b7-GnS" secondAttribute="bottom" constant="8" id="4d3-O6-fv5"/>
                             <constraint firstItem="Wrd-oN-q0S" firstAttribute="leading" secondItem="PGu-Vd-E2H" secondAttribute="leadingMargin" constant="-20" id="6WE-eX-oq5"/>
+                            <constraint firstItem="LLT-Is-UGy" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" constant="-17" id="8mZ-GN-blQ"/>
                             <constraint firstItem="HaK-wT-f72" firstAttribute="top" secondItem="oWd-pI-j0o" secondAttribute="bottom" constant="20" id="AFt-SL-CL7"/>
                             <constraint firstItem="LLT-Is-UGy" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" id="Ich-mr-PWT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wrd-oN-q0S" secondAttribute="trailing" constant="-20" id="JfB-0m-7fg"/>
@@ -93,10 +98,19 @@
                             <constraint firstItem="LEv-0Z-HFG" firstAttribute="leading" secondItem="PGu-Vd-E2H" secondAttribute="leadingMargin" constant="-20" id="kEf-s2-t5s"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aS3-Nt-7zY" secondAttribute="trailing" constant="25" id="lk3-NN-xgH"/>
                             <constraint firstItem="aS3-Nt-7zY" firstAttribute="leading" secondItem="PGu-Vd-E2H" secondAttribute="leadingMargin" constant="25" id="mWp-W5-DKE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LLT-Is-UGy" secondAttribute="trailing" constant="-17" id="mgn-2j-M22"/>
                             <constraint firstItem="QZQ-Nj-kxd" firstAttribute="centerX" secondItem="PGu-Vd-E2H" secondAttribute="centerX" id="sQE-dD-fyM"/>
                             <constraint firstItem="N8W-b7-GnS" firstAttribute="top" secondItem="aS3-Nt-7zY" secondAttribute="bottom" id="uV8-L2-HD8"/>
+                            <constraint firstItem="LLT-Is-UGy" firstAttribute="leading" secondItem="PGu-Vd-E2H" secondAttribute="leadingMargin" constant="282" id="ueV-Y0-0Sk"/>
                             <constraint firstItem="QZQ-Nj-kxd" firstAttribute="top" secondItem="Wrd-oN-q0S" secondAttribute="bottom" constant="8" id="xZi-EG-AZP"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0uB-Nc-ofu"/>
+                                <exclude reference="Ich-mr-PWT"/>
+                                <exclude reference="ueV-Y0-0Sk"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
