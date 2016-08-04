@@ -120,6 +120,10 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
     [self openStore: [NSNumber numberWithInteger:FANBEAT_STORE_ID]];
 }
 
+- (IBAction)cancelClicked:(id)sender {
+    [self onDone];
+}
+
 -(void)openStore:(NSNumber *)storeId
 {
     SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
@@ -148,6 +152,11 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
 }
 
 -(void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController
+{
+    [self onDone];
+}
+
+-(void)onDone
 {
     [self dismissViewControllerAnimated:NO completion:nil];
     

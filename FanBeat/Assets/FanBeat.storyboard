@@ -65,13 +65,22 @@
                                     <action selector="playNowTapped:" destination="5E3-4y-oiO" eventType="touchUpInside" id="qGC-2b-K6F"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLT-Is-UGy" userLabel="Close Button">
+                                <rect key="frame" x="322" y="15" width="50" height="50"/>
+                                <state key="normal" image="icon_circle-x"/>
+                                <connections>
+                                    <action selector="cancelClicked:" destination="5E3-4y-oiO" eventType="touchUpInside" id="vkK-jC-FiX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="LLT-Is-UGy" secondAttribute="trailing" constant="-13" id="0uB-Nc-ofu"/>
                             <constraint firstAttribute="leadingMargin" secondItem="oWd-pI-j0o" secondAttribute="leading" id="2qB-kC-OrM"/>
                             <constraint firstItem="Wrd-oN-q0S" firstAttribute="top" secondItem="N8W-b7-GnS" secondAttribute="bottom" constant="8" id="4d3-O6-fv5"/>
                             <constraint firstItem="Wrd-oN-q0S" firstAttribute="leading" secondItem="PGu-Vd-E2H" secondAttribute="leadingMargin" constant="-20" id="6WE-eX-oq5"/>
                             <constraint firstItem="HaK-wT-f72" firstAttribute="top" secondItem="oWd-pI-j0o" secondAttribute="bottom" constant="20" id="AFt-SL-CL7"/>
+                            <constraint firstItem="LLT-Is-UGy" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" id="Ich-mr-PWT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wrd-oN-q0S" secondAttribute="trailing" constant="-20" id="JfB-0m-7fg"/>
                             <constraint firstAttribute="leadingMargin" secondItem="N8W-b7-GnS" secondAttribute="leading" id="KKB-U4-f30"/>
                             <constraint firstAttribute="trailingMargin" secondItem="N8W-b7-GnS" secondAttribute="trailing" id="O1H-P8-RIb"/>
@@ -104,6 +113,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_circle-x" width="30" height="30"/>
         <image name="logo-fanbeat" width="226" height="43"/>
         <image name="promo-background" width="337" height="599"/>
     </resources>
