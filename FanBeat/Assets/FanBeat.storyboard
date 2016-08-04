@@ -66,16 +66,20 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLT-Is-UGy" userLabel="Close Button">
-                                <rect key="frame" x="316" y="10" width="60" height="70"/>
+                                <rect key="frame" x="310" y="0.0" width="66" height="82"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="0DS-Ln-sVO"/>
                                     <constraint firstAttribute="width" constant="70" id="6G6-3A-Qjn"/>
+                                    <constraint firstAttribute="width" constant="66" id="HgC-IL-Czn"/>
+                                    <constraint firstAttribute="height" constant="82" id="Lgj-Bl-Ykj"/>
                                     <constraint firstAttribute="height" constant="70" id="cvq-CS-Jge"/>
                                 </constraints>
                                 <state key="normal" image="icon_circle-x"/>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="0DS-Ln-sVO"/>
                                         <exclude reference="6G6-3A-Qjn"/>
+                                        <exclude reference="cvq-CS-Jge"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -93,11 +97,13 @@
                             <constraint firstItem="LLT-Is-UGy" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" constant="-17" id="8mZ-GN-blQ"/>
                             <constraint firstItem="HaK-wT-f72" firstAttribute="top" secondItem="oWd-pI-j0o" secondAttribute="bottom" constant="20" id="AFt-SL-CL7"/>
                             <constraint firstItem="LLT-Is-UGy" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" id="Ich-mr-PWT"/>
+                            <constraint firstItem="LLT-Is-UGy" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" constant="-20" id="JED-Do-37G"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wrd-oN-q0S" secondAttribute="trailing" constant="-20" id="JfB-0m-7fg"/>
                             <constraint firstAttribute="leadingMargin" secondItem="N8W-b7-GnS" secondAttribute="leading" id="KKB-U4-f30"/>
                             <constraint firstAttribute="trailingMargin" secondItem="N8W-b7-GnS" secondAttribute="trailing" id="O1H-P8-RIb"/>
                             <constraint firstItem="LLT-Is-UGy" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" constant="-10" id="OL2-zf-EJY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oWd-pI-j0o" secondAttribute="trailing" id="PlG-vt-HAe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LLT-Is-UGy" secondAttribute="trailing" constant="-21" id="Q87-JQ-2kS"/>
                             <constraint firstItem="HaK-wT-f72" firstAttribute="top" secondItem="LEv-0Z-HFG" secondAttribute="bottom" id="TBW-mJ-1R4"/>
                             <constraint firstItem="aS3-Nt-7zY" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" id="Yg1-lD-EU5"/>
                             <constraint firstItem="LEv-0Z-HFG" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" constant="-20" id="axO-0n-j3s"/>
@@ -114,9 +120,11 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="0lh-bG-xo6"/>
                                 <exclude reference="0uB-Nc-ofu"/>
                                 <exclude reference="8mZ-GN-blQ"/>
                                 <exclude reference="Ich-mr-PWT"/>
+                                <exclude reference="OL2-zf-EJY"/>
                                 <exclude reference="mgn-2j-M22"/>
                                 <exclude reference="ueV-Y0-0Sk"/>
                             </mask>
