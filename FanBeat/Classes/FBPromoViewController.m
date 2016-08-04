@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UILabel *promoTextLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *closeButton;
 
 @end
 
@@ -39,12 +40,11 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
     partnerConfig = [FBDeepLinker getInstance].config;
     
     [self loadImages];
+    _closeButton.hidden = self.showCancelButton;
     
     _scrollView.delegate = self;
     
     _promoTextLabel.text = partnerConfig ? partnerConfig.promoText : @"";
-    
-    [self stylizeLogo];
 }
 
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -127,11 +127,6 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
 -(void)openStore:(NSNumber *)storeId
 {
     [[FBDeepLinker getInstance]openStore:self];
-}
-
-- (void)stylizeLogo
-{
-    _logoImage.image = [self getImageNamed:@"logo-fanbeat"];
 }
 
 -(void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController

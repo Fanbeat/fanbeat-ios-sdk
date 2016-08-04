@@ -94,6 +94,7 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
             
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FanBeat" bundle:bundle];
             promoViewController = [storyboard instantiateInitialViewController];
+            promoViewController.showCancelButton = NO;
             promoViewController.delegate = self;
             
             [self.delegate presentMarketingViewController:promoViewController onInstallFanBeat:^{

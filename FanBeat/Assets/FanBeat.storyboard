@@ -133,6 +133,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImage" destination="LEv-0Z-HFG" id="436-h3-v8c"/>
+                        <outlet property="closeButton" destination="LLT-Is-UGy" id="Jtr-R7-bqp"/>
                         <outlet property="logoImage" destination="aS3-Nt-7zY" id="jJI-8g-Uk9"/>
                         <outlet property="pageControl" destination="QZQ-Nj-kxd" id="KUt-CR-mfj"/>
                         <outlet property="promoTextLabel" destination="N8W-b7-GnS" id="lQA-ft-Tap"/>
