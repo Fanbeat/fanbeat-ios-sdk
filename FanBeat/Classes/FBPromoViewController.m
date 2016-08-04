@@ -40,7 +40,7 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
     partnerConfig = [FBDeepLinker getInstance].config;
     
     [self loadImages];
-    _closeButton.hidden = self.showCancelButton;
+    _closeButton.hidden = !self.showCancelButton;
     
     _scrollView.delegate = self;
     
