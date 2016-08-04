@@ -38,7 +38,7 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 -(id)init
 {
     if (self == [super init]) {
-        [FBDeepLinker getInstance].isLive = NO;
+        [FBDeepLinker getInstance].isLive = YES;
         [FBDeepLinker getInstance].delegate = self;
         
         // attempt to get the partner ID from the app's plist
