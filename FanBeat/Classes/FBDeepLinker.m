@@ -26,7 +26,7 @@
     dispatch_once(&onceToken, ^{
         deepLinker = [[FBDeepLinker alloc]init];
     });
-    return deepLinker;
+    return deepLinker;  
 }
 
 -(void)open:(NSString *)partnerId
@@ -51,6 +51,34 @@
     // check to see if any installed apps can handle FanBeat's URI scheme
     NSURL *fanbeatUrl = [NSURL URLWithString: FANBEAT_APP_URI_SCHEME];
     return [[UIApplication sharedApplication]canOpenURL:fanbeatUrl];
+}
+
+- (void)openStore:(UIViewController *)viewController
+{
+    [self openStore:viewController withSKStoreDelegate:nil];
+}
+
+- (void)openStore:(UIViewController *)viewController withSKStoreDelegate:(id<SKStoreProductViewControllerDelegate>)delegate
+{
+    SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
+    
+    if (delegate)
+        storeViewController.delegate = delegate;
+    
+    NSDictionary *parameters = @{SKStoreProductParameterITunesItemIdentifier: @FANBEAT_STORE_ID};
+    
+    [storeViewController loadProductWithParameters:parameters completionBlock:^(BOOL result, NSError * _Nullable error) {
+        if (error) {
+            return;
+        }
+        
+        if (result) {
+            UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
+            [viewController presentViewController: storeViewController
+                               animated:YES
+                             completion:nil];
+        }
+    }];
 }
 
 -(void)getBranchUrl:(NSString *)partnerId forUser:(NSString * _Nullable)userId WithCallback:(callbackWithUrl)callback

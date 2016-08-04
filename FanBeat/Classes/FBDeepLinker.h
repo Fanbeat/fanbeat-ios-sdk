@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <StoreKit/StoreKit.h>
 #import "FBPartnerConfig.h"
 
 @protocol FBDeepLinkerDelegate;
@@ -21,6 +22,8 @@
 -(void)open:(NSString *)partnerId;
 -(void)open:(NSString *)partnerId forUser:(NSString *)userId;
 -(BOOL)canOpenFanbeat;
+-(void)openStore:(UIViewController *)viewController;
+-(void)openStore:(UIViewController *)viewController withSKStoreDelegate:(id<SKStoreProductViewControllerDelegate>) delegate;
 
 @end
 

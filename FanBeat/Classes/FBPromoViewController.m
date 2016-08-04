@@ -126,24 +126,7 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
 
 -(void)openStore:(NSNumber *)storeId
 {
-    SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
-    
-    storeViewController.delegate = self;
-    
-    NSDictionary *parameters = @{SKStoreProductParameterITunesItemIdentifier: storeId};
-    
-    [storeViewController loadProductWithParameters:parameters completionBlock:^(BOOL result, NSError * _Nullable error) {
-        if (error) {
-            return;
-        }
-        
-        if (result) {
-            UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
-            [self presentViewController: storeViewController
-                               animated:YES
-                             completion:nil];
-        }
-    }];
+    [[FBDeepLinker getInstance]openStore:self withSKStoreDelegate:self];
 }
 
 - (void)stylizeLogo

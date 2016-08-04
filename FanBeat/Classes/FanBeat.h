@@ -25,6 +25,7 @@
 
 @protocol FanBeatDelegate <NSObject>
 
+-(void)presentMarketingViewController:(UIViewController *)viewController onInstallFanBeat:(void(^)(void))onInstallFanBeat;
 -(void)fanbeatDidFinish:(BOOL)didLaunch;
 
 @end

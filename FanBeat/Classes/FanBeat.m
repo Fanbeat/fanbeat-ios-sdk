@@ -88,17 +88,20 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
         // if FanBeat isn't installed, cache the user ID and load the promo view
         _userId = userId;
         
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FanBeatPod" ofType:@"bundle"];
-        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-        
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FanBeat" bundle:bundle];
-        promoViewController = [storyboard instantiateInitialViewController];
-        promoViewController.delegate = self;
-        
-        UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
-        [controller presentViewController:promoViewController
-                                 animated:YES
-                               completion:nil];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(presentMarketingViewController:onInstallFanBeat:)]) {
+            NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FanBeatPod" ofType:@"bundle"];
+            NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FanBeat" bundle:bundle];
+            promoViewController = [storyboard instantiateInitialViewController];
+            promoViewController.delegate = self;
+            
+            [self.delegate presentMarketingViewController:promoViewController onInstallFanBeat:^{
+                [[FBDeepLinker getInstance] openStore:[UIApplication sharedApplication].keyWindow.rootViewController];
+            }];
+        } else {
+            [[FBDeepLinker getInstance] openStore:[UIApplication sharedApplication].keyWindow.rootViewController];
+        }
     }
 }
 

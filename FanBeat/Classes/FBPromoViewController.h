@@ -14,6 +14,7 @@
 @interface FBPromoViewController : UIViewController <SKStoreProductViewControllerDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, weak) id<FBPromoViewControllerDelegate> delegate;
+@property (nonatomic) BOOL showCancelButton;
 
 @end
 

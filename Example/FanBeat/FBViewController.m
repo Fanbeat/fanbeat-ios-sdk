@@ -38,4 +38,9 @@
     NSLog(@"FanBeat SDK returned, app %@ launch", didLaunch ? @"did" : @"did not");
 }
 
+- (void)presentMarketingViewController:(UIViewController *)viewController onInstallFanBeat:(void (^)(void))onInstallFanBeat
+{
+    onInstallFanBeat();
+}
+
 @end
