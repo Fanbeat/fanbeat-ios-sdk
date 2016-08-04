@@ -121,7 +121,7 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
 }
 
 - (IBAction)cancelClicked:(id)sender {
-    [self onDone];
+    [self onDone:YES];
 }
 
 -(void)openStore:(NSNumber *)storeId
@@ -153,12 +153,12 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
 
 -(void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController
 {
-    [self onDone];
+    [self onDone:NO];
 }
 
--(void)onDone
+-(void)onDone:(BOOL)animated
 {
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:animated completion:nil];
     
     if(self.delegate && [self.delegate respondsToSelector:@selector(promoViewControllerDidFinish:)]) {
         [self.delegate promoViewControllerDidFinish:self];
