@@ -28,6 +28,7 @@
 
 @protocol FBDeepLinkerDelegate <NSObject>
 
+- (void)storeDidFinish;
 - (void)deepLinkerDidFinish:(BOOL)success;
 
 @end

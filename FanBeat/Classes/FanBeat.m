@@ -165,6 +165,11 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
 -(void)promoViewControllerDidFinish:(FBPromoViewController *)viewController
 {
+    [self storeDidFinish];
+}
+
+- (void)storeDidFinish
+{
     FBDeepLinker *deepLinker = [FBDeepLinker getInstance];
     
     // once we get back from the promo view, check to see if the app was installed
@@ -178,10 +183,6 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
     } else {
         [self finalizeDelegate:NO];
     }
-    
-    
-    [promoViewController dismissViewControllerAnimated:NO
-                                            completion:nil];
 }
 
 -(void)deepLinkerDidFinish:(BOOL)success
