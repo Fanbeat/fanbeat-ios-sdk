@@ -55,15 +55,9 @@
 
 - (void)openStore:(UIViewController *)viewController
 {
-    [self openStore:viewController withSKStoreDelegate:nil];
-}
-
-- (void)openStore:(UIViewController *)viewController withSKStoreDelegate:(id<SKStoreProductViewControllerDelegate>)delegate
-{
     SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
     
-    if (delegate)
-        storeViewController.delegate = delegate;
+    storeViewController.delegate = self;
     
     NSDictionary *parameters = @{SKStoreProductParameterITunesItemIdentifier: @FANBEAT_STORE_ID};
     
@@ -116,6 +110,11 @@
     // alert the delegate of success before launching the URL
     [self finalizeDelegate:YES];
     [[UIApplication sharedApplication]openURL:[NSURL URLWithString:url]];
+}
+
+-(void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController
+{
+    
 }
 
 -(void)finalizeDelegate:(BOOL)success

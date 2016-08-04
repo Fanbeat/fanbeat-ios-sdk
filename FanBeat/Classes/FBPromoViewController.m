@@ -126,7 +126,7 @@ static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
 
 -(void)openStore:(NSNumber *)storeId
 {
-    [[FBDeepLinker getInstance]openStore:self withSKStoreDelegate:self];
+    [[FBDeepLinker getInstance]openStore:self];
 }
 
 - (void)stylizeLogo

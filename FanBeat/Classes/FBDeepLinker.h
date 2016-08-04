@@ -12,7 +12,7 @@
 
 @protocol FBDeepLinkerDelegate;
 
-@interface FBDeepLinker : NSObject
+@interface FBDeepLinker : NSObject <SKStoreProductViewControllerDelegate>
 
 @property (nonatomic, weak) id<FBDeepLinkerDelegate> delegate;
 @property (nonatomic, assign) BOOL isLive;
@@ -23,7 +23,6 @@
 -(void)open:(NSString *)partnerId forUser:(NSString *)userId;
 -(BOOL)canOpenFanbeat;
 -(void)openStore:(UIViewController *)viewController;
--(void)openStore:(UIViewController *)viewController withSKStoreDelegate:(id<SKStoreProductViewControllerDelegate>) delegate;
 
 @end
 
