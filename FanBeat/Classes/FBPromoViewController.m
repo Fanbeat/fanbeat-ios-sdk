@@ -28,8 +28,7 @@
 
 @implementation FBPromoViewController
 
-static NSString *const kPromoDefaultBackgroundName = @"promo-background";
-static NSString *const kPromoBackgroundFormat = @"%@-promo-background";
+static NSString *const kPromoDefaultBackgroundName = @"promo_background";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
