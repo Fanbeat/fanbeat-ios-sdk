@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <StoreKit/StoreKit.h>
+#import "FBPartnerConfig.h"
 
 @protocol FBPromoViewControllerDelegate;
 
@@ -15,6 +16,7 @@
 
 @property (nonatomic, weak) id<FBPromoViewControllerDelegate> delegate;
 @property (nonatomic) BOOL showCancelButton;
+- (void)setPartnerConfig:(FBPartnerConfig*)config;
 
 @end
 

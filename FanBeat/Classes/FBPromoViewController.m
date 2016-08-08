@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *promoTextLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *closeButton;
+@property (nonatomic) CGFloat prizeHeight;
 
 @end
 
@@ -36,12 +37,32 @@ static NSString *const kPromoDefaultBackgroundName = @"promo_background";
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FanBeatPod" ofType:@"bundle"];
     sdkBundle = [NSBundle bundleWithPath:bundlePath];
     
-    partnerConfig = [FBDeepLinker getInstance].config;
-    
-    [self loadImages];
-    _closeButton.hidden = !self.showCancelButton;
+    [self setPartnerConfig:[FBDeepLinker getInstance].config];
     
     _scrollView.delegate = self;
+}
+
+- (void)viewWillLayoutSubviews
+{
+    CGFloat height = _scrollView.bounds.size.height;
+    
+    if (height != _prizeHeight) {
+        [self loadImages];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [_pageControl setCurrentPage:0];
+    [_scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+}
+
+- (void)setPartnerConfig:(FBPartnerConfig *)config
+{
+    partnerConfig = config;
+    [self loadImages];
+    _closeButton.hidden = !self.showCancelButton;
     
     _promoTextLabel.text = partnerConfig ? partnerConfig.promoText : @"";
 }
@@ -68,9 +89,11 @@ static NSString *const kPromoDefaultBackgroundName = @"promo_background";
     
     if (partnerConfig.promoPrizes) {
         
-        CGFloat width = _scrollView.bounds.size.width - 48.0f;
-        CGFloat height = _scrollView.bounds.size.height - 48.0f;
+        CGFloat width = [UIScreen mainScreen].bounds.size.width;
+        CGFloat height = _scrollView.bounds.size.height;
         CGFloat x = 0;
+        
+        [_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         
         for(FBPromoPrize *prize in partnerConfig.promoPrizes) {
             UIImage *prizeImage = [self getImageNamed:prize.icon];
@@ -78,6 +101,7 @@ static NSString *const kPromoDefaultBackgroundName = @"promo_background";
                 UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, 0, width, height)];
                 imageView.image = prizeImage;
                 imageView.contentMode = UIViewContentModeBottom;
+                
                 [_scrollView addSubview:imageView];
                 
                 x = x + width;
@@ -85,7 +109,8 @@ static NSString *const kPromoDefaultBackgroundName = @"promo_background";
             }
         }
         
-        _scrollView.contentSize = CGSizeMake(x, height);
+        [_scrollView setContentSize:CGSizeMake(x, height)];
+        _prizeHeight = height;
     }
 }
 
@@ -135,10 +160,11 @@ static NSString *const kPromoDefaultBackgroundName = @"promo_background";
 
 -(void)onDone:(BOOL)animated
 {
-    if (self.navigationController) {
-        [self.navigationController popViewControllerAnimated:animated];
-    } else {
+    if (!self.navigationController) {
         [self dismissViewControllerAnimated:animated completion:nil];
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
     }
     
     if(self.delegate && [self.delegate respondsToSelector:@selector(promoViewControllerDidFinish:)]) {

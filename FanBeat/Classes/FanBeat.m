@@ -56,6 +56,15 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
                 [self loadConfig:_partnerId];
             }
         }
+        
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FanBeatPod" ofType:@"bundle"];
+        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FanBeat" bundle:bundle];
+        promoViewController = [storyboard instantiateInitialViewController];
+        promoViewController.showCancelButton = NO;
+        promoViewController.delegate = self;
+        [promoViewController loadViewIfNeeded];
     }
     
     return self;
@@ -89,14 +98,6 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
         _userId = userId;
         
         if (self.delegate && [self.delegate respondsToSelector:@selector(presentMarketingViewController:onInstallFanBeat:)]) {
-            NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FanBeatPod" ofType:@"bundle"];
-            NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-            
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FanBeat" bundle:bundle];
-            promoViewController = [storyboard instantiateInitialViewController];
-            promoViewController.showCancelButton = NO;
-            promoViewController.delegate = self;
-            
             [self.delegate presentMarketingViewController:promoViewController onInstallFanBeat:^{
                 [[FBDeepLinker getInstance] openStore:[UIApplication sharedApplication].keyWindow.rootViewController];
             }];
