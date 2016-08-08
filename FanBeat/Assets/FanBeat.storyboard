@@ -66,12 +66,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLT-Is-UGy" userLabel="Close Button">
-                                <rect key="frame" x="310" y="0.0" width="66" height="82"/>
+                                <rect key="frame" x="326" y="0.0" width="50" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="0DS-Ln-sVO"/>
                                     <constraint firstAttribute="width" constant="70" id="6G6-3A-Qjn"/>
-                                    <constraint firstAttribute="width" constant="66" id="HgC-IL-Czn"/>
-                                    <constraint firstAttribute="height" constant="82" id="Lgj-Bl-Ykj"/>
+                                    <constraint firstAttribute="width" constant="50" id="HgC-IL-Czn"/>
+                                    <constraint firstAttribute="height" constant="90" id="Lgj-Bl-Ykj"/>
                                     <constraint firstAttribute="height" constant="70" id="cvq-CS-Jge"/>
                                 </constraints>
                                 <state key="normal" image="icon_circle-x"/>
