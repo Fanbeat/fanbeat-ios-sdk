@@ -135,7 +135,11 @@ static NSString *const kPromoDefaultBackgroundName = @"promo_background";
 
 -(void)onDone:(BOOL)animated
 {
-    [self dismissViewControllerAnimated:animated completion:nil];
+    if (self.navigationController) {
+        [self.navigationController popViewControllerAnimated:animated];
+    } else {
+        [self dismissViewControllerAnimated:animated completion:nil];
+    }
     
     if(self.delegate && [self.delegate respondsToSelector:@selector(promoViewControllerDidFinish:)]) {
         [self.delegate promoViewControllerDidFinish:self];
