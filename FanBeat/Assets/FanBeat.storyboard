@@ -19,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="HaK-wT-f72"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PGu-Vd-E2H">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="promo_background" translatesAutoresizingMaskIntoConstraints="NO" id="LEv-0Z-HFG" userLabel="Background">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
+                                <rect key="frame" x="-4" y="0.0" width="375" height="568"/>
                             </imageView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="No1-1q-Dts">
                                 <rect key="frame" x="0.0" y="0.0" width="325" height="568"/>
@@ -104,7 +104,7 @@
                                     <constraint firstAttribute="bottom" secondItem="oWd-pI-j0o" secondAttribute="bottom" constant="20" id="Thf-JZ-8Ul"/>
                                     <constraint firstItem="Wrd-oN-q0S" firstAttribute="top" secondItem="N8W-b7-GnS" secondAttribute="bottom" id="WyB-l2-GkU"/>
                                     <constraint firstItem="QZQ-Nj-kxd" firstAttribute="top" secondItem="Wrd-oN-q0S" secondAttribute="bottom" id="e3b-s4-IBF"/>
-                                    <constraint firstItem="aS3-Nt-7zY" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="top" id="hut-df-B5Z"/>
+                                    <constraint firstItem="aS3-Nt-7zY" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="top" constant="20" id="hut-df-B5Z"/>
                                     <constraint firstItem="aS3-Nt-7zY" firstAttribute="centerX" secondItem="No1-1q-Dts" secondAttribute="centerX" id="koK-tE-tow"/>
                                     <constraint firstItem="oWd-pI-j0o" firstAttribute="top" secondItem="QZQ-Nj-kxd" secondAttribute="bottom" id="rjM-dV-HfI"/>
                                     <constraint firstAttribute="trailing" secondItem="oWd-pI-j0o" secondAttribute="trailing" constant="20" id="sLo-s7-WDc"/>
@@ -135,7 +135,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="backgroundImage" destination="LEv-0Z-HFG" id="436-h3-v8c"/>
