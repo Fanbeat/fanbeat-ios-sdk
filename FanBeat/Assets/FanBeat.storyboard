@@ -56,7 +56,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo_fanbeat" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-Nt-7zY" userLabel="FanBeat Logo">
-                                        <rect key="frame" x="45" y="20" width="285" height="100"/>
+                                        <rect key="frame" x="45" y="60" width="285" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Dlo-xS-Zsu">
                                                 <variation key="widthClass=compact" constant="128"/>
@@ -75,7 +75,7 @@
                                         </variation>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="N8W-b7-GnS">
-                                        <rect key="frame" x="36" y="128" width="303" height="130"/>
+                                        <rect key="frame" x="36" y="168" width="303" height="130"/>
                                         <string key="text">With FanBeat, you can compete to win awesome prizes by answering predict-the-action and trivia questions. It's fun and free to play!</string>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -87,7 +87,7 @@
                                         </variation>
                                     </label>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrd-oN-q0S" userLabel="Prize Scroller">
-                                        <rect key="frame" x="0.0" y="266" width="375" height="259"/>
+                                        <rect key="frame" x="0.0" y="306" width="375" height="219"/>
                                         <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="-4" y="200.5" width="383" height="307.5"/>
                                         </variation>
@@ -138,7 +138,7 @@
                                     <constraint firstItem="Wrd-oN-q0S" firstAttribute="top" secondItem="N8W-b7-GnS" secondAttribute="bottom" constant="8" id="Zj4-Rv-Omg"/>
                                     <constraint firstItem="QZQ-Nj-kxd" firstAttribute="top" secondItem="Wrd-oN-q0S" secondAttribute="bottom" constant="8" id="gwU-po-SuR"/>
                                     <constraint firstItem="Wrd-oN-q0S" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" id="jYJ-ti-aFq"/>
-                                    <constraint firstItem="aS3-Nt-7zY" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="top" constant="20" id="ldP-v3-3rl"/>
+                                    <constraint firstItem="aS3-Nt-7zY" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="top" constant="60" id="ldP-v3-3rl"/>
                                     <constraint firstAttribute="trailing" secondItem="oWd-pI-j0o" secondAttribute="trailing" constant="36" id="odh-Ex-02c"/>
                                     <constraint firstAttribute="bottom" secondItem="oWd-pI-j0o" secondAttribute="bottom" constant="40" id="qw4-xI-SuT"/>
                                     <constraint firstAttribute="trailing" secondItem="LLT-Is-UGy" secondAttribute="trailing" id="r9y-TP-bbF"/>
