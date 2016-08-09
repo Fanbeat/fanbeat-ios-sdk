@@ -56,7 +56,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo_fanbeat" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-Nt-7zY" userLabel="FanBeat Logo">
-                                        <rect key="frame" x="45" y="60" width="285" height="100"/>
+                                        <rect key="frame" x="45" y="60" width="285" height="62"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Dlo-xS-Zsu">
                                                 <variation key="widthClass=compact" constant="128"/>
@@ -134,6 +134,7 @@
                                     <constraint firstItem="oWd-pI-j0o" firstAttribute="top" secondItem="QZQ-Nj-kxd" secondAttribute="bottom" constant="20" id="H9T-Wd-qQK"/>
                                     <constraint firstItem="LLT-Is-UGy" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" constant="315" id="LfW-la-qKR"/>
                                     <constraint firstItem="aS3-Nt-7zY" firstAttribute="centerX" secondItem="No1-1q-Dts" secondAttribute="centerX" id="QLa-Lu-X8s"/>
+                                    <constraint firstItem="N8W-b7-GnS" firstAttribute="top" secondItem="aS3-Nt-7zY" secondAttribute="bottom" constant="48" id="QPL-hF-qc4"/>
                                     <constraint firstItem="N8W-b7-GnS" firstAttribute="top" secondItem="aS3-Nt-7zY" secondAttribute="bottom" id="ROb-Ou-hMI"/>
                                     <constraint firstItem="Wrd-oN-q0S" firstAttribute="top" secondItem="N8W-b7-GnS" secondAttribute="bottom" constant="8" id="Zj4-Rv-Omg"/>
                                     <constraint firstItem="QZQ-Nj-kxd" firstAttribute="top" secondItem="Wrd-oN-q0S" secondAttribute="bottom" constant="8" id="gwU-po-SuR"/>
