@@ -59,11 +59,17 @@ static NSString *const kPromoLandscapeNameFormat = @"%@_landscape";
     [_scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
 }
 
+- (void)setShowCancelButton:(BOOL)showCancelButton
+{
+    if (_closeButton) {
+        _closeButton.hidden = !showCancelButton;
+    }
+}
+
 - (void)setPartnerConfig:(FBPartnerConfig *)config
 {
     partnerConfig = config;
     [self loadImages];
-    _closeButton.hidden = !self.showCancelButton;
     
     _promoTextLabel.text = partnerConfig ? partnerConfig.promoText : @"";
 }
