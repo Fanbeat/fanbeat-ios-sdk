@@ -19,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="HaK-wT-f72"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PGu-Vd-E2H">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="promo_background" translatesAutoresizingMaskIntoConstraints="NO" id="LEv-0Z-HFG" userLabel="Background">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
                             </imageView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="No1-1q-Dts">
                                 <rect key="frame" x="0.0" y="0.0" width="325" height="568"/>
@@ -52,7 +52,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo_fanbeat" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-Nt-7zY" userLabel="FanBeat Logo">
                                         <rect key="frame" x="20" y="20" width="285" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="NUO-d9-QN5"/>
+                                            <constraint firstAttribute="height" constant="60" id="NUO-d9-QN5"/>
                                         </constraints>
                                     </imageView>
                                     <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="QZQ-Nj-kxd">
@@ -91,12 +91,12 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Wrd-oN-q0S" secondAttribute="trailing" id="AUB-as-beU"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wrd-oN-q0S" secondAttribute="trailing" constant="-20" id="AUB-as-beU"/>
                                     <constraint firstItem="N8W-b7-GnS" firstAttribute="centerX" secondItem="No1-1q-Dts" secondAttribute="centerX" id="BWK-rC-B87"/>
                                     <constraint firstItem="N8W-b7-GnS" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" constant="20" id="Crr-DP-Jeg"/>
                                     <constraint firstItem="QZQ-Nj-kxd" firstAttribute="centerX" secondItem="No1-1q-Dts" secondAttribute="centerX" id="DGL-39-dzh"/>
                                     <constraint firstItem="N8W-b7-GnS" firstAttribute="top" secondItem="aS3-Nt-7zY" secondAttribute="bottom" id="ExI-pw-1VE"/>
-                                    <constraint firstItem="Wrd-oN-q0S" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" id="IpO-Nl-dV5"/>
+                                    <constraint firstItem="Wrd-oN-q0S" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" constant="-20" id="IpO-Nl-dV5"/>
                                     <constraint firstItem="oWd-pI-j0o" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" constant="20" id="Mtd-K8-7Ii"/>
                                     <constraint firstAttribute="trailing" secondItem="N8W-b7-GnS" secondAttribute="trailing" constant="20" id="Onh-eO-2lS"/>
                                     <constraint firstItem="LLT-Is-UGy" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="top" id="Qgq-Ig-yIh"/>
@@ -106,7 +106,7 @@
                                     <constraint firstItem="QZQ-Nj-kxd" firstAttribute="top" secondItem="Wrd-oN-q0S" secondAttribute="bottom" id="e3b-s4-IBF"/>
                                     <constraint firstItem="aS3-Nt-7zY" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="top" id="hut-df-B5Z"/>
                                     <constraint firstItem="aS3-Nt-7zY" firstAttribute="centerX" secondItem="No1-1q-Dts" secondAttribute="centerX" id="koK-tE-tow"/>
-                                    <constraint firstItem="oWd-pI-j0o" firstAttribute="top" secondItem="QZQ-Nj-kxd" secondAttribute="bottom" constant="20" id="rjM-dV-HfI"/>
+                                    <constraint firstItem="oWd-pI-j0o" firstAttribute="top" secondItem="QZQ-Nj-kxd" secondAttribute="bottom" id="rjM-dV-HfI"/>
                                     <constraint firstAttribute="trailing" secondItem="oWd-pI-j0o" secondAttribute="trailing" constant="20" id="sLo-s7-WDc"/>
                                 </constraints>
                             </view>
@@ -135,6 +135,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="backgroundImage" destination="LEv-0Z-HFG" id="436-h3-v8c"/>
