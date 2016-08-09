@@ -25,7 +25,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="promo_background" translatesAutoresizingMaskIntoConstraints="NO" id="LEv-0Z-HFG" userLabel="Background">
                                 <rect key="frame" x="-4" y="0.0" width="375" height="480"/>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="-4" y="0.0" width="328" height="480"/>
+                                    <rect key="frame" x="-4" y="0.0" width="379" height="667"/>
                                 </variation>
                             </imageView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="No1-1q-Dts">
@@ -49,7 +49,7 @@
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="260" y="0.0" width="60" height="50"/>
+                                            <rect key="frame" x="319" y="0.0" width="60" height="50"/>
                                         </variation>
                                         <connections>
                                             <action selector="cancelClicked:" destination="5E3-4y-oiO" eventType="touchUpInside" id="vkK-jC-FiX"/>
@@ -68,7 +68,7 @@
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="47" y="20" width="226" height="100"/>
+                                            <rect key="frame" x="76" y="20" width="226" height="100"/>
                                             <mask key="constraints">
                                                 <exclude reference="Dlo-xS-Zsu"/>
                                             </mask>
@@ -83,19 +83,19 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="shadowOffset" width="1" height="1"/>
                                         <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="36" y="120" width="248" height="80.5"/>
+                                            <rect key="frame" x="36" y="112" width="307" height="80.5"/>
                                         </variation>
                                     </label>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrd-oN-q0S" userLabel="Prize Scroller">
                                         <rect key="frame" x="0.0" y="238" width="325" height="213"/>
                                         <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="-4" y="200.5" width="328" height="122.5"/>
+                                            <rect key="frame" x="-4" y="200.5" width="383" height="307.5"/>
                                         </variation>
                                     </scrollView>
                                     <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="QZQ-Nj-kxd">
                                         <rect key="frame" x="143" y="451" width="39" height="37"/>
                                         <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="140" y="323" width="39" height="37"/>
+                                            <rect key="frame" x="170" y="510" width="39" height="37"/>
                                         </variation>
                                         <connections>
                                             <action selector="onPageControlValueChanged:" destination="5E3-4y-oiO" eventType="valueChanged" id="6Rd-az-wEL"/>
@@ -117,7 +117,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="36" y="380" width="248" height="40"/>
+                                            <rect key="frame" x="36" y="567" width="307" height="40"/>
                                         </variation>
                                         <connections>
                                             <action selector="playNowTapped:" destination="5E3-4y-oiO" eventType="touchUpInside" id="qGC-2b-K6F"/>
@@ -165,7 +165,7 @@
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                                    <rect key="frame" x="-4" y="20" width="379" height="647"/>
                                     <mask key="constraints">
                                         <include reference="sgf-mj-f1Z"/>
                                         <include reference="ydc-VW-7nd"/>
@@ -216,7 +216,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImage" destination="LEv-0Z-HFG" id="436-h3-v8c"/>
                         <outlet property="closeButton" destination="LLT-Is-UGy" id="Jtr-R7-bqp"/>
@@ -228,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hzt-Pf-ZDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="232.5" y="445"/>
+            <point key="canvasLocation" x="231.75" y="444.5"/>
         </scene>
     </scenes>
     <resources>
