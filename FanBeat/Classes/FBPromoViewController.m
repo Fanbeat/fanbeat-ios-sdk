@@ -30,6 +30,7 @@
 @implementation FBPromoViewController
 
 static NSString *const kPromoDefaultBackgroundName = @"promo_background";
+static NSString *const kPromoLandscapeNameFormat = @"%@_landscape";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -122,14 +123,19 @@ static NSString *const kPromoDefaultBackgroundName = @"promo_background";
 {
     UIImage *image;
     
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    NSString *format = UIDeviceOrientationIsPortrait(orientation) ? @"%@" : kPromoLandscapeNameFormat;
+    
     // if the partner app defines a promo background, check for that image first
     if (partnerConfig.promoBackground) {
-        image = [self getImageNamed:partnerConfig.promoBackground];
+        NSString *name = [NSString stringWithFormat:format, partnerConfig.promoBackground];
+        image = [self getImageNamed:name];
     }
     
     // fallback to default image
     if (!image) {
-        image = [self getImageNamed:kPromoDefaultBackgroundName];
+        NSString *name = [NSString stringWithFormat:format, kPromoDefaultBackgroundName];
+        image = [self getImageNamed:name];
     }
     
     return image;
