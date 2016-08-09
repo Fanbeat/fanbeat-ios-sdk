@@ -98,6 +98,9 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
         _userId = userId;
         
         if (self.delegate && [self.delegate respondsToSelector:@selector(presentMarketingViewController:onInstallFanBeat:)]) {
+            // make sure the promo view has the latest config
+            [promoViewController setPartnerConfig:deepLinker.config];
+            
             [self.delegate presentMarketingViewController:promoViewController onInstallFanBeat:^{
                 [[FBDeepLinker getInstance] openStore:[UIApplication sharedApplication].keyWindow.rootViewController];
             }];
