@@ -25,9 +25,6 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *closeButton;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *logoTopConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *promoTextTopConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *prizeScrollerTopConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *playNowBottomConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *playNowTopConstraint;
 @property (nonatomic) CGFloat prizeHeight;
 @property (nonatomic) BOOL is4sRatio;
 @property (nonatomic) NSInteger prizeIndex;
@@ -44,7 +41,8 @@ static CGFloat const kMaxPrizeImageHeight = 200;
     [super viewDidLoad];
     
     CGRect screenRect = [UIScreen mainScreen].nativeBounds;
-    self.is4sRatio = (screenRect.size.width / screenRect.size.height) > 0.65;
+    //self.is4sRatio = (screenRect.size.width / screenRect.size.height) > 0.65;
+    self.is4sRatio = screenRect.size.width <= 640;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:[UIDevice currentDevice]];
     
@@ -162,7 +160,7 @@ static CGFloat const kMaxPrizeImageHeight = 200;
 {
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     
-    if (_is4sRatio) {
+    /*if (_is4sRatio) {
         _logoTopConstraint.constant = 20;
         _promoTextTopConstraint.constant = 20;
         _prizeScrollerTopConstraint.constant = 20;
@@ -181,6 +179,16 @@ static CGFloat const kMaxPrizeImageHeight = 200;
         _promoTextTopConstraint.constant = 36;
         _playNowTopConstraint.constant = 20;
         _playNowBottomConstraint.constant = 40;
+    }*/
+    
+    if (_is4sRatio) {
+        if (UIDeviceOrientationIsLandscape(orientation)) {
+            _promoTextTopConstraint.constant = 10;
+            _logoTopConstraint.constant = 20;
+        } else {
+            _promoTextTopConstraint.constant = 20;
+            _logoTopConstraint.constant = 40;
+        }
     }
 }
 
