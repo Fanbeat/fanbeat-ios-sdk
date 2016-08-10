@@ -27,6 +27,9 @@
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="-4" y="0.0" width="379" height="667"/>
                                 </variation>
+                                <variation key="heightClass=compact-widthClass=regular" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                </variation>
                             </imageView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="No1-1q-Dts">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -56,13 +59,13 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo_fanbeat" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-Nt-7zY" userLabel="FanBeat Logo">
-                                        <rect key="frame" x="45" y="60" width="285" height="62"/>
+                                        <rect key="frame" x="45" y="40" width="285" height="62"/>
                                         <variation key="widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="76" y="20" width="226" height="100"/>
                                         </variation>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="N8W-b7-GnS">
-                                        <rect key="frame" x="36" y="158" width="303" height="130"/>
+                                        <rect key="frame" x="36" y="122" width="303" height="130"/>
                                         <string key="text">With FanBeat, you can compete to win awesome prizes by answering predict-the-action and trivia questions. It's fun and free to play!</string>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -73,14 +76,17 @@
                                             <rect key="frame" x="36" y="112" width="307" height="80.5"/>
                                         </variation>
                                     </label>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrd-oN-q0S" userLabel="Prize Scroller">
-                                        <rect key="frame" x="0.0" y="296" width="375" height="229"/>
-                                        <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="-4" y="200.5" width="383" height="307.5"/>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="QZQ-Nj-kxd">
+                                        <rect key="frame" x="168" y="562" width="39" height="37"/>
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="170" y="510" width="39" height="37"/>
                                         </variation>
-                                    </scrollView>
+                                        <connections>
+                                            <action selector="onPageControlValueChanged:" destination="5E3-4y-oiO" eventType="valueChanged" id="6Rd-az-wEL"/>
+                                        </connections>
+                                    </pageControl>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWd-pI-j0o">
-                                        <rect key="frame" x="36" y="587" width="303" height="40"/>
+                                        <rect key="frame" x="36" y="607" width="303" height="40"/>
                                         <color key="backgroundColor" red="0.80000000000000004" green="0.10196078431372549" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Zha-P6-0p1"/>
@@ -101,33 +107,37 @@
                                             <action selector="playNowTapped:" destination="5E3-4y-oiO" eventType="touchUpInside" id="qGC-2b-K6F"/>
                                         </connections>
                                     </button>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="QZQ-Nj-kxd">
-                                        <rect key="frame" x="168" y="533" width="39" height="37"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="170" y="510" width="39" height="37"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrd-oN-q0S" userLabel="Prize Scroller">
+                                        <rect key="frame" x="0.0" y="354" width="375" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="rf7-oh-imF">
+                                                <variation key="heightClass=compact" constant="100"/>
+                                            </constraint>
+                                        </constraints>
+                                        <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="-4" y="200.5" width="383" height="307.5"/>
                                         </variation>
-                                        <connections>
-                                            <action selector="onPageControlValueChanged:" destination="5E3-4y-oiO" eventType="valueChanged" id="6Rd-az-wEL"/>
-                                        </connections>
-                                    </pageControl>
+                                    </scrollView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="LLT-Is-UGy" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="top" constant="20" id="0lO-yv-dOh"/>
-                                    <constraint firstItem="QZQ-Nj-kxd" firstAttribute="centerX" secondItem="No1-1q-Dts" secondAttribute="centerX" id="0tW-16-iUr"/>
-                                    <constraint firstAttribute="trailing" secondItem="N8W-b7-GnS" secondAttribute="trailing" constant="36" id="1Oc-si-9YJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="Wrd-oN-q0S" secondAttribute="trailing" id="8zr-QB-UMc"/>
-                                    <constraint firstItem="oWd-pI-j0o" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" constant="36" id="Fd6-QR-0uP"/>
-                                    <constraint firstItem="N8W-b7-GnS" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" constant="36" id="GRn-5C-4Ff"/>
-                                    <constraint firstItem="oWd-pI-j0o" firstAttribute="top" secondItem="QZQ-Nj-kxd" secondAttribute="bottom" constant="20" id="H9T-Wd-qQK"/>
-                                    <constraint firstItem="aS3-Nt-7zY" firstAttribute="centerX" secondItem="No1-1q-Dts" secondAttribute="centerX" id="QLa-Lu-X8s"/>
-                                    <constraint firstItem="N8W-b7-GnS" firstAttribute="top" secondItem="aS3-Nt-7zY" secondAttribute="bottom" constant="36" id="QPL-hF-qc4"/>
-                                    <constraint firstItem="Wrd-oN-q0S" firstAttribute="top" secondItem="N8W-b7-GnS" secondAttribute="bottom" constant="36" id="Zj4-Rv-Omg"/>
-                                    <constraint firstItem="QZQ-Nj-kxd" firstAttribute="top" secondItem="Wrd-oN-q0S" secondAttribute="bottom" constant="8" id="gwU-po-SuR"/>
-                                    <constraint firstItem="Wrd-oN-q0S" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" id="jYJ-ti-aFq"/>
-                                    <constraint firstItem="aS3-Nt-7zY" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="top" constant="60" id="ldP-v3-3rl"/>
-                                    <constraint firstAttribute="trailing" secondItem="oWd-pI-j0o" secondAttribute="trailing" constant="36" id="odh-Ex-02c"/>
-                                    <constraint firstAttribute="bottom" secondItem="oWd-pI-j0o" secondAttribute="bottom" constant="40" id="qw4-xI-SuT"/>
-                                    <constraint firstAttribute="trailing" secondItem="LLT-Is-UGy" secondAttribute="trailing" id="r9y-TP-bbF"/>
+                                    <constraint firstItem="N8W-b7-GnS" firstAttribute="top" secondItem="aS3-Nt-7zY" secondAttribute="bottom" constant="20" id="1ef-75-xb6"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wrd-oN-q0S" secondAttribute="trailing" id="1p7-0d-OCC"/>
+                                    <constraint firstItem="aS3-Nt-7zY" firstAttribute="centerX" secondItem="No1-1q-Dts" secondAttribute="centerX" id="5mN-vY-meO"/>
+                                    <constraint firstItem="QZQ-Nj-kxd" firstAttribute="top" secondItem="Wrd-oN-q0S" secondAttribute="bottom" constant="8" id="6cg-Wt-aWV">
+                                        <variation key="heightClass=compact" constant="0.0"/>
+                                    </constraint>
+                                    <constraint firstItem="aS3-Nt-7zY" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="top" constant="40" id="8XM-3Q-X0X"/>
+                                    <constraint firstAttribute="trailing" secondItem="oWd-pI-j0o" secondAttribute="trailing" constant="36" id="JdX-hh-Q1I"/>
+                                    <constraint firstItem="oWd-pI-j0o" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" constant="36" id="Olr-rQ-4g0"/>
+                                    <constraint firstAttribute="bottom" secondItem="oWd-pI-j0o" secondAttribute="bottom" constant="20" id="RcJ-uV-mui"/>
+                                    <constraint firstAttribute="trailing" secondItem="N8W-b7-GnS" secondAttribute="trailing" constant="36" id="bJK-aj-2zi"/>
+                                    <constraint firstItem="Wrd-oN-q0S" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" id="eYv-k3-Owd"/>
+                                    <constraint firstItem="LLT-Is-UGy" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="top" constant="20" id="qR1-FU-oIB"/>
+                                    <constraint firstItem="N8W-b7-GnS" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" constant="36" id="tLg-Js-x5Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="LLT-Is-UGy" secondAttribute="trailing" id="xjo-wS-aXa"/>
+                                    <constraint firstItem="oWd-pI-j0o" firstAttribute="top" secondItem="QZQ-Nj-kxd" secondAttribute="bottom" constant="8" id="yWs-nP-Msl">
+                                        <variation key="heightClass=compact" constant="0.0"/>
+                                    </constraint>
                                 </constraints>
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="-4" y="20" width="379" height="647"/>
@@ -136,12 +146,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="No1-1q-Dts" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" constant="-20" id="2G6-Lc-ryf"/>
-                            <constraint firstItem="LEv-0Z-HFG" firstAttribute="height" secondItem="PGu-Vd-E2H" secondAttribute="height" id="5hC-mx-bdf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="No1-1q-Dts" secondAttribute="trailing" constant="-20" id="BZg-o8-jv7"/>
-                            <constraint firstItem="LEv-0Z-HFG" firstAttribute="width" secondItem="PGu-Vd-E2H" secondAttribute="width" id="bFf-Kl-g4c"/>
-                            <constraint firstItem="HaK-wT-f72" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="bottom" id="eMG-2f-emq"/>
-                            <constraint firstItem="No1-1q-Dts" firstAttribute="leading" secondItem="PGu-Vd-E2H" secondAttribute="leadingMargin" constant="-20" id="hzg-Qs-DDM"/>
+                            <constraint firstItem="LEv-0Z-HFG" firstAttribute="width" secondItem="PGu-Vd-E2H" secondAttribute="width" id="0e6-Y9-BHS"/>
+                            <constraint firstItem="No1-1q-Dts" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" constant="-20" id="PP4-Ad-fYY"/>
+                            <constraint firstItem="No1-1q-Dts" firstAttribute="leading" secondItem="PGu-Vd-E2H" secondAttribute="leadingMargin" constant="-20" id="SjQ-3Q-AGm"/>
+                            <constraint firstItem="HaK-wT-f72" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="bottom" id="T6C-HL-O7D"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="No1-1q-Dts" secondAttribute="trailing" constant="-20" id="XQf-6K-5Ef"/>
+                            <constraint firstItem="LEv-0Z-HFG" firstAttribute="height" secondItem="PGu-Vd-E2H" secondAttribute="height" id="oSG-1b-mhv"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -149,13 +159,8 @@
                         <outlet property="backgroundImage" destination="LEv-0Z-HFG" id="436-h3-v8c"/>
                         <outlet property="closeButton" destination="LLT-Is-UGy" id="Jtr-R7-bqp"/>
                         <outlet property="logoImage" destination="aS3-Nt-7zY" id="jJI-8g-Uk9"/>
-                        <outlet property="logoTopConstraint" destination="ldP-v3-3rl" id="2Ck-wQ-AMZ"/>
                         <outlet property="pageControl" destination="QZQ-Nj-kxd" id="KUt-CR-mfj"/>
-                        <outlet property="playNowBottomConstraint" destination="qw4-xI-SuT" id="5Vy-go-YVZ"/>
-                        <outlet property="playNowTopConstraint" destination="H9T-Wd-qQK" id="fcb-kG-6lj"/>
-                        <outlet property="prizeScrollerTopConstraint" destination="Zj4-Rv-Omg" id="pcE-lw-Gfl"/>
                         <outlet property="promoTextLabel" destination="N8W-b7-GnS" id="lQA-ft-Tap"/>
-                        <outlet property="promoTextTopConstraint" destination="QPL-hF-qc4" id="Mlg-Sc-CBC"/>
                         <outlet property="scrollView" destination="Wrd-oN-q0S" id="GTc-Qt-cFU"/>
                     </connections>
                 </viewController>
