@@ -23,11 +23,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *promoTextLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *closeButton;
+@property (nonatomic) CGFloat prizeHeight;
+@property (nonatomic) NSInteger prizeIndex;
+
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *logoTopConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *promoTextTopConstraint;
-@property (nonatomic) CGFloat prizeHeight;
-@property (nonatomic) BOOL is4sRatio;
-@property (nonatomic) NSInteger prizeIndex;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *prizeScrollerHeightConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *playNowBottomConstraint;
 
 @end
 
@@ -40,19 +42,28 @@ static CGFloat const kMaxPrizeImageHeight = 200;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CGRect screenRect = [UIScreen mainScreen].nativeBounds;
-    //self.is4sRatio = (screenRect.size.width / screenRect.size.height) > 0.65;
-    self.is4sRatio = screenRect.size.width <= 640;
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:[UIDevice currentDevice]];
     
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FanBeatPod" ofType:@"bundle"];
     sdkBundle = [NSBundle bundleWithPath:bundlePath];
     
     [self setPartnerConfig:[FBDeepLinker getInstance].config];
-    [self updateConstraints];
     
     _scrollView.delegate = self;
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [self adjustViewLayout:size];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self adjustViewLayout:[UIScreen mainScreen].bounds.size];
+}
+
+- (void)adjustViewLayout:(CGSize) size {
+    
 }
 
 - (void)viewWillLayoutSubviews
@@ -75,7 +86,6 @@ static CGFloat const kMaxPrizeImageHeight = 200;
 {
     UIDevice *device = notification.object;
     
-    [self updateConstraints];
     [self loadImages];
     [self scrollToPrizeImage:self.prizeIndex animated:NO];
 }
@@ -153,23 +163,6 @@ static CGFloat const kMaxPrizeImageHeight = 200;
         
         [_scrollView setContentSize:CGSizeMake(x, height)];
         _prizeHeight = height;
-    }
-}
-
-- (void)updateConstraints
-{
-    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    
-    if (_is4sRatio) {
-        if (UIDeviceOrientationIsLandscape(orientation)) {
-            _promoTextTopConstraint.constant = 10;
-            _logoTopConstraint.constant = 20;
-            _promoTextLabel.numberOfLines = 2;
-        } else {
-            _promoTextTopConstraint.constant = 20;
-            _logoTopConstraint.constant = 40;
-            _promoTextLabel.numberOfLines = 4;
-        }
     }
 }
 
