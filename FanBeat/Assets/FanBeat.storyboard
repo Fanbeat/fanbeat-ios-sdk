@@ -74,6 +74,12 @@
                                             <action selector="onPageControlValueChanged:" destination="5E3-4y-oiO" eventType="valueChanged" id="6Rd-az-wEL"/>
                                         </connections>
                                     </pageControl>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrd-oN-q0S" userLabel="Prize Scroller">
+                                        <rect key="frame" x="0.0" y="322" width="375" height="200"/>
+                                        <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="-4" y="200.5" width="383" height="307.5"/>
+                                        </variation>
+                                    </scrollView>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6EL-g2-4Up" userLabel="Pager Bottom Spacer">
                                         <rect key="frame" x="0.0" y="559" width="375" height="8"/>
                                     </view>
@@ -108,18 +114,6 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cKL-lf-uqY" userLabel="Bottom Spacer">
                                         <rect key="frame" x="0.0" y="607" width="375" height="73"/>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrd-oN-q0S" userLabel="Prize Scroller">
-                                        <rect key="frame" x="0.0" y="322" width="375" height="200"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="F4I-xq-BRe">
-                                                <variation key="heightClass=compact" constant="80"/>
-                                                <variation key="heightClass=compact-widthClass=regular" constant="100"/>
-                                            </constraint>
-                                        </constraints>
-                                        <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="-4" y="200.5" width="383" height="307.5"/>
-                                        </variation>
-                                    </scrollView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="jcC-o5-ejC" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" id="1zd-cO-Kgb"/>
@@ -144,6 +138,7 @@
                                     <constraint firstItem="Woz-7X-3no" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" id="LYW-jU-Hvz"/>
                                     <constraint firstAttribute="trailing" secondItem="Wrd-oN-q0S" secondAttribute="trailing" id="MDB-UN-8Uo"/>
                                     <constraint firstItem="4at-LU-dlb" firstAttribute="leading" secondItem="N8W-b7-GnS" secondAttribute="trailing" id="P9E-H4-xEg"/>
+                                    <constraint firstItem="Wrd-oN-q0S" firstAttribute="height" secondItem="No1-1q-Dts" secondAttribute="height" multiplier="0.2" id="RUb-Ar-48V"/>
                                     <constraint firstAttribute="trailing" secondItem="xkp-Kq-OYi" secondAttribute="trailing" id="SbE-La-p3d"/>
                                     <constraint firstItem="jcC-o5-ejC" firstAttribute="width" secondItem="No1-1q-Dts" secondAttribute="width" multiplier="0.2" id="Sqb-fQ-6w1"/>
                                     <constraint firstItem="cKL-lf-uqY" firstAttribute="top" secondItem="oWd-pI-j0o" secondAttribute="bottom" id="WOp-s4-mvC"/>
@@ -212,7 +207,6 @@
                         <outlet property="containerView" destination="No1-1q-Dts" id="yUC-tr-TKc"/>
                         <outlet property="logoImage" destination="aS3-Nt-7zY" id="jJI-8g-Uk9"/>
                         <outlet property="pageControl" destination="QZQ-Nj-kxd" id="KUt-CR-mfj"/>
-                        <outlet property="prizeScrollerHeightConstraint" destination="F4I-xq-BRe" id="2q1-Tc-qVV"/>
                         <outlet property="promoTextLabel" destination="N8W-b7-GnS" id="lQA-ft-Tap"/>
                         <outlet property="scrollView" destination="Wrd-oN-q0S" id="GTc-Qt-cFU"/>
                     </connections>

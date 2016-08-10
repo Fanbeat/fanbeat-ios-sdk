@@ -72,6 +72,8 @@ static CGFloat const kMaxPrizeImageHeight = 200;
     CGFloat height = size.height;
     CGFloat width = size.width;
     
+    _promoTextLabel.numberOfLines = (height < width) ? 2 : 4;
+    
     return;
     
     if (height == 480 && width == 320) { // iPhone 4/4S portrait
