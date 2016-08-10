@@ -31,6 +31,7 @@
 
 static NSString *const kPromoDefaultBackgroundName = @"promo_background";
 static NSString *const kPromoLandscapeNameFormat = @"%@_landscape";
+static CGFloat const kMaxPrizeImageHeight = 200;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -99,15 +100,21 @@ static NSString *const kPromoLandscapeNameFormat = @"%@_landscape";
         CGFloat width = [UIScreen mainScreen].bounds.size.width;
         CGFloat height = _scrollView.bounds.size.height;
         CGFloat x = 0;
+        CGFloat y = 0;
+        
+        if (height > kMaxPrizeImageHeight) {
+            y = height - kMaxPrizeImageHeight;
+            height = kMaxPrizeImageHeight;
+        }
         
         [_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         
         for(FBPromoPrize *prize in partnerConfig.promoPrizes) {
             UIImage *prizeImage = [self getImageNamed:prize.icon];
             if (prizeImage) {
-                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, 0, width, height)];
+                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, width, height)];
                 imageView.image = prizeImage;
-                imageView.contentMode = UIViewContentModeBottom;
+                imageView.contentMode = y > 0 ? UIViewContentModeBottom : UIViewContentModeScaleAspectFit;
                 
                 [_scrollView addSubview:imageView];
                 
