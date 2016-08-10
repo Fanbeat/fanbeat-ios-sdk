@@ -23,7 +23,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *promoTextLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *closeButton;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *logoTopConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *promoTextTopConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *playNowBottomConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *playNowTopConstraint;
 @property (nonatomic) CGFloat prizeHeight;
+@property (nonatomic) BOOL is4sRatio;
+@property (nonatomic) NSInteger prizeIndex;
 
 @end
 
@@ -36,10 +42,16 @@ static CGFloat const kMaxPrizeImageHeight = 200;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    CGRect screenRect = [UIScreen mainScreen].nativeBounds;
+    self.is4sRatio = (screenRect.size.width / screenRect.size.height) > 0.65;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:[UIDevice currentDevice]];
+    
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FanBeatPod" ofType:@"bundle"];
     sdkBundle = [NSBundle bundleWithPath:bundlePath];
     
     [self setPartnerConfig:[FBDeepLinker getInstance].config];
+    [self updateConstraints];
     
     _scrollView.delegate = self;
 }
@@ -58,6 +70,15 @@ static CGFloat const kMaxPrizeImageHeight = 200;
     [_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [_pageControl setCurrentPage:0];
     [_scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+}
+
+- (void)orientationChanged:(NSNotification*)notification
+{
+    UIDevice *device = notification.object;
+    
+    [self updateConstraints];
+    [self loadImages];
+    [self scrollToPrizeImage:self.prizeIndex animated:NO];
 }
 
 - (void)setShowCancelButton:(BOOL)showCancelButton
@@ -81,11 +102,19 @@ static CGFloat const kMaxPrizeImageHeight = 200;
     CGFloat currentIndex = floor((scrollView.contentOffset.x - pageWidth/2)/pageWidth) + 1;
     
     [_pageControl setCurrentPage:currentIndex];
+    self.prizeIndex = currentIndex;
 }
 
 - (IBAction)onPageControlValueChanged:(id)sender {
+    [self scrollToPrizeImage:_pageControl.currentPage animated:YES];
+    self.prizeIndex = _pageControl.currentPage;
+}
+
+- (void) scrollToPrizeImage:(NSInteger)index animated:(BOOL)animated
+{
     CGFloat width = _scrollView.frame.size.width;
-    [_scrollView setContentOffset:CGPointMake(width * _pageControl.currentPage, 0) animated:YES];
+    [_scrollView setContentOffset:CGPointMake(width * index, 0) animated:animated];
+    [_pageControl setCurrentPage:index];
 }
 
 - (void)loadImages
@@ -125,6 +154,21 @@ static CGFloat const kMaxPrizeImageHeight = 200;
         
         [_scrollView setContentSize:CGSizeMake(x, height)];
         _prizeHeight = height;
+    }
+}
+
+- (void)updateConstraints
+{
+    if (_is4sRatio) {
+        _logoTopConstraint.constant = 20;
+        _promoTextTopConstraint.constant = 20;
+        _playNowTopConstraint.constant = 8;
+        _playNowBottomConstraint.constant = 20;
+    } else {
+        _logoTopConstraint.constant = 60;
+        _promoTextTopConstraint.constant = 36;
+        _playNowTopConstraint.constant = 20;
+        _playNowBottomConstraint.constant = 40;
     }
 }
 
