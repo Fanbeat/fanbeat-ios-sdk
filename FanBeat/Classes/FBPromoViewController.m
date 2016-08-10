@@ -17,19 +17,21 @@
     FBPartnerConfig *partnerConfig;
 }
 
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UILabel *promoTextLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *closeButton;
-@property (nonatomic) CGFloat prizeHeight;
 @property (nonatomic) NSInteger prizeIndex;
 
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *logoTopConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *promoTextTopConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *prizeScrollerHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *playNowBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pagerTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pagerBottomConstraint;
 
 @end
 
@@ -63,16 +65,104 @@ static CGFloat const kMaxPrizeImageHeight = 200;
 }
 
 - (void)adjustViewLayout:(CGSize) size {
+    CGFloat height = size.height;
+    CGFloat width = size.width;
     
+    if (height == 480 && width == 320) { // iPhone 4/4S portrait
+        _logoTopConstraint.constant = 40;
+        _promoTextTopConstraint.constant = 8;
+        _promoTextLabel.numberOfLines = 4;
+        _prizeScrollerHeightConstraint.constant = 120;
+        _pagerTopConstraint.constant = 8;
+        _pagerBottomConstraint.constant = 8;
+    }
+    else if (height == 320 && width == 480) { // iPhone 4/4S landscape
+        _logoTopConstraint.constant = 30;
+        _promoTextTopConstraint.constant = 0;
+        _promoTextLabel.numberOfLines = 3;
+        _prizeScrollerHeightConstraint.constant = 60;
+        _pagerTopConstraint.constant = 0;
+        _pagerBottomConstraint.constant = 0;
+    }
+    else if (height == 568 && width == 320) { // iPhone 5 portrait
+        _logoTopConstraint.constant = 60;
+        _promoTextTopConstraint.constant = 20;
+        _promoTextLabel.numberOfLines = 4;
+        _prizeScrollerHeightConstraint.constant = 150;
+        _pagerTopConstraint.constant = 8;
+        _pagerBottomConstraint.constant = 8;
+    }
+    else if (height == 320 && width == 568) { // iPhone 5 landscape
+        _logoTopConstraint.constant = 30;
+        _promoTextTopConstraint.constant = 0;
+        _promoTextLabel.numberOfLines = 3;
+        _prizeScrollerHeightConstraint.constant = 60;
+        _pagerTopConstraint.constant = 0;
+        _pagerBottomConstraint.constant = 0;
+    }
+    else if (height == 667 && width == 375) { // iPhone 6 portrait
+        _logoTopConstraint.constant = 60;
+        _promoTextTopConstraint.constant = 36;
+        _prizeScrollerHeightConstraint.constant = 160;
+        _pagerBottomConstraint.constant = 20;
+        _playNowBottomConstraint.constant = 40;
+    }
+    else if (height == 375 && width == 667) { // iPhone 6 landscape
+        _logoTopConstraint.constant = 40;
+        _promoTextTopConstraint.constant = 20;
+        _prizeScrollerHeightConstraint.constant = 80;
+        _pagerBottomConstraint.constant = 8;
+        _playNowBottomConstraint.constant = 20;
+    }
+    else if (height == 736 && width == 414) { // iPhone 6+ portrait
+        _logoTopConstraint.constant = 80;
+        _promoTextTopConstraint.constant = 40;
+        _prizeScrollerHeightConstraint.constant = 200;
+        _pagerBottomConstraint.constant = 20;
+        _playNowBottomConstraint.constant = 40;
+    }
+    else if (height == 414 && width == 736) { // iPhone 6+ landscape
+        _logoTopConstraint.constant = 40;
+        _promoTextTopConstraint.constant = 20;
+        _prizeScrollerHeightConstraint.constant = 100;
+        _pagerBottomConstraint.constant = 8;
+        _playNowBottomConstraint.constant = 20;
+    }
+    else if (height == 1024 && width == 768) { // iPad portrait
+        _logoTopConstraint.constant = 120;
+        _promoTextTopConstraint.constant = 120;
+        _prizeScrollerHeightConstraint.constant = 160;
+        _pagerBottomConstraint.constant = 80;
+        _playNowBottomConstraint.constant = 60;
+    }
+    else if (height == 768 && width == 1024) { // iPad landscape
+        _logoTopConstraint.constant = 120;
+        _promoTextTopConstraint.constant = 60;
+        _prizeScrollerHeightConstraint.constant = 140;
+        _pagerBottomConstraint.constant = 60;
+        _playNowBottomConstraint.constant = 40;
+    }
+    else if (height == 1366 && width == 1024) { // iPad pro portrait
+        _logoTopConstraint.constant = 200;
+        _promoTextTopConstraint.constant = 120;
+        _prizeScrollerHeightConstraint.constant = 200;
+        _pagerBottomConstraint.constant = 120;
+        _playNowBottomConstraint.constant = 300;
+    }
+    else if (height == 1024 && width == 1366) { // iPad pro landscape
+        _logoTopConstraint.constant = 120;
+        _promoTextTopConstraint.constant = 80;
+        _prizeScrollerHeightConstraint.constant = 200;
+        _pagerBottomConstraint.constant = 80;
+        _playNowBottomConstraint.constant = 140;
+    }
+    
+    [self loadImages];
 }
 
 - (void)viewWillLayoutSubviews
 {
-    CGFloat height = _scrollView.bounds.size.height;
-    
-    if (height != _prizeHeight) {
-        [self loadImages];
-    }
+    [self loadImages];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -162,7 +252,6 @@ static CGFloat const kMaxPrizeImageHeight = 200;
         }
         
         [_scrollView setContentSize:CGSizeMake(x, height)];
-        _prizeHeight = height;
     }
 }
 

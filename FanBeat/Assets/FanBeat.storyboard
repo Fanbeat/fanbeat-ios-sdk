@@ -31,26 +31,26 @@
                                     <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                                 </variation>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLT-Is-UGy" userLabel="Close Button">
+                                <rect key="frame" x="315" y="20" width="60" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="TMY-7d-ce5"/>
+                                    <constraint firstAttribute="width" constant="60" id="lJD-Mq-2UU"/>
+                                </constraints>
+                                <state key="normal" image="icon_circle-x"/>
+                                <variation key="heightClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="319" y="20" width="60" height="50"/>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="319" y="0.0" width="60" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="cancelClicked:" destination="5E3-4y-oiO" eventType="touchUpInside" id="vkK-jC-FiX"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="No1-1q-Dts">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLT-Is-UGy" userLabel="Close Button">
-                                        <rect key="frame" x="315" y="20" width="60" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="TMY-7d-ce5"/>
-                                            <constraint firstAttribute="width" constant="60" id="lJD-Mq-2UU"/>
-                                        </constraints>
-                                        <state key="normal" image="icon_circle-x"/>
-                                        <variation key="heightClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="319" y="20" width="60" height="50"/>
-                                        </variation>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="319" y="0.0" width="60" height="50"/>
-                                        </variation>
-                                        <connections>
-                                            <action selector="cancelClicked:" destination="5E3-4y-oiO" eventType="touchUpInside" id="vkK-jC-FiX"/>
-                                        </connections>
-                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo_fanbeat" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-Nt-7zY" userLabel="FanBeat Logo">
                                         <rect key="frame" x="45" y="40" width="285" height="62"/>
                                         <variation key="heightClass=compact" fixedFrame="YES">
@@ -75,7 +75,7 @@
                                             <rect key="frame" x="36" y="112" width="307" height="80.5"/>
                                         </variation>
                                     </label>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrd-oN-q0S" userLabel="Prize Scroller">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrd-oN-q0S" userLabel="Prize Scroller">
                                         <rect key="frame" x="0.0" y="354" width="375" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="R0k-1Z-dwg"/>
@@ -133,8 +133,7 @@
                                     <constraint firstItem="QZQ-Nj-kxd" firstAttribute="centerX" secondItem="No1-1q-Dts" secondAttribute="centerX" id="BpR-CO-qjH"/>
                                     <constraint firstItem="oWd-pI-j0o" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" constant="36" id="PGD-Mn-Nsc"/>
                                     <constraint firstItem="N8W-b7-GnS" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" constant="36" id="Pvc-YR-yHU"/>
-                                    <constraint firstItem="LLT-Is-UGy" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="top" constant="20" id="V7X-lH-rUj"/>
-                                    <constraint firstAttribute="trailing" secondItem="LLT-Is-UGy" secondAttribute="trailing" id="WZ2-K8-k8p"/>
+                                    <constraint firstItem="QZQ-Nj-kxd" firstAttribute="top" secondItem="Wrd-oN-q0S" secondAttribute="bottom" constant="8" id="XDp-OI-eB6"/>
                                     <constraint firstAttribute="trailing" secondItem="N8W-b7-GnS" secondAttribute="trailing" constant="36" id="dPv-qn-bX4"/>
                                     <constraint firstAttribute="bottom" secondItem="oWd-pI-j0o" secondAttribute="bottom" constant="20" id="h1T-X8-7bd"/>
                                     <constraint firstAttribute="trailing" secondItem="oWd-pI-j0o" secondAttribute="trailing" constant="36" id="qyt-eZ-URF"/>
@@ -151,10 +150,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="LLT-Is-UGy" secondAttribute="trailing" constant="-20" id="E1Q-Ym-2Zl"/>
                             <constraint firstItem="LEv-0Z-HFG" firstAttribute="width" secondItem="PGu-Vd-E2H" secondAttribute="width" id="HSD-ZU-XhW"/>
                             <constraint firstItem="LEv-0Z-HFG" firstAttribute="height" secondItem="PGu-Vd-E2H" secondAttribute="height" id="Hhh-Ee-G01"/>
                             <constraint firstItem="No1-1q-Dts" firstAttribute="leading" secondItem="PGu-Vd-E2H" secondAttribute="leadingMargin" constant="-20" id="HnJ-Pf-zW3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="No1-1q-Dts" secondAttribute="trailing" constant="-20" id="OBb-c7-UNg"/>
+                            <constraint firstItem="LLT-Is-UGy" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" id="XqI-ZQ-1eW"/>
                             <constraint firstItem="No1-1q-Dts" firstAttribute="top" secondItem="BYV-EA-bnH" secondAttribute="bottom" constant="-20" id="nsU-Pp-NeE"/>
                             <constraint firstItem="HaK-wT-f72" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="bottom" id="yNK-c9-Bgb"/>
                         </constraints>
@@ -163,9 +164,12 @@
                     <connections>
                         <outlet property="backgroundImage" destination="LEv-0Z-HFG" id="436-h3-v8c"/>
                         <outlet property="closeButton" destination="LLT-Is-UGy" id="Jtr-R7-bqp"/>
+                        <outlet property="containerView" destination="No1-1q-Dts" id="yUC-tr-TKc"/>
                         <outlet property="logoImage" destination="aS3-Nt-7zY" id="jJI-8g-Uk9"/>
                         <outlet property="logoTopConstraint" destination="8eU-SH-Cak" id="cq3-i1-wGN"/>
                         <outlet property="pageControl" destination="QZQ-Nj-kxd" id="KUt-CR-mfj"/>
+                        <outlet property="pagerBottomConstraint" destination="vNA-Od-krp" id="ngP-3t-dnl"/>
+                        <outlet property="pagerTopConstraint" destination="XDp-OI-eB6" id="7jk-Kw-VpE"/>
                         <outlet property="playNowBottomConstraint" destination="h1T-X8-7bd" id="yrQ-D2-0Ru"/>
                         <outlet property="prizeScrollerHeightConstraint" destination="R0k-1Z-dwg" id="8k1-70-urI"/>
                         <outlet property="promoTextLabel" destination="N8W-b7-GnS" id="lQA-ft-Tap"/>
