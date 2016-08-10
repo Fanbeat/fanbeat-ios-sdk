@@ -160,34 +160,15 @@ static CGFloat const kMaxPrizeImageHeight = 200;
 {
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     
-    /*if (_is4sRatio) {
-        _logoTopConstraint.constant = 20;
-        _promoTextTopConstraint.constant = 20;
-        _prizeScrollerTopConstraint.constant = 20;
-        _playNowTopConstraint.constant = 8;
-        _playNowBottomConstraint.constant = 20;
-        _promoTextLabel.numberOfLines = 3;
-        
-        if (UIDeviceOrientationIsLandscape(orientation)) {
-            _promoTextLabel.numberOfLines = 2;
-            _promoTextTopConstraint.constant = 8;
-            _prizeScrollerTopConstraint.constant = 8;
-        }
-        
-    } else {
-        _logoTopConstraint.constant = 60;
-        _promoTextTopConstraint.constant = 36;
-        _playNowTopConstraint.constant = 20;
-        _playNowBottomConstraint.constant = 40;
-    }*/
-    
     if (_is4sRatio) {
         if (UIDeviceOrientationIsLandscape(orientation)) {
             _promoTextTopConstraint.constant = 10;
             _logoTopConstraint.constant = 20;
+            _promoTextLabel.numberOfLines = 2;
         } else {
             _promoTextTopConstraint.constant = 20;
             _logoTopConstraint.constant = 40;
+            _promoTextLabel.numberOfLines = 3;
         }
     }
 }

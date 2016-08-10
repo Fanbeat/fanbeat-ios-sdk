@@ -76,7 +76,7 @@
                                             <rect key="frame" x="36" y="112" width="307" height="80.5"/>
                                         </variation>
                                     </label>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="QZQ-Nj-kxd">
+                                    <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="QZQ-Nj-kxd">
                                         <rect key="frame" x="168" y="562" width="39" height="37"/>
                                         <variation key="widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="170" y="510" width="39" height="37"/>
@@ -128,9 +128,9 @@
                                     </constraint>
                                     <constraint firstItem="aS3-Nt-7zY" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="top" constant="40" id="8XM-3Q-X0X"/>
                                     <constraint firstAttribute="trailing" secondItem="oWd-pI-j0o" secondAttribute="trailing" constant="36" id="JdX-hh-Q1I"/>
-                                    <constraint firstItem="QZQ-Nj-kxd" firstAttribute="centerX" secondItem="No1-1q-Dts" secondAttribute="centerX" id="N7u-SF-EsO"/>
                                     <constraint firstItem="oWd-pI-j0o" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" constant="36" id="Olr-rQ-4g0"/>
                                     <constraint firstAttribute="bottom" secondItem="oWd-pI-j0o" secondAttribute="bottom" constant="20" id="RcJ-uV-mui"/>
+                                    <constraint firstItem="QZQ-Nj-kxd" firstAttribute="centerX" secondItem="No1-1q-Dts" secondAttribute="centerX" id="SVc-MS-ejG"/>
                                     <constraint firstAttribute="trailing" secondItem="N8W-b7-GnS" secondAttribute="trailing" constant="36" id="bJK-aj-2zi"/>
                                     <constraint firstItem="Wrd-oN-q0S" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" id="eYv-k3-Owd"/>
                                     <constraint firstItem="LLT-Is-UGy" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="top" constant="20" id="qR1-FU-oIB"/>
@@ -140,18 +140,8 @@
                                         <variation key="heightClass=compact" constant="0.0"/>
                                     </constraint>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="N7u-SF-EsO"/>
-                                    </mask>
-                                </variation>
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="-4" y="20" width="379" height="647"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="N7u-SF-EsO"/>
-                                    </mask>
                                 </variation>
                             </view>
                         </subviews>
