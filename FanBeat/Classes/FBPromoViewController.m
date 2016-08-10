@@ -32,6 +32,10 @@
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *playNowBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pagerTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pagerBottomConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *playNowLeftConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *playNowRightConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *promoTextLeftConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *promoTextRightConstraint;
 
 @end
 
@@ -134,6 +138,10 @@ static CGFloat const kMaxPrizeImageHeight = 200;
         _prizeScrollerHeightConstraint.constant = 160;
         _pagerBottomConstraint.constant = 80;
         _playNowBottomConstraint.constant = 60;
+        _promoTextLeftConstraint.constant = 60;
+        _promoTextRightConstraint.constant = 60;
+        _playNowLeftConstraint.constant = 60;
+        _playNowRightConstraint.constant = 60;
     }
     else if (height == 768 && width == 1024) { // iPad landscape
         _logoTopConstraint.constant = 120;
@@ -141,6 +149,10 @@ static CGFloat const kMaxPrizeImageHeight = 200;
         _prizeScrollerHeightConstraint.constant = 140;
         _pagerBottomConstraint.constant = 60;
         _playNowBottomConstraint.constant = 40;
+        _promoTextLeftConstraint.constant = 120;
+        _promoTextRightConstraint.constant = 120;
+        _playNowLeftConstraint.constant = 120;
+        _playNowRightConstraint.constant = 120;
     }
     else if (height == 1366 && width == 1024) { // iPad pro portrait
         _logoTopConstraint.constant = 200;
@@ -148,6 +160,10 @@ static CGFloat const kMaxPrizeImageHeight = 200;
         _prizeScrollerHeightConstraint.constant = 200;
         _pagerBottomConstraint.constant = 120;
         _playNowBottomConstraint.constant = 300;
+        _promoTextLeftConstraint.constant = 100;
+        _promoTextRightConstraint.constant = 100;
+        _playNowLeftConstraint.constant = 100;
+        _playNowRightConstraint.constant = 100;
     }
     else if (height == 1024 && width == 1366) { // iPad pro landscape
         _logoTopConstraint.constant = 120;
@@ -155,6 +171,10 @@ static CGFloat const kMaxPrizeImageHeight = 200;
         _prizeScrollerHeightConstraint.constant = 200;
         _pagerBottomConstraint.constant = 80;
         _playNowBottomConstraint.constant = 140;
+        _promoTextLeftConstraint.constant = 160;
+        _promoTextRightConstraint.constant = 160;
+        _playNowLeftConstraint.constant = 160;
+        _playNowRightConstraint.constant = 160;
     }
     
     [self loadImages];
