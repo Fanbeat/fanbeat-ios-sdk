@@ -136,7 +136,7 @@
                                     <constraint firstItem="aS3-Nt-7zY" firstAttribute="centerX" secondItem="No1-1q-Dts" secondAttribute="centerX" id="QLa-Lu-X8s"/>
                                     <constraint firstItem="N8W-b7-GnS" firstAttribute="top" secondItem="aS3-Nt-7zY" secondAttribute="bottom" constant="48" id="QPL-hF-qc4"/>
                                     <constraint firstItem="N8W-b7-GnS" firstAttribute="top" secondItem="aS3-Nt-7zY" secondAttribute="bottom" id="ROb-Ou-hMI"/>
-                                    <constraint firstItem="Wrd-oN-q0S" firstAttribute="top" secondItem="N8W-b7-GnS" secondAttribute="bottom" constant="8" id="Zj4-Rv-Omg"/>
+                                    <constraint firstItem="Wrd-oN-q0S" firstAttribute="top" secondItem="N8W-b7-GnS" secondAttribute="bottom" constant="36" id="Zj4-Rv-Omg"/>
                                     <constraint firstItem="QZQ-Nj-kxd" firstAttribute="top" secondItem="Wrd-oN-q0S" secondAttribute="bottom" constant="8" id="gwU-po-SuR"/>
                                     <constraint firstItem="Wrd-oN-q0S" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" id="jYJ-ti-aFq"/>
                                     <constraint firstItem="aS3-Nt-7zY" firstAttribute="top" secondItem="No1-1q-Dts" secondAttribute="top" constant="60" id="ldP-v3-3rl"/>
@@ -146,6 +146,7 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="ROb-Ou-hMI"/>
                                         <exclude reference="LfW-la-qKR"/>
                                     </mask>
                                 </variation>
