@@ -180,6 +180,7 @@
                         <outlet property="pagerTopConstraint" destination="Oul-Bl-QaJ" id="R2s-1S-wbB"/>
                         <outlet property="playNowBottomConstraint" destination="LNR-0R-oea" id="glW-eN-qZC"/>
                         <outlet property="playNowLeftConstraint" destination="xR7-z0-16f" id="AZX-Hg-RHF"/>
+                        <outlet property="playNowRightConstraint" destination="sdz-JS-B8H" id="Oni-C6-TEo"/>
                         <outlet property="prizeScrollerHeightConstraint" destination="F4I-xq-BRe" id="2q1-Tc-qVV"/>
                         <outlet property="promoTextLabel" destination="N8W-b7-GnS" id="lQA-ft-Tap"/>
                         <outlet property="promoTextLeftConstraint" destination="S0F-3U-alx" id="sIi-DQ-tda"/>

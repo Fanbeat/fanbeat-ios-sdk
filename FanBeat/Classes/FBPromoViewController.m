@@ -138,10 +138,10 @@ static CGFloat const kMaxPrizeImageHeight = 200;
         _prizeScrollerHeightConstraint.constant = 160;
         _pagerBottomConstraint.constant = 80;
         _playNowBottomConstraint.constant = 60;
-        _promoTextLeftConstraint.constant = 60;
-        _promoTextRightConstraint.constant = 60;
-        _playNowLeftConstraint.constant = 60;
-        _playNowRightConstraint.constant = 60;
+        _promoTextLeftConstraint.constant = 80;
+        _promoTextRightConstraint.constant = 80;
+        _playNowLeftConstraint.constant = 80;
+        _playNowRightConstraint.constant = 80;
     }
     else if (height == 768 && width == 1024) { // iPad landscape
         _logoTopConstraint.constant = 120;
@@ -149,10 +149,10 @@ static CGFloat const kMaxPrizeImageHeight = 200;
         _prizeScrollerHeightConstraint.constant = 140;
         _pagerBottomConstraint.constant = 60;
         _playNowBottomConstraint.constant = 40;
-        _promoTextLeftConstraint.constant = 120;
-        _promoTextRightConstraint.constant = 120;
-        _playNowLeftConstraint.constant = 120;
-        _playNowRightConstraint.constant = 120;
+        _promoTextLeftConstraint.constant = 160;
+        _promoTextRightConstraint.constant = 160;
+        _playNowLeftConstraint.constant = 160;
+        _playNowRightConstraint.constant = 160;
     }
     else if (height == 1366 && width == 1024) { // iPad pro portrait
         _logoTopConstraint.constant = 200;
@@ -171,10 +171,10 @@ static CGFloat const kMaxPrizeImageHeight = 200;
         _prizeScrollerHeightConstraint.constant = 200;
         _pagerBottomConstraint.constant = 80;
         _playNowBottomConstraint.constant = 140;
-        _promoTextLeftConstraint.constant = 160;
-        _promoTextRightConstraint.constant = 160;
-        _playNowLeftConstraint.constant = 160;
-        _playNowRightConstraint.constant = 160;
+        _promoTextLeftConstraint.constant = 200;
+        _promoTextRightConstraint.constant = 200;
+        _playNowLeftConstraint.constant = 200;
+        _playNowRightConstraint.constant = 200;
     }
     
     [self loadImages];
