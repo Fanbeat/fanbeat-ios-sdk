@@ -153,6 +153,7 @@
                         <outlet property="pageControl" destination="QZQ-Nj-kxd" id="KUt-CR-mfj"/>
                         <outlet property="playNowBottomConstraint" destination="qw4-xI-SuT" id="5Vy-go-YVZ"/>
                         <outlet property="playNowTopConstraint" destination="H9T-Wd-qQK" id="fcb-kG-6lj"/>
+                        <outlet property="prizeScrollerTopConstraint" destination="Zj4-Rv-Omg" id="pcE-lw-Gfl"/>
                         <outlet property="promoTextLabel" destination="N8W-b7-GnS" id="lQA-ft-Tap"/>
                         <outlet property="promoTextTopConstraint" destination="QPL-hF-qc4" id="Mlg-Sc-CBC"/>
                         <outlet property="scrollView" destination="Wrd-oN-q0S" id="GTc-Qt-cFU"/>

@@ -25,6 +25,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *closeButton;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *logoTopConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *promoTextTopConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *prizeScrollerTopConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *playNowBottomConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *playNowTopConstraint;
 @property (nonatomic) CGFloat prizeHeight;
@@ -159,11 +160,22 @@ static CGFloat const kMaxPrizeImageHeight = 200;
 
 - (void)updateConstraints
 {
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    
     if (_is4sRatio) {
         _logoTopConstraint.constant = 20;
         _promoTextTopConstraint.constant = 20;
+        _prizeScrollerTopConstraint.constant = 20;
         _playNowTopConstraint.constant = 8;
         _playNowBottomConstraint.constant = 20;
+        _promoTextLabel.numberOfLines = 3;
+        
+        if (UIDeviceOrientationIsLandscape(orientation)) {
+            _promoTextLabel.numberOfLines = 2;
+            _promoTextTopConstraint.constant = 8;
+            _prizeScrollerTopConstraint.constant = 8;
+        }
+        
     } else {
         _logoTopConstraint.constant = 60;
         _promoTextTopConstraint.constant = 36;
