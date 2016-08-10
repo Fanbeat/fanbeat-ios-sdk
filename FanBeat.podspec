@@ -13,7 +13,7 @@ The FanBeat SDK enables partner apps to link straight to their content in FanBea
   s.author           = { 'Tony Sullivan' => 'tony.sullivan@fanbeat.com' }
   s.source           = { :git => 'https://bitbucket.org/ingameapp/fanbeat-ios-sdk', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '7.0'
 
   s.source_files = 'FanBeat/Classes/**/*'
 
