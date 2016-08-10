@@ -168,7 +168,7 @@ static CGFloat const kMaxPrizeImageHeight = 200;
         } else {
             _promoTextTopConstraint.constant = 20;
             _logoTopConstraint.constant = 40;
-            _promoTextLabel.numberOfLines = 3;
+            _promoTextLabel.numberOfLines = 4;
         }
     }
 }
