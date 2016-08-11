@@ -42,6 +42,7 @@
 static NSString *const kPromoDefaultBackgroundName = @"promo_background";
 static NSString *const kPromoLandscapeNameFormat = @"%@_landscape";
 static CGFloat const kMaxPrizeImageHeight = 200;
+BOOL _showCancelButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -64,6 +65,7 @@ static CGFloat const kMaxPrizeImageHeight = 200;
 - (void)viewWillAppear:(BOOL)animated
 {
     [self adjustViewLayout:[UIScreen mainScreen].bounds.size];
+    [self setShowCancelButton:_showCancelButton];
 }
 
 - (void)adjustViewLayout:(CGSize) size {
@@ -144,6 +146,8 @@ static CGFloat const kMaxPrizeImageHeight = 200;
     if (_closeButton) {
         _closeButton.hidden = !showCancelButton;
     }
+    
+    _showCancelButton = showCancelButton;
 }
 
 - (void)setPartnerConfig:(FBPartnerConfig *)config
