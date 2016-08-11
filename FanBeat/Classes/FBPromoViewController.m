@@ -153,6 +153,11 @@ BOOL _showCancelButton;
 - (void)setPartnerConfig:(FBPartnerConfig *)config
 {
     partnerConfig = config;
+    
+    if (!partnerConfig) {
+        partnerConfig = [FBPartnerConfig getDefault];
+    }
+    
     [self loadImages];
     
     _promoTextLabel.text = partnerConfig ? partnerConfig.promoText : @"";

@@ -52,7 +52,7 @@
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="N8W-b7-GnS">
                                         <rect key="frame" x="42" y="157" width="331" height="90"/>
-                                        <string key="text">With FanBeat, you can compete to win awesome prizes by answering predict-the-action and trivia questions. It's fun and free to play!</string>
+                                        <string key="text">With FanBeat, compete to win awesome prizes by answering predict-the-action and trivia questions during the 2016 Ryder Cup. It's fun and free to play!</string>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="28"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>

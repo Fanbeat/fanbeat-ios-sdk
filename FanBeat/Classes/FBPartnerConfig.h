@@ -21,4 +21,6 @@
 
 -(NSString *)getDeepLinkPath;
 
++ (FBPartnerConfig*)getDefault;
+
 @end
