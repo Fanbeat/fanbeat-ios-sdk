@@ -30,6 +30,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *logoBottomSpacerConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *promoTextWidthConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *prizeScrollerHeightConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *pagerTopSpacerConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *pagerBottomSpacerConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *buttonWidthConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *buttonBottomSpacerConstraint;
@@ -83,10 +84,24 @@ static CGFloat const kMaxPrizeImageHeight = 200;
         _buttonBottomSpacerConstraint = [self changeConstraint:_buttonBottomSpacerConstraint multiplier:0.05];
     }
     else if (ratio < 1) { // iPad portrait
-        
+        _promoTextLabel.numberOfLines = 3;
+        _logoTopSpacerConstraint = [self changeConstraint:_logoTopSpacerConstraint multiplier:0.2];
+        _logoBottomSpacerConstraint = [self changeConstraint:_logoBottomSpacerConstraint multiplier:0.05];
+        _promoTextWidthConstraint = [self changeConstraint:_promoTextWidthConstraint multiplier:0.6];
+        _pagerTopSpacerConstraint = [self changeConstraint:_pagerTopSpacerConstraint multiplier:0.02];
+        _pagerBottomSpacerConstraint = [self changeConstraint:_pagerBottomSpacerConstraint multiplier:0.05];
+        _buttonWidthConstraint = [self changeConstraint:_buttonWidthConstraint multiplier:0.4];
+        _buttonBottomSpacerConstraint = [self changeConstraint:_buttonBottomSpacerConstraint multiplier:0.15];
     }
     else if (ratio < 1.4) { // iPad landscape
-        
+        _promoTextLabel.numberOfLines = 2;
+        _logoTopSpacerConstraint = [self changeConstraint:_logoTopSpacerConstraint multiplier:0.15];
+        _logoBottomSpacerConstraint = [self changeConstraint:_logoBottomSpacerConstraint multiplier:0.05];
+        _promoTextWidthConstraint = [self changeConstraint:_promoTextWidthConstraint multiplier:0.6];
+        _pagerTopSpacerConstraint = [self changeConstraint:_pagerTopSpacerConstraint multiplier:0.01];
+        _pagerBottomSpacerConstraint = [self changeConstraint:_pagerBottomSpacerConstraint multiplier:0.05];
+        _buttonWidthConstraint = [self changeConstraint:_buttonWidthConstraint multiplier:0.4];
+        _buttonBottomSpacerConstraint = [self changeConstraint:_buttonBottomSpacerConstraint multiplier:0.1];
     }
     else if (ratio < 1.7) { // iPhone 4/4S landscape
         _promoTextLabel.numberOfLines = 2;
