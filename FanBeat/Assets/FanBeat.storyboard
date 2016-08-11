@@ -73,7 +73,6 @@
                                     </scrollView>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SFQ-jh-Deb" userLabel="Pager Top Spacer">
                                         <rect key="frame" x="0.0" y="578" width="414" height="0.0"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6EL-g2-4Up" userLabel="Pager Bottom Spacer">
                                         <rect key="frame" x="0.0" y="615" width="375" height="8"/>
@@ -147,7 +146,7 @@
                                     <constraint firstItem="Wrd-oN-q0S" firstAttribute="leading" secondItem="No1-1q-Dts" secondAttribute="leading" id="sya-A4-Coh"/>
                                     <constraint firstItem="aS3-Nt-7zY" firstAttribute="top" secondItem="Woz-7X-3no" secondAttribute="bottom" id="vgn-qa-f1r"/>
                                     <constraint firstItem="N8W-b7-GnS" firstAttribute="centerX" secondItem="No1-1q-Dts" secondAttribute="centerX" id="vxN-E8-ia2"/>
-                                    <constraint firstItem="SFQ-jh-Deb" firstAttribute="height" secondItem="No1-1q-Dts" secondAttribute="height" multiplier="0.001" id="zgw-xi-CkT"/>
+                                    <constraint firstItem="SFQ-jh-Deb" firstAttribute="height" secondItem="No1-1q-Dts" secondAttribute="height" multiplier="0.0001" id="zgw-xi-CkT"/>
                                 </constraints>
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="-4" y="20" width="379" height="647"/>
