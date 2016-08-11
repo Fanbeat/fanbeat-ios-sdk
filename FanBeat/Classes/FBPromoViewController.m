@@ -26,16 +26,13 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *closeButton;
 @property (nonatomic) NSInteger prizeIndex;
 
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *logoTopConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *promoTextTopConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *logoTopSpacerConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *logoBottomSpacerConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *promoTextSideSpacerConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *prizeScrollerHeightConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *playNowBottomConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pagerTopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pagerBottomConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *playNowLeftConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *playNowRightConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *promoTextLeftConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *promoTextRightConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *pagerBottomSpacerConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *buttonWidthConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *buttonBottomSpacerConstraint;
 
 @end
 
@@ -76,6 +73,7 @@ static CGFloat const kMaxPrizeImageHeight = 200;
     
     return;
     
+    /*
     if (height == 480 && width == 320) { // iPhone 4/4S portrait
         _logoTopConstraint.constant = 40;
         _promoTextTopConstraint.constant = 8;
@@ -180,6 +178,7 @@ static CGFloat const kMaxPrizeImageHeight = 200;
         _playNowLeftConstraint.constant = 200;
         _playNowRightConstraint.constant = 200;
     }
+     */
     
     [self loadImages];
 }
