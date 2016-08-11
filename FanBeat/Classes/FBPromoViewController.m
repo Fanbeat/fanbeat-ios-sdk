@@ -28,7 +28,7 @@
 
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *logoTopSpacerConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *logoBottomSpacerConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *promoTextSideSpacerConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *promoTextWidthConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *prizeScrollerHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *pagerBottomSpacerConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *buttonWidthConstraint;
@@ -68,117 +68,38 @@ static CGFloat const kMaxPrizeImageHeight = 200;
 - (void)adjustViewLayout:(CGSize) size {
     CGFloat height = size.height;
     CGFloat width = size.width;
+    CGFloat ratio = width / height;
     
-    _promoTextLabel.numberOfLines = (height < width) ? 2 : 4;
-    
-    return;
-    
-    /*
-    if (height == 480 && width == 320) { // iPhone 4/4S portrait
-        _logoTopConstraint.constant = 40;
-        _promoTextTopConstraint.constant = 8;
+    if (ratio < .6) { // iPhone 5/6/6+/SE portrait
         _promoTextLabel.numberOfLines = 4;
-        _prizeScrollerHeightConstraint.constant = 120;
-        _pagerTopConstraint.constant = 8;
-        _pagerBottomConstraint.constant = 8;
+        _logoBottomSpacerConstraint = [self changeConstraint:_logoBottomSpacerConstraint multiplier:0.01];
+        _pagerBottomSpacerConstraint = [self changeConstraint:_pagerBottomSpacerConstraint multiplier:0.01];
+        _buttonBottomSpacerConstraint = [self changeConstraint:_buttonBottomSpacerConstraint multiplier:0.1];
     }
-    else if (height == 320 && width == 480) { // iPhone 4/4S landscape
-        _logoTopConstraint.constant = 30;
-        _promoTextTopConstraint.constant = 0;
-        _promoTextLabel.numberOfLines = 3;
-        _prizeScrollerHeightConstraint.constant = 60;
-        _pagerTopConstraint.constant = 0;
-        _pagerBottomConstraint.constant = 0;
-    }
-    else if (height == 568 && width == 320) { // iPhone 5 portrait
-        _logoTopConstraint.constant = 60;
-        _promoTextTopConstraint.constant = 20;
+    else if (ratio < .7) { // iPhone 4/4S portrait
         _promoTextLabel.numberOfLines = 4;
-        _prizeScrollerHeightConstraint.constant = 150;
-        _pagerTopConstraint.constant = 8;
-        _pagerBottomConstraint.constant = 8;
+        _logoBottomSpacerConstraint = [self changeConstraint:_logoBottomSpacerConstraint multiplier:0.03];
+        _pagerBottomSpacerConstraint = [self changeConstraint:_pagerBottomSpacerConstraint multiplier:0.01];
+        _buttonBottomSpacerConstraint = [self changeConstraint:_buttonBottomSpacerConstraint multiplier:0.05];
     }
-    else if (height == 320 && width == 568) { // iPhone 5 landscape
-        _logoTopConstraint.constant = 30;
-        _promoTextTopConstraint.constant = 0;
-        _promoTextLabel.numberOfLines = 3;
-        _prizeScrollerHeightConstraint.constant = 60;
-        _pagerTopConstraint.constant = 0;
-        _pagerBottomConstraint.constant = 0;
+    else if (ratio < 1) { // iPad portrait
+        
     }
-    else if (height == 667 && width == 375) { // iPhone 6 portrait
-        _logoTopConstraint.constant = 60;
-        _promoTextTopConstraint.constant = 36;
-        _prizeScrollerHeightConstraint.constant = 160;
-        _pagerBottomConstraint.constant = 20;
-        _playNowBottomConstraint.constant = 40;
+    else if (ratio < 1.4) { // iPad landscape
+        
     }
-    else if (height == 375 && width == 667) { // iPhone 6 landscape
-        _logoTopConstraint.constant = 40;
-        _promoTextTopConstraint.constant = 20;
-        _prizeScrollerHeightConstraint.constant = 80;
-        _pagerBottomConstraint.constant = 8;
-        _playNowBottomConstraint.constant = 20;
+    else if (ratio < 1.7) { // iPhone 4/4S landscape
+        _promoTextLabel.numberOfLines = 2;
+        _logoBottomSpacerConstraint = [self changeConstraint:_logoBottomSpacerConstraint multiplier:0.001];
+        _pagerBottomSpacerConstraint = [self changeConstraint:_pagerBottomSpacerConstraint multiplier:0.001];
+        _buttonBottomSpacerConstraint = [self changeConstraint:_buttonBottomSpacerConstraint multiplier:0.05];
     }
-    else if (height == 736 && width == 414) { // iPhone 6+ portrait
-        _logoTopConstraint.constant = 80;
-        _promoTextTopConstraint.constant = 40;
-        _prizeScrollerHeightConstraint.constant = 200;
-        _pagerBottomConstraint.constant = 20;
-        _playNowBottomConstraint.constant = 40;
+    else { // iPhone 5/6/6+/SE portrait
+        _promoTextLabel.numberOfLines = 2;
+        _logoBottomSpacerConstraint = [self changeConstraint:_logoBottomSpacerConstraint multiplier:0.001];
+        _pagerBottomSpacerConstraint = [self changeConstraint:_pagerBottomSpacerConstraint multiplier:0.001];
+        _buttonBottomSpacerConstraint = [self changeConstraint:_buttonBottomSpacerConstraint multiplier:0.05];
     }
-    else if (height == 414 && width == 736) { // iPhone 6+ landscape
-        _logoTopConstraint.constant = 40;
-        _promoTextTopConstraint.constant = 20;
-        _prizeScrollerHeightConstraint.constant = 100;
-        _pagerBottomConstraint.constant = 8;
-        _playNowBottomConstraint.constant = 20;
-    }
-    else if (height == 1024 && width == 768) { // iPad portrait
-        _logoTopConstraint.constant = 120;
-        _promoTextTopConstraint.constant = 120;
-        _prizeScrollerHeightConstraint.constant = 160;
-        _pagerBottomConstraint.constant = 80;
-        _playNowBottomConstraint.constant = 60;
-        _promoTextLeftConstraint.constant = 80;
-        _promoTextRightConstraint.constant = 80;
-        _playNowLeftConstraint.constant = 80;
-        _playNowRightConstraint.constant = 80;
-    }
-    else if (height == 768 && width == 1024) { // iPad landscape
-        _logoTopConstraint.constant = 120;
-        _promoTextTopConstraint.constant = 60;
-        _prizeScrollerHeightConstraint.constant = 140;
-        _pagerBottomConstraint.constant = 60;
-        _playNowBottomConstraint.constant = 40;
-        _promoTextLeftConstraint.constant = 160;
-        _promoTextRightConstraint.constant = 160;
-        _playNowLeftConstraint.constant = 160;
-        _playNowRightConstraint.constant = 160;
-    }
-    else if (height == 1366 && width == 1024) { // iPad pro portrait
-        _logoTopConstraint.constant = 200;
-        _promoTextTopConstraint.constant = 120;
-        _prizeScrollerHeightConstraint.constant = 200;
-        _pagerBottomConstraint.constant = 120;
-        _playNowBottomConstraint.constant = 300;
-        _promoTextLeftConstraint.constant = 100;
-        _promoTextRightConstraint.constant = 100;
-        _playNowLeftConstraint.constant = 100;
-        _playNowRightConstraint.constant = 100;
-    }
-    else if (height == 1024 && width == 1366) { // iPad pro landscape
-        _logoTopConstraint.constant = 120;
-        _promoTextTopConstraint.constant = 80;
-        _prizeScrollerHeightConstraint.constant = 200;
-        _pagerBottomConstraint.constant = 80;
-        _playNowBottomConstraint.constant = 140;
-        _promoTextLeftConstraint.constant = 200;
-        _promoTextRightConstraint.constant = 200;
-        _playNowLeftConstraint.constant = 200;
-        _playNowRightConstraint.constant = 200;
-    }
-     */
     
     [self loadImages];
 }
@@ -339,6 +260,18 @@ static CGFloat const kMaxPrizeImageHeight = 200;
     if(self.delegate && [self.delegate respondsToSelector:@selector(promoViewControllerDidFinish:)]) {
         [self.delegate promoViewControllerDidFinish:self];
     }
+}
+
+- (NSLayoutConstraint*)changeConstraint:(NSLayoutConstraint*)constraint multiplier:(CGFloat)multiplier
+{
+    NSLayoutConstraint *newConstraint = [NSLayoutConstraint constraintWithItem:constraint.firstItem attribute:constraint.firstAttribute relatedBy:constraint.relation toItem:constraint.secondItem attribute:constraint.secondAttribute multiplier:multiplier constant:constraint.constant];
+    
+    newConstraint.priority = constraint.priority;
+    
+    [self.view removeConstraint:constraint];
+    [self.view addConstraint:newConstraint];
+    
+    return newConstraint;
 }
 
 @end
