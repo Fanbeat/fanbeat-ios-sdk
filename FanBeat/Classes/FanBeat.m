@@ -35,23 +35,19 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
     return fanbeat;
 }
 
--(id)init
+-(void)initSession
 {
-    if (self == [super init]) {
-        // attempt to get the partner ID from the app's plist
-        NSDictionary *plist = [NSBundle mainBundle].infoDictionary;
+    // attempt to get the partner ID from the app's plist
+    NSDictionary *plist = [NSBundle mainBundle].infoDictionary;
         
-        if (!plist) {
-            NSLog(@"Main bundle plist not found!");
-        } else {
-            return [self initWithPartnerId: plist[FANBEAT_SDK_PLIST_KEY]];
-        }
+    if (!plist) {
+        NSLog(@"Main bundle plist not found!");
+    } else {
+        [self initSession: plist[FANBEAT_SDK_PLIST_KEY]];
     }
-    
-    return self;
 }
 
--(id)initWithPartnerId:(NSString *)partnerId
+-(void)initSession:(NSString *)partnerId
 {
     [FBDeepLinker getInstance].isLive = NO;
     [FBDeepLinker getInstance].delegate = self;
@@ -72,20 +68,11 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
         // if the partner ID was provided, try to load partner config
         [self loadConfig:_partnerId];
     }
-    
-    return self;
 }
 
--(void)debug
+-(void)setDebug
 {
     [FBDeepLinker getInstance].isLive = NO;
-    
-    if (!_partnerId) {
-        NSLog(@"%@ not found in the plist!", FANBEAT_SDK_PLIST_KEY);
-    } else {
-        // if the partner ID was provided, try to load partner config
-        [self loadConfig:_partnerId];
-    }
 }
 
 -(void)open

@@ -21,6 +21,7 @@
     [super viewDidLoad];
     fanbeat = [FanBeat getInstance];
     fanbeat.delegate = self;
+    [fanbeat initSession];
 }
 
 - (void)didReceiveMemoryWarning
