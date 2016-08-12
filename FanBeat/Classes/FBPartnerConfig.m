@@ -33,7 +33,7 @@
     config.channel = @"golfchannel";
     config.team = @"golf__rydercup";
     config.promoBackground = @"promo_background";
-    config.promoText = @"With FanBeat, compete to win awesome prizes by answering predict-the-action and trivia questions during the 2016 Ryder Cup. It's fun and free to play!";
+    config.promoText = @"Compete to win awesome prizes by answering predict-the-action and trivia questions. It’s fun and free to play!";
     
     FBPromoPrize *golfBag = [[FBPromoPrize alloc]init];
     golfBag.icon = @"ping_bag_stand";
@@ -45,6 +45,7 @@
     titleistBalls.icon = @"titleist_balls";
     
     config.promoPrizes = @[golfBag, callowayWedge, titleistBalls];
+    config.promoLogo = @"ryder_cup";
     
     return config;
 }

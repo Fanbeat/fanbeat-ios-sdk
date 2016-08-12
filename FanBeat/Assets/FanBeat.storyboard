@@ -84,7 +84,7 @@
                                             <constraint firstAttribute="height" constant="40" id="dh2-Gb-Swe"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="CONTINUE">
+                                        <state key="normal" title="Get the Game!">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
