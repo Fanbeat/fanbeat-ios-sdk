@@ -38,7 +38,7 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 -(id)init
 {
     if (self == [super init]) {
-        [FBDeepLinker getInstance].isLive = YES;
+        [FBDeepLinker getInstance].isLive = NO;
         [FBDeepLinker getInstance].delegate = self;
         
         // attempt to get the partner ID from the app's plist
@@ -112,14 +112,15 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
 -(void)loadConfig:(NSString *)partnerId
 {
-    [FBDeepLinker getInstance].config = nil;
+    FBDeepLinker *deepLinker = [FBDeepLinker getInstance];
+    deepLinker.config = nil;
     
     if (partnerId == nil || [partnerId length] == 0)
         return;
     
     _configData = [NSMutableData data];
     
-    NSString *urlPath = [NSString stringWithFormat:@"%@%@.json", FANBEAT_BASE_S3_URL, partnerId];
+    NSString *urlPath = [NSString stringWithFormat:@"%@%@.json", deepLinker.isLive ? FANBEAT_BASE_S3_URL : FANBEAT_DEV_BASE_S3_URL, partnerId];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlPath]];
     
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
