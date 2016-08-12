@@ -38,47 +38,54 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 -(id)init
 {
     if (self == [super init]) {
-        [FBDeepLinker getInstance].isLive = YES;
-        [FBDeepLinker getInstance].delegate = self;
-        
         // attempt to get the partner ID from the app's plist
         NSDictionary *plist = [NSBundle mainBundle].infoDictionary;
         
         if (!plist) {
             NSLog(@"Main bundle plist not found!");
         } else {
-            _partnerId = plist[FANBEAT_SDK_PLIST_KEY];
-            
-            if (!_partnerId) {
-                NSLog(@"%@ not found in the plist!", FANBEAT_SDK_PLIST_KEY);
-            } else {
-                // if the partner ID was provided, try to load partner config
-                [self loadConfig:_partnerId];
-            }
+            return [self initWithPartnerId: plist[FANBEAT_SDK_PLIST_KEY]];
         }
-        
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FanBeatPod" ofType:@"bundle"];
-        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-        
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FanBeat" bundle:bundle];
-        promoViewController = [storyboard instantiateInitialViewController];
-        promoViewController.showCancelButton = NO;
-        promoViewController.delegate = self;
-        [promoViewController loadViewIfNeeded];
     }
     
     return self;
 }
 
--(void)initWithPartnerId:(NSString *)partnerId
+-(id)initWithPartnerId:(NSString *)partnerId
 {
+    [FBDeepLinker getInstance].isLive = YES;
+    [FBDeepLinker getInstance].delegate = self;
+    
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FanBeatPod" ofType:@"bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FanBeat" bundle:bundle];
+    promoViewController = [storyboard instantiateInitialViewController];
+    promoViewController.showCancelButton = NO;
+    promoViewController.delegate = self;
+    [promoViewController loadViewIfNeeded];
+    
     _partnerId = partnerId;
-    [self loadConfig:partnerId];
+    if (!_partnerId) {
+        NSLog(@"%@ not found in the plist!", FANBEAT_SDK_PLIST_KEY);
+    } else {
+        // if the partner ID was provided, try to load partner config
+        [self loadConfig:_partnerId];
+    }
+    
+    return self;
 }
 
 -(void)debug
 {
     [FBDeepLinker getInstance].isLive = NO;
+    
+    if (!_partnerId) {
+        NSLog(@"%@ not found in the plist!", FANBEAT_SDK_PLIST_KEY);
+    } else {
+        // if the partner ID was provided, try to load partner config
+        [self loadConfig:_partnerId];
+    }
 }
 
 -(void)open
