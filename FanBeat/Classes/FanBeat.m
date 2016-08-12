@@ -53,7 +53,7 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
 -(id)initWithPartnerId:(NSString *)partnerId
 {
-    [FBDeepLinker getInstance].isLive = YES;
+    [FBDeepLinker getInstance].isLive = NO;
     [FBDeepLinker getInstance].delegate = self;
     
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FanBeatPod" ofType:@"bundle"];
