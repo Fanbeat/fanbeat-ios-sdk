@@ -29,9 +29,9 @@
 + (FBPartnerConfig *)getDefault
 {
     FBPartnerConfig *config = [[FBPartnerConfig alloc]init];
-    config.name = @"Golf Channel";
-    config.channel = @"demo_demo";
-    config.team = @"golf__ryder";
+    config.name = @"Golf Channel FanBeat";
+    config.channel = @"golfchannel";
+    config.team = @"golf__rydercup";
     config.promoBackground = @"promo_background";
     config.promoText = @"With FanBeat, compete to win awesome prizes by answering predict-the-action and trivia questions during the 2016 Ryder Cup. It's fun and free to play!";
     
