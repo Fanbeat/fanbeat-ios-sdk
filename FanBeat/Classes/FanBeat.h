@@ -17,9 +17,8 @@
 @property (nonatomic, weak) id<FanBeatDelegate> delegate;
 
 +(instancetype)getInstance;
--(void)initSession;
--(void)initSession:(NSString*)partnerId;
--(void)setDebug;
+-(id)initWithPartnerId:(NSString *)partnerId;
+-(void)debug;
 -(void)open;
 -(void)openForUser:(NSString *)userId;
 
