@@ -49,8 +49,7 @@ BOOL _showCancelButton;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:[UIDevice currentDevice]];
     
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FanBeatPod" ofType:@"bundle"];
-    sdkBundle = [NSBundle bundleWithPath:bundlePath];
+    sdkBundle = [NSBundle bundleForClass:FBPromoViewController.self];
     
     [self setPartnerConfig:[FBDeepLinker getInstance].config];
     

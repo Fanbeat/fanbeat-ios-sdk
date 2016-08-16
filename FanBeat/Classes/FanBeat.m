@@ -56,7 +56,7 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
     [FBDeepLinker getInstance].isLive = NO;
     [FBDeepLinker getInstance].delegate = self;
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FanBeat" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FanBeat" bundle:[NSBundle bundleForClass:FanBeat.self]];
     promoViewController = [storyboard instantiateInitialViewController];
     promoViewController.showCancelButton = NO;
     promoViewController.delegate = self;
