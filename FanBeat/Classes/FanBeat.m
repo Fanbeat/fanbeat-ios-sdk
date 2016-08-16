@@ -56,10 +56,7 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
     [FBDeepLinker getInstance].isLive = NO;
     [FBDeepLinker getInstance].delegate = self;
     
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FanBeatPod" ofType:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FanBeat" bundle:bundle];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FanBeat" bundle:[NSBundle bundleForClass:self]];
     promoViewController = [storyboard instantiateInitialViewController];
     promoViewController.showCancelButton = NO;
     promoViewController.delegate = self;
