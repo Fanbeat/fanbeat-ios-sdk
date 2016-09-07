@@ -36,6 +36,8 @@
 
 -(void)open:(NSString *) partnerId forUser:(NSString *)userId
 {
+    /*
+     * TODO: Disabling branch for now to avoid iOS 10 universal link issue
     [self getBranchUrl:partnerId forUser:userId WithCallback:^(NSString *url, NSError *error) {
         if (error) {
             [self finalizeDelegate:NO];
@@ -44,6 +46,10 @@
         
         [self openUrl: url];
     }];
+     */
+    
+    NSString *deepLinkPath = [self.config getDeepLinkPath];
+    [self openUrl:[NSString stringWithFormat:@"%@%@", FANBEAT_APP_URI_SCHEME, deepLinkPath]];
 }
 
 -(BOOL)canOpenFanbeat
@@ -105,7 +111,7 @@
     [branchUniversalObject getShortUrlWithLinkProperties:linkProperties andCallback:callback];
 }
 
--(void)openUrl:(NSURL *)url
+-(void)openUrl:(NSString *)url
 {
     // alert the delegate of success before launching the URL
     [self finalizeDelegate:YES];
