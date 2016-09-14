@@ -4,7 +4,7 @@ PODS:
     - Branch/without-IDFA (= 0.12.2)
   - Branch/Core (0.12.2)
   - Branch/without-IDFA (0.12.2)
-  - FanBeat (0.1.0):
+  - FanBeat (0.1.8):
     - Branch (~> 0.12)
 
 DEPENDENCIES:
@@ -16,7 +16,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Branch: 8dc4c9b6c3bcdc6ad590938a0b333ddbfe60efe4
-  FanBeat: 7c82d4eb5cbf32cc500c841f8878ebbc98ed63ca
+  FanBeat: 0f796d6aa7ed3628164884e47c300bcd9659d76d
 
 PODFILE CHECKSUM: 8aa950039cdea9c6a3e08f32b5a872cecbcbb63e
 

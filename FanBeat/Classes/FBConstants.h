@@ -16,5 +16,7 @@
 #define FANBEAT_BASE_S3_URL @"https://s3.amazonaws.com/ingame-prod/partners/"
 #define FANBEAT_BRANCH_LIVE_KEY @"key_live_oam5GSs8U81sJ8TvPo8v6bbpDudyMBQN"
 #define FANBEAT_BRANCH_TEST_KEY @"key_test_mbo9SGq4LZXBQ9HvTj89lgcgzvnwJDN0"
+#define FANBEAT_DEV_BASE_ANALYTICS_URL @"http://ingameapi-staging.elasticbeanstalk.com/"
+#define FANBEAT_BASE_ANALYTICS_URL @"https://api.ingamemobile.com/"
 
 #endif /* FBConstants_h */

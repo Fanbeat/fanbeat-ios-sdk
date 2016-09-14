@@ -12,6 +12,7 @@
 #import "FBPartnerConfig.h"
 #import "FBPromoViewController.h"
 #import "FBPromoPrize.h"
+#import "FBAnalytics.h"
 
 typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
@@ -53,7 +54,8 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
 -(id)initWithPartnerId:(NSString *)partnerId
 {
-    [FBDeepLinker getInstance].isLive = YES;
+    [FBAnalytics getInstance].isLive = NO;
+    [FBDeepLinker getInstance].isLive = NO;
     [FBDeepLinker getInstance].delegate = self;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FanBeat" bundle:[NSBundle bundleForClass:FanBeat.self]];
@@ -113,6 +115,8 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
             [self.delegate presentMarketingViewController:promoViewController onInstallFanBeat:^{
                 [[FBDeepLinker getInstance] openStore:[UIApplication sharedApplication].keyWindow.rootViewController];
             }];
+            
+            [[FBAnalytics getInstance] didViewPromoScreen:_partnerId];
         } else {
             [[FBDeepLinker getInstance] openStore:[UIApplication sharedApplication].keyWindow.rootViewController];
         }
@@ -190,6 +194,8 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
     // once we get back from the promo view, check to see if the app was installed
     // Don't finalize the delegate if we can open FanBeat now, wait for the deep linker to do it's job
     if ([deepLinker canOpenFanbeat]) {
+        [[FBAnalytics getInstance] didInstallFanBeat:_partnerId];
+        
         if (_userId) {
             [deepLinker open:_partnerId forUser:_userId];
         } else {
