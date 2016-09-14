@@ -7,6 +7,7 @@
 //
 
 #import "FBAnalytics.h"
+#import "FBConstants.h"
 
 @implementation FBAnalytics
 
@@ -36,7 +37,7 @@ static NSString *const INSTALLED_EVENT = @"installed";
 
 -(void)logEvent:(NSString *)event forPartnerId:(NSString *)partnerId
 {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@sdk/%@/%@", partnerId, event]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@sdk/%@/%@", _isLive ? FANBEAT_BASE_ANALYTICS_URL : FANBEAT_DEV_BASE_ANALYTICS_URL, partnerId, event]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:nil];
 }

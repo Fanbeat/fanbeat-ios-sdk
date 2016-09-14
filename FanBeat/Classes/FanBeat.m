@@ -54,8 +54,8 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
 
 -(id)initWithPartnerId:(NSString *)partnerId
 {
-    [FBAnalytics getInstance].isLive = NO;
-    [FBDeepLinker getInstance].isLive = NO;
+    [FBAnalytics getInstance].isLive = YES;
+    [FBDeepLinker getInstance].isLive = YES;
     [FBDeepLinker getInstance].delegate = self;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FanBeat" bundle:[NSBundle bundleForClass:FanBeat.self]];
