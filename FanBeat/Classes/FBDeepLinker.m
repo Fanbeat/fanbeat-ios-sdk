@@ -12,11 +12,6 @@
 #import "BranchUniversalObject.h"
 #import "BranchLinkProperties.h"
 
-@interface FBDeepLinker() {
-    BOOL isLive;
-}
-@end
-
 @implementation FBDeepLinker
 
 +(instancetype)getInstance
@@ -84,16 +79,18 @@
 -(void)getBranchUrl:(NSString *)partnerId forUser:(NSString * _Nullable)userId WithCallback:(callbackWithUrl)callback
 {
     // get a Branch instance with FanBeat's key
-    Branch *branch = [Branch getInstance: isLive ? FANBEAT_BRANCH_LIVE_KEY : FANBEAT_BRANCH_TEST_KEY];
+    Branch *branch = [Branch getInstance: _isLive ? FANBEAT_BRANCH_LIVE_KEY : FANBEAT_BRANCH_TEST_KEY];
     
     // build a link and always include the partner ID
     BranchUniversalObject *branchUniversalObject = [[BranchUniversalObject alloc] initWithCanonicalIdentifier:partnerId];
     branchUniversalObject.title = @"FanBeat";
+    branchUniversalObject.type = @"1"; // one-time use for the context
     
     BranchLinkProperties *linkProperties = [[BranchLinkProperties alloc] init];
     linkProperties.channel = partnerId;
     linkProperties.feature = @"SDK";
     [linkProperties addControlParam:@"partner_id" withValue:partnerId];
+    [linkProperties addControlParam:@"$ios_url" withValue:@"www.fanbeat.com"];
     
     // if the user ID was provided, include that in the link
     if (userId) {
