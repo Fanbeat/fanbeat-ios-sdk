@@ -15,5 +15,6 @@
 +(instancetype)getInstance;
 -(void)didViewPromoScreen:(NSString *)partnerId;
 -(void)didInstallFanBeat:(NSString *)partnerId;
+-(void)didReopenFanBeat:(NSString *)partnerId;
 
 @end

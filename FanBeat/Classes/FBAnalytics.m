@@ -13,6 +13,7 @@
 
 static NSString *const VIEW_PROMO_EVENT = @"activation";
 static NSString *const INSTALLED_EVENT = @"installed";
+static NSString *const REOPENED_EVENT = @"reopened";
 
 
 +(instancetype)getInstance
@@ -33,6 +34,11 @@ static NSString *const INSTALLED_EVENT = @"installed";
 -(void)didInstallFanBeat:(NSString *)partnerId
 {
     [self logEvent:INSTALLED_EVENT forPartnerId:partnerId];
+}
+
+-(void)didReopenFanBeat:(NSString *)partnerId
+{
+    [self logEvent:REOPENED_EVENT forPartnerId:partnerId];
 }
 
 -(void)logEvent:(NSString *)event forPartnerId:(NSString *)partnerId

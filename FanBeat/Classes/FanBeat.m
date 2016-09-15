@@ -103,6 +103,7 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
     FBDeepLinker *deepLinker = [FBDeepLinker getInstance];
     
     if ([deepLinker canOpenFanbeat]) {
+        [[FBAnalytics getInstance] didReopenFanBeat:_partnerId];
         [deepLinker open:_partnerId forUser:userId];
     } else {
         // if FanBeat isn't installed, cache the user ID and load the promo view
