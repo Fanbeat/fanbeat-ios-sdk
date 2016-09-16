@@ -75,6 +75,9 @@
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="playNowTapped:" destination="5E3-4y-oiO" eventType="touchUpInside" id="WzC-yk-eJQ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
