@@ -62,7 +62,6 @@ typedef void (^callbackWithUrl) (NSString *url, NSError *error);
     promoViewController = [storyboard instantiateInitialViewController];
     promoViewController.showCancelButton = NO;
     promoViewController.delegate = self;
-    [promoViewController loadViewIfNeeded];
     
     _partnerId = partnerId;
     if (!_partnerId) {

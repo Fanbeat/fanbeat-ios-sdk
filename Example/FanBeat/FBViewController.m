@@ -6,6 +6,7 @@
 //  Copyright (c) 2016 Tony Sullivan. All rights reserved.
 //
 
+
 #import "FBViewController.h"
 #import "FanBeat/FanBeat.h"
 
@@ -38,9 +39,10 @@
     NSLog(@"FanBeat SDK returned, app %@ launch", didLaunch ? @"did" : @"did not");
 }
 
-- (void)presentMarketingViewController:(UIViewController *)viewController onInstallFanBeat:(void (^)(void))onInstallFanBeat
+- (void)presentMarketingViewController:(FBPromoViewController *)viewController onInstallFanBeat:(void (^)(void))onInstallFanBeat
 {
-    onInstallFanBeat();
+    [viewController setShowCancelButton:YES];
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 @end

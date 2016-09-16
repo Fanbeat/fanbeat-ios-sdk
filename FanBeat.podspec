@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'FanBeat'
-  s.version          = '0.1.11'
+  s.version          = '0.1.12'
   s.summary          = 'Link to your partner content in the FanBeat app.'
 
   s.description      = <<-DESC
@@ -19,5 +19,5 @@ The FanBeat SDK enables partner apps to link straight to their content in FanBea
 
   s.frameworks = 'UIKit', 'StoreKit'
   s.dependency 'Branch', '~> 0.12'
-  s.resources = [ 'FanBeat/Assets/*.xcassets', 'FanBeat/Assets/*.storyboard' ]
+  s.resources = [ 'FanBeat/Assets/*.xcassets', 'FanBeat/Assets/*.storyboard', 'FanBeat/Assets/*.ttf' ]
 end

@@ -11,35 +11,30 @@
 #import "FBConstants.h"
 #import "FBPartnerConfig.h"
 #import "FBPromoPrize.h"
+#import <CoreText/CoreText.h>
 
 @interface FBPromoViewController () {
     NSBundle *sdkBundle;
     FBPartnerConfig *partnerConfig;
 }
 
-@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
-@property (weak, nonatomic) IBOutlet UILabel *promoTextLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *logoImage;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *closeButton;
-@property (nonatomic) NSInteger prizeIndex;
+@property (weak, nonatomic) IBOutlet UILabel *competeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *funToPlayLabel;
+@property (weak, nonatomic) IBOutlet UIButton *getTheGameButton;
 
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *logoTopSpacerConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *logoBottomSpacerConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *promoTextWidthConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *prizeScrollerHeightConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *pagerTopSpacerConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *pagerBottomSpacerConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *buttonWidthConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *buttonBottomSpacerConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpacerHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftSpacerWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonTopConstraint;
+
 
 @end
 
 @implementation FBPromoViewController
 
-static NSString *const kPromoDefaultBackgroundName = @"promo_background";
+static NSString *const kPromoDefaultBackgroundName = @"golf_channel_background";
 static NSString *const kPromoLandscapeNameFormat = @"%@_landscape";
 static CGFloat const kMaxPrizeImageHeight = 200;
 BOOL _showCancelButton;
@@ -53,7 +48,9 @@ BOOL _showCancelButton;
     
     [self setPartnerConfig:[FBDeepLinker getInstance].config];
     
-    _scrollView.delegate = self;
+    [_competeLabel setFont:[self openGCFrankBoldOfSize:17.0]];
+    [_funToPlayLabel setFont:[self openGCFrankBoldOfSize:22.0]];
+    [_getTheGameButton.titleLabel setFont:[self openGCFrankBoldOfSize:19.0]];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
@@ -67,54 +64,70 @@ BOOL _showCancelButton;
     [self setShowCancelButton:_showCancelButton];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)adjustViewLayout:(CGSize) size {
+    
     CGFloat height = size.height;
     CGFloat width = size.width;
     CGFloat ratio = width / height;
     
     if (ratio < .6) { // iPhone 5/6/6+/SE portrait
-        _promoTextLabel.numberOfLines = 4;
-        _logoBottomSpacerConstraint = [self changeConstraint:_logoBottomSpacerConstraint multiplier:0.01];
-        _pagerBottomSpacerConstraint = [self changeConstraint:_pagerBottomSpacerConstraint multiplier:0.01];
-        _buttonBottomSpacerConstraint = [self changeConstraint:_buttonBottomSpacerConstraint multiplier:0.1];
+        _topSpacerHeightConstraint = [self changeConstraint:_topSpacerHeightConstraint multiplier:0.13];
+        _leftSpacerWidthConstraint = [self changeConstraint:_leftSpacerWidthConstraint multiplier:0.00001];
+        [_competeLabel setFont:[self openGCFrankBoldOfSize:17.0]];
+        [_funToPlayLabel setFont:[self openGCFrankBoldOfSize:22.0]];
+        _competeLabel.numberOfLines = 3;
+        _buttonBottomConstraint.constant = 10;
+        _buttonTopConstraint.constant = 6;
     }
     else if (ratio < .7) { // iPhone 4/4S portrait
-        _promoTextLabel.numberOfLines = 4;
-        _logoBottomSpacerConstraint = [self changeConstraint:_logoBottomSpacerConstraint multiplier:0.03];
-        _pagerBottomSpacerConstraint = [self changeConstraint:_pagerBottomSpacerConstraint multiplier:0.01];
-        _buttonBottomSpacerConstraint = [self changeConstraint:_buttonBottomSpacerConstraint multiplier:0.05];
+        _topSpacerHeightConstraint = [self changeConstraint:_topSpacerHeightConstraint multiplier:0.05];
+        _leftSpacerWidthConstraint = [self changeConstraint:_leftSpacerWidthConstraint multiplier:0.00001];
+        [_competeLabel setFont:[self openGCFrankBoldOfSize:17.0]];
+        [_funToPlayLabel setFont:[self openGCFrankBoldOfSize:22.0]];
+        _competeLabel.numberOfLines = 3;
+        _buttonBottomConstraint.constant = 20;
+        _buttonTopConstraint.constant = 10;
     }
     else if (ratio < 1) { // iPad portrait
-        _promoTextLabel.numberOfLines = 3;
-        _logoTopSpacerConstraint = [self changeConstraint:_logoTopSpacerConstraint multiplier:0.2];
-        _logoBottomSpacerConstraint = [self changeConstraint:_logoBottomSpacerConstraint multiplier:0.05];
-        _promoTextWidthConstraint = [self changeConstraint:_promoTextWidthConstraint multiplier:0.6];
-        _pagerTopSpacerConstraint = [self changeConstraint:_pagerTopSpacerConstraint multiplier:0.02];
-        _pagerBottomSpacerConstraint = [self changeConstraint:_pagerBottomSpacerConstraint multiplier:0.05];
-        _buttonWidthConstraint = [self changeConstraint:_buttonWidthConstraint multiplier:0.4];
-        _buttonBottomSpacerConstraint = [self changeConstraint:_buttonBottomSpacerConstraint multiplier:0.15];
+        _topSpacerHeightConstraint = [self changeConstraint:_topSpacerHeightConstraint multiplier:0.2];
+        _leftSpacerWidthConstraint = [self changeConstraint:_leftSpacerWidthConstraint multiplier:0.1];
+        [_competeLabel setFont:[self openGCFrankBoldOfSize:17.0]];
+        [_funToPlayLabel setFont:[self openGCFrankBoldOfSize:22.0]];
+        _competeLabel.numberOfLines = 3;
+        _buttonBottomConstraint.constant = 0;
+        _buttonTopConstraint.constant = 20;
     }
     else if (ratio < 1.4) { // iPad landscape
-        _promoTextLabel.numberOfLines = 2;
-        _logoTopSpacerConstraint = [self changeConstraint:_logoTopSpacerConstraint multiplier:0.15];
-        _logoBottomSpacerConstraint = [self changeConstraint:_logoBottomSpacerConstraint multiplier:0.05];
-        _promoTextWidthConstraint = [self changeConstraint:_promoTextWidthConstraint multiplier:0.6];
-        _pagerTopSpacerConstraint = [self changeConstraint:_pagerTopSpacerConstraint multiplier:0.01];
-        _pagerBottomSpacerConstraint = [self changeConstraint:_pagerBottomSpacerConstraint multiplier:0.05];
-        _buttonWidthConstraint = [self changeConstraint:_buttonWidthConstraint multiplier:0.4];
-        _buttonBottomSpacerConstraint = [self changeConstraint:_buttonBottomSpacerConstraint multiplier:0.1];
+        _topSpacerHeightConstraint = [self changeConstraint:_topSpacerHeightConstraint multiplier:0.05];
+        _leftSpacerWidthConstraint = [self changeConstraint:_leftSpacerWidthConstraint multiplier:0.2];
+        [_competeLabel setFont:[self openGCFrankBoldOfSize:17.0]];
+        [_funToPlayLabel setFont:[self openGCFrankBoldOfSize:22.0]];
+        _competeLabel.numberOfLines = 3;
+        _buttonBottomConstraint.constant = 0;
+        _buttonTopConstraint.constant = 10;
     }
     else if (ratio < 1.7) { // iPhone 4/4S landscape
-        _promoTextLabel.numberOfLines = 2;
-        _logoBottomSpacerConstraint = [self changeConstraint:_logoBottomSpacerConstraint multiplier:0.001];
-        _pagerBottomSpacerConstraint = [self changeConstraint:_pagerBottomSpacerConstraint multiplier:0.001];
-        _buttonBottomSpacerConstraint = [self changeConstraint:_buttonBottomSpacerConstraint multiplier:0.05];
+        _topSpacerHeightConstraint = [self changeConstraint:_topSpacerHeightConstraint multiplier:0.05];
+        _leftSpacerWidthConstraint = [self changeConstraint:_leftSpacerWidthConstraint multiplier:0.05];
+        [_competeLabel setFont:[self openGCFrankBoldOfSize:15.0]];
+        [_funToPlayLabel setFont:[self openGCFrankBoldOfSize:17.0]];
+        _competeLabel.numberOfLines = 2;
+        _buttonBottomConstraint.constant = 0;
+        _buttonTopConstraint.constant = 8;
     }
-    else { // iPhone 5/6/6+/SE portrait
-        _promoTextLabel.numberOfLines = 2;
-        _logoBottomSpacerConstraint = [self changeConstraint:_logoBottomSpacerConstraint multiplier:0.001];
-        _pagerBottomSpacerConstraint = [self changeConstraint:_pagerBottomSpacerConstraint multiplier:0.001];
-        _buttonBottomSpacerConstraint = [self changeConstraint:_buttonBottomSpacerConstraint multiplier:0.05];
+    else { // iPhone 5/6/6+/SE landscape
+        _topSpacerHeightConstraint = [self changeConstraint:_topSpacerHeightConstraint multiplier:0.075];
+        _leftSpacerWidthConstraint = [self changeConstraint:_leftSpacerWidthConstraint multiplier:0.1];
+        [_competeLabel setFont:[self openGCFrankBoldOfSize:15.0]];
+        [_funToPlayLabel setFont:[self openGCFrankBoldOfSize:17.0]];
+        _competeLabel.numberOfLines = 2;
+        _buttonBottomConstraint.constant = 0;
+        _buttonTopConstraint.constant = 4;
     }
     
     [self loadImages];
@@ -125,19 +138,9 @@ BOOL _showCancelButton;
     [self loadImages];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    [_pageControl setCurrentPage:0];
-    [_scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-}
-
 - (void)orientationChanged:(NSNotification*)notification
 {
-    UIDevice *device = notification.object;
-    
     [self loadImages];
-    [self scrollToPrizeImage:self.prizeIndex animated:NO];
 }
 
 - (void)setShowCancelButton:(BOOL)showCancelButton
@@ -158,68 +161,11 @@ BOOL _showCancelButton;
     }
     
     [self loadImages];
-    
-    _promoTextLabel.text = partnerConfig ? partnerConfig.promoText : @"";
-}
-
-- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    CGFloat pageWidth = CGRectGetWidth(scrollView.frame);
-    CGFloat currentIndex = floor((scrollView.contentOffset.x - pageWidth/2)/pageWidth) + 1;
-    
-    [_pageControl setCurrentPage:currentIndex];
-    self.prizeIndex = currentIndex;
-}
-
-- (IBAction)onPageControlValueChanged:(id)sender {
-    [self scrollToPrizeImage:_pageControl.currentPage animated:YES];
-    self.prizeIndex = _pageControl.currentPage;
-}
-
-- (void) scrollToPrizeImage:(NSInteger)index animated:(BOOL)animated
-{
-    CGFloat width = _scrollView.frame.size.width;
-    [_scrollView setContentOffset:CGPointMake(width * index, 0) animated:animated];
-    [_pageControl setCurrentPage:index];
 }
 
 - (void)loadImages
 {
     [_backgroundImage setImage:[self getBackgroundImage]];
-    
-    NSMutableArray *prizeImages = [[NSMutableArray alloc] init];
-    _pageControl.numberOfPages = 0;
-    
-    if (partnerConfig.promoPrizes) {
-        
-        CGFloat width = [UIScreen mainScreen].bounds.size.width;
-        CGFloat height = _scrollView.bounds.size.height;
-        CGFloat x = 0;
-        CGFloat y = 0;
-        
-        if (height > kMaxPrizeImageHeight) {
-            y = height - kMaxPrizeImageHeight;
-            height = kMaxPrizeImageHeight;
-        }
-        
-        [_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-        
-        for(FBPromoPrize *prize in partnerConfig.promoPrizes) {
-            UIImage *prizeImage = [self getImageNamed:prize.icon];
-            if (prizeImage) {
-                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, width, height)];
-                imageView.image = prizeImage;
-                imageView.contentMode = y > 0 ? UIViewContentModeBottom : UIViewContentModeScaleAspectFit;
-                
-                [_scrollView addSubview:imageView];
-                
-                x = x + width;
-                _pageControl.numberOfPages += 1;
-            }
-        }
-        
-        [_scrollView setContentSize:CGSizeMake(x, height)];
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -231,19 +177,11 @@ BOOL _showCancelButton;
     UIImage *image;
     
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    NSString *format = UIDeviceOrientationIsPortrait(orientation) ? @"%@" : kPromoLandscapeNameFormat;
+    NSString *format = UIDeviceOrientationIsLandscape(orientation) ? kPromoLandscapeNameFormat : @"%@";
     
-    // if the partner app defines a promo background, check for that image first
-    if (partnerConfig.promoBackground) {
-        NSString *name = [NSString stringWithFormat:format, partnerConfig.promoBackground];
-        image = [self getImageNamed:name];
-    }
-    
-    // fallback to default image
-    if (!image) {
-        NSString *name = [NSString stringWithFormat:format, kPromoDefaultBackgroundName];
-        image = [self getImageNamed:name];
-    }
+    image = [self getImageNamed:[NSString stringWithFormat:format, kPromoDefaultBackgroundName]];
+    if (!image)
+        image = [self getImageNamed:kPromoDefaultBackgroundName];
     
     return image;
 }
@@ -295,6 +233,40 @@ BOOL _showCancelButton;
     [self.view addConstraint:newConstraint];
     
     return newConstraint;
+}
+
+- (UIFont *)openGCFrankBoldOfSize:(CGFloat)size
+{
+    NSString *fontName = @"GCFrankBold";
+    UIFont *font = [UIFont fontWithName:fontName size:size];
+    if (!font) {
+        [self dynamicallyLoadFontNamed:fontName];
+        font = [UIFont fontWithName:fontName size:size];
+        
+        // safe fallback
+        if (!font) font = [UIFont systemFontOfSize:size];
+    }
+    
+    return font;
+}
+
+- (void)dynamicallyLoadFontNamed:(NSString *)name
+{
+    NSBundle *bundle = [NSBundle bundleForClass:FBPromoViewController.self];
+    NSURL *url = [bundle URLForResource:name withExtension:@"ttf"];
+    NSData *fontData = [NSData dataWithContentsOfURL:url];
+    if (fontData) {
+        CFErrorRef error;
+        CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)fontData);
+        CGFontRef font = CGFontCreateWithDataProvider(provider);
+        if (! CTFontManagerRegisterGraphicsFont(font, &error)) {
+            CFStringRef errorDescription = CFErrorCopyDescription(error);
+            NSLog(@"Failed to load font: %@", errorDescription);
+            CFRelease(errorDescription);
+        }
+        CFRelease(font);
+        CFRelease(provider);
+    }
 }
 
 @end
