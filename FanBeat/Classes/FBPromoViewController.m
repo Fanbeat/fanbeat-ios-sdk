@@ -75,26 +75,28 @@ BOOL _showCancelButton;
     CGFloat width = size.width;
     CGFloat ratio = width / height;
     
+    BOOL hasNavBar = self.navigationController ? YES : NO;
+    
     if (ratio < .6) { // iPhone 5/6/6+/SE portrait
-        _topSpacerHeightConstraint = [self changeConstraint:_topSpacerHeightConstraint multiplier:0.13];
+        _topSpacerHeightConstraint = [self changeConstraint:_topSpacerHeightConstraint multiplier: hasNavBar ? 0.1 : 0.13];
         _leftSpacerWidthConstraint = [self changeConstraint:_leftSpacerWidthConstraint multiplier:0.00001];
         [_competeLabel setFont:[self openGCFrankBoldOfSize:17.0]];
         [_funToPlayLabel setFont:[self openGCFrankBoldOfSize:22.0]];
         _competeLabel.numberOfLines = 3;
         _buttonBottomConstraint.constant = 10;
-        _buttonTopConstraint.constant = 6;
+        _buttonTopConstraint.constant = 8;
     }
     else if (ratio < .7) { // iPhone 4/4S portrait
-        _topSpacerHeightConstraint = [self changeConstraint:_topSpacerHeightConstraint multiplier:0.05];
+        _topSpacerHeightConstraint = [self changeConstraint:_topSpacerHeightConstraint multiplier: hasNavBar ? 0.075 : 0.05];
         _leftSpacerWidthConstraint = [self changeConstraint:_leftSpacerWidthConstraint multiplier:0.00001];
         [_competeLabel setFont:[self openGCFrankBoldOfSize:17.0]];
         [_funToPlayLabel setFont:[self openGCFrankBoldOfSize:22.0]];
         _competeLabel.numberOfLines = 3;
         _buttonBottomConstraint.constant = 20;
-        _buttonTopConstraint.constant = 10;
+        _buttonTopConstraint.constant = 8;
     }
     else if (ratio < 1) { // iPad portrait
-        _topSpacerHeightConstraint = [self changeConstraint:_topSpacerHeightConstraint multiplier:0.2];
+        _topSpacerHeightConstraint = [self changeConstraint:_topSpacerHeightConstraint multiplier:hasNavBar ? 0.15 : 0.2];
         _leftSpacerWidthConstraint = [self changeConstraint:_leftSpacerWidthConstraint multiplier:0.1];
         [_competeLabel setFont:[self openGCFrankBoldOfSize:17.0]];
         [_funToPlayLabel setFont:[self openGCFrankBoldOfSize:22.0]];
@@ -112,7 +114,7 @@ BOOL _showCancelButton;
         _buttonTopConstraint.constant = 10;
     }
     else if (ratio < 1.7) { // iPhone 4/4S landscape
-        _topSpacerHeightConstraint = [self changeConstraint:_topSpacerHeightConstraint multiplier:0.05];
+        _topSpacerHeightConstraint = [self changeConstraint:_topSpacerHeightConstraint multiplier: hasNavBar ? 0.075 : 0.05];
         _leftSpacerWidthConstraint = [self changeConstraint:_leftSpacerWidthConstraint multiplier:0.05];
         [_competeLabel setFont:[self openGCFrankBoldOfSize:15.0]];
         [_funToPlayLabel setFont:[self openGCFrankBoldOfSize:17.0]];
