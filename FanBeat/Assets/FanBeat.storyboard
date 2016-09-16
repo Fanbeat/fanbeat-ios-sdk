@@ -22,7 +22,7 @@
                         <viewControllerLayoutGuide type="top" id="BYV-EA-bnH"/>
                         <viewControllerLayoutGuide type="bottom" id="HaK-wT-f72"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PGu-Vd-E2H">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="PGu-Vd-E2H">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -55,12 +55,16 @@
                                         <fontDescription key="fontDescription" name="GCFrankBold" family="GC Frank Bold" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="IT'S FUN AND FREE TO PLAY!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="i2W-cL-g8m">
                                         <rect key="frame" x="52" y="491" width="310" height="21"/>
                                         <fontDescription key="fontDescription" name="GCFrankBold" family="GC Frank Bold" pointSize="22"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mw3-aL-BxO">
                                         <rect key="frame" x="125" y="524" width="165" height="45"/>
