@@ -194,8 +194,11 @@ BOOL _showCancelButton;
 }
 
 - (IBAction)playNowTapped:(id)sender {
-    [self openStore: [NSNumber numberWithInteger:FANBEAT_STORE_ID]];
-}
+    if ([[FBDeepLinker getInstance] canOpenFanbeat]) {
+        [self onDone:NO];
+    } else {
+        [self openStore: [NSNumber numberWithInteger:FANBEAT_STORE_ID]];
+    }}
 
 - (IBAction)cancelClicked:(id)sender {
     [self onDone:YES];
