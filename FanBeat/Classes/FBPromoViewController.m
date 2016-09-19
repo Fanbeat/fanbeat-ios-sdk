@@ -198,7 +198,8 @@ BOOL _showCancelButton;
         [self onDone:NO];
     } else {
         [self openStore: [NSNumber numberWithInteger:FANBEAT_STORE_ID]];
-    }}
+    }
+}
 
 - (IBAction)cancelClicked:(id)sender {
     [self onDone:YES];
