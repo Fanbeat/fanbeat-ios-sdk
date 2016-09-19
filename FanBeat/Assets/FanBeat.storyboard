@@ -83,18 +83,40 @@
                                             <action selector="playNowTapped:" destination="5E3-4y-oiO" eventType="touchUpInside" id="WzC-yk-eJQ"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rat-Wb-WQo">
+                                        <rect key="frame" x="177" y="265" width="60" height="60"/>
+                                        <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cxl-56-UfX">
+                                                <rect key="frame" x="11" y="12" width="37" height="37"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="i2W-cL-g8m" firstAttribute="top" secondItem="sPX-jF-Ncv" secondAttribute="bottom" constant="4" id="0zk-PX-Hck"/>
                                     <constraint firstItem="sPX-jF-Ncv" firstAttribute="centerX" secondItem="Pgq-JF-IwI" secondAttribute="centerX" id="BVc-Tl-nar"/>
                                     <constraint firstItem="Mw3-aL-BxO" firstAttribute="centerX" secondItem="Pgq-JF-IwI" secondAttribute="centerX" id="Hjh-n5-9Dc"/>
                                     <constraint firstItem="eYm-N4-2zP" firstAttribute="height" secondItem="Pgq-JF-IwI" secondAttribute="height" multiplier="0.58" id="Qme-xg-ach"/>
+                                    <constraint firstItem="Rat-Wb-WQo" firstAttribute="centerY" secondItem="Pgq-JF-IwI" secondAttribute="centerY" id="bHM-hL-t2n"/>
                                     <constraint firstItem="Mw3-aL-BxO" firstAttribute="top" secondItem="i2W-cL-g8m" secondAttribute="bottom" constant="4" id="fmv-XA-RFi"/>
                                     <constraint firstItem="eYm-N4-2zP" firstAttribute="top" secondItem="Pgq-JF-IwI" secondAttribute="top" id="hK0-Vx-lun"/>
                                     <constraint firstItem="i2W-cL-g8m" firstAttribute="width" secondItem="Pgq-JF-IwI" secondAttribute="width" multiplier="0.75" id="hso-Fo-y47"/>
                                     <constraint firstAttribute="bottom" secondItem="Mw3-aL-BxO" secondAttribute="bottom" constant="20" id="jr3-ep-Pfk"/>
                                     <constraint firstItem="eYm-N4-2zP" firstAttribute="centerX" secondItem="Pgq-JF-IwI" secondAttribute="centerX" id="ne0-1K-BYl"/>
                                     <constraint firstItem="i2W-cL-g8m" firstAttribute="centerX" secondItem="Pgq-JF-IwI" secondAttribute="centerX" id="q9M-or-yJ0"/>
+                                    <constraint firstItem="Rat-Wb-WQo" firstAttribute="centerX" secondItem="Pgq-JF-IwI" secondAttribute="centerX" id="ssN-J2-6wK"/>
                                     <constraint firstItem="sPX-jF-Ncv" firstAttribute="width" secondItem="i2W-cL-g8m" secondAttribute="width" id="wYw-Yl-Dhz"/>
                                 </constraints>
                             </view>
@@ -151,6 +173,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="cxl-56-UfX" id="edj-Z4-oyc"/>
+                        <outlet property="activityIndicatorWrapper" destination="Rat-Wb-WQo" id="OYN-rh-tFj"/>
                         <outlet property="backgroundImage" destination="LEv-0Z-HFG" id="IET-IR-9gX"/>
                         <outlet property="buttonBottomConstraint" destination="jr3-ep-Pfk" id="mSo-qM-7NQ"/>
                         <outlet property="buttonTopConstraint" destination="fmv-XA-RFi" id="WSJ-Of-sjS"/>

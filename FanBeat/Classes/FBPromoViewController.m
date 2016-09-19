@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *competeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *funToPlayLabel;
 @property (weak, nonatomic) IBOutlet UIButton *getTheGameButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+@property (weak, nonatomic) IBOutlet UIView *activityIndicatorWrapper;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpacerHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftSpacerWidthConstraint;
@@ -51,6 +53,8 @@ BOOL _showCancelButton;
     [_competeLabel setFont:[self openGCFrankBoldOfSize:17.0]];
     [_funToPlayLabel setFont:[self openGCFrankBoldOfSize:22.0]];
     [_getTheGameButton.titleLabel setFont:[self openGCFrankBoldOfSize:19.0]];
+    
+    [self setIsWorking:NO];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
@@ -207,12 +211,13 @@ BOOL _showCancelButton;
 
 -(void)openStore:(NSNumber *)storeId
 {
+    [self setIsWorking:YES];
     [[FBDeepLinker getInstance]openStore:self];
 }
 
--(void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController
+-(void)storeDidFinish
 {
-    [self onDone:NO];
+    [self setIsWorking:NO];
 }
 
 -(void)onDone:(BOOL)animated
@@ -224,6 +229,11 @@ BOOL _showCancelButton;
         [self.navigationController popViewControllerAnimated:YES];
     }
     
+    [self finalizeDelegate];
+}
+
+- (void)finalizeDelegate
+{
     if(self.delegate && [self.delegate respondsToSelector:@selector(promoViewControllerDidFinish:)]) {
         [self.delegate promoViewControllerDidFinish:self];
     }
@@ -272,6 +282,17 @@ BOOL _showCancelButton;
         }
         CFRelease(font);
         CFRelease(provider);
+    }
+}
+
+- (void)setIsWorking:(BOOL)isWorking
+{
+    if (isWorking) {
+        _activityIndicatorWrapper.hidden = NO;
+        [_activityIndicatorView startAnimating];
+    } else {
+        _activityIndicatorWrapper.hidden = YES;
+        [_activityIndicatorView stopAnimating];
     }
 }
 

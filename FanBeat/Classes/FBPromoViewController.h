@@ -12,11 +12,12 @@
 
 @protocol FBPromoViewControllerDelegate;
 
-@interface FBPromoViewController : UIViewController <SKStoreProductViewControllerDelegate>
+@interface FBPromoViewController : UIViewController
 
 @property (nonatomic, weak) id<FBPromoViewControllerDelegate> delegate;
 - (void)setPartnerConfig:(FBPartnerConfig*)config;
 - (void)setShowCancelButton:(BOOL)showCancelButton;
+- (void)storeDidFinish;
 
 @end
 
