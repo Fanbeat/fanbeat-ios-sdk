@@ -96,7 +96,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </activityIndicatorView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.35686274509803922" blue="0.57647058823529407" alpha="0.80162259615384612" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="cxl-56-UfX" firstAttribute="centerY" secondItem="Rat-Wb-WQo" secondAttribute="centerY" id="43f-KP-zGR"/>
                                             <constraint firstItem="cxl-56-UfX" firstAttribute="centerX" secondItem="Rat-Wb-WQo" secondAttribute="centerX" id="Az9-8e-I1e"/>

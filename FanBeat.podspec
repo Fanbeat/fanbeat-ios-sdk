@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'FanBeat'
-  s.version          = '0.1.16'
+  s.version          = '0.1.17'
   s.summary          = 'Link to your partner content in the FanBeat app.'
 
   s.description      = <<-DESC
