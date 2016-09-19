@@ -86,7 +86,7 @@
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rat-Wb-WQo">
                                         <rect key="frame" x="177" y="265" width="60" height="60"/>
                                         <subviews>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cxl-56-UfX">
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cxl-56-UfX">
                                                 <rect key="frame" x="11" y="12" width="37" height="37"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <userDefinedRuntimeAttributes>
@@ -97,6 +97,10 @@
                                             </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="cxl-56-UfX" firstAttribute="centerY" secondItem="Rat-Wb-WQo" secondAttribute="centerY" id="43f-KP-zGR"/>
+                                            <constraint firstItem="cxl-56-UfX" firstAttribute="centerX" secondItem="Rat-Wb-WQo" secondAttribute="centerX" id="Az9-8e-I1e"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
